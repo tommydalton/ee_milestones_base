@@ -1,0 +1,73 @@
+<!--BEGIN CHANNEL ENTRY FORM =============================================================================================-->
+<section id="slick">
+  <div class="comment-form">
+  {exp:channel:form site="annika"
+                    channel="timeline_post"
+                    return="app/desc/"
+                    include_assets="yes"
+                    include_jquery="yes"
+                    logged_out_member_id="3" 
+                    secure_action="no"     
+                    }  
+                    
+		<!-- Entry Type -->
+        <input type="hidden" name="timeline_entry_type" id="timeline_entry_type" value="blog_post">
+
+		<!-- Title input -->
+		<div class="field">
+        <input type="text" name="title" id="title" value="{title}" size="50" maxlength="100" onkeyup="liveUrlTitle();">
+		<span class="entypo-book icon"></span>
+		<span class="slick-tip left">give this post a name</span>
+		</div>
+
+		<!-- URL Title input -->
+		<div class="field">
+        <input type="text" name="url_title" id="url_title" value="{url_title}" maxlength="75" size="50">
+		<span class="entypo-link icon"></span>
+		<span class="slick-tip left">url title will auto-populate</span>
+		</div>
+
+		<!-- Date input -->
+		<div class="field">
+        <input type="text" name="timeline_entry_date" value="{timeline_entry_date}" maxlength="23" size="25">
+		<span class="entypo-calendar icon"></span>
+		<span class="slick-tip left">select a date</span>
+		</div>
+
+		<!-- Display Title input -->
+		<div class="field">
+        <input type="text" name="timeline_entry_title" id="timeline_entry_title" value="{timeline_entry_title}">
+		<span class="entypo-book icon"></span>
+		<span class="slick-tip left">enter title to be displayed</span>
+		</div>
+
+		<!-- Title Hex Color input -->
+		<div class="field">
+        <input class="color" type="text" name="timeline_entry_title_color" id="timeline_entry_title_color" value="#e9dec4" maxlength="6">
+		<span class="entypo-colours icon"></span>
+		<span class="slick-tip left">select a color for title</span>
+		</div>
+
+		<!-- Comment input -->
+		<div class="field">
+        <input type="text" name="timeline_entry_copy" id="timeline_entry_copy" value="{timeline_entry_copy}" rows="4">
+		<span class="entypo-comment icon"></span>
+		<span class="slick-tip left">this is what happened...</span>
+		</div>
+
+		<!-- File upload -->
+		<div class="field">
+        <input type="file" name="timeline_image_01" />
+        <input type="hidden" name="timeline_image_01_directory" value="29" />
+        <input type="hidden" name="timeline_image_01_hidden_file" value="{timeline_image_01}{file_name}{/timeline_image_01}" />
+	    <span class="entypo-folder icon"></span>
+		<span class="slick-tip left">upload a file</span>
+		</div>
+               
+		<!-- Submit form -->
+		<div class="field">
+         <input type="submit" name="submit" value="Submit">
+        </div> 
+{/exp:channel:form}
+</section>
+<!--END CHANNEL ENTRY FORM =============================================================================================-->

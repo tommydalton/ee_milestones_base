@@ -1,0 +1,323 @@
+<!--CUSTOM STYLES from EE2 Timeline CSS Channel Fields  -->     
+    {exp:channel:entries channel="timeline_styles" disable="categories|pagination" limit="1"} 
+    <style type="text/css">
+
+    body {
+    {if css_window_color !="FFFFFF"}background-color: #{css_window_color};{/if} 
+    /*CSS Background Image*/
+    {if css_background_image !=""}background-image: url('{css_background_image}');{/if} 
+    /*CSS Background Tile Settings*/
+    {if css_background_tile_settings =="Tile X, Tile Y"}background-repeat: repeat;{/if} 
+    {if css_background_tile_settings =="Tile X"}background-repeat: repeat-x;{/if}   
+    {if css_background_tile_settings =="Tile Y"}background-repeat: repeat-y;{/if}   
+    }       
+
+
+    /* CSS Window Color Related */
+    {if css_window_color !="FFFFFF"}
+    /* Spine */
+    div.timeline div.spine {
+    background-color: #{css_window_color};
+    }   
+    /* Entry Windows */
+    div.timeline_element_box {
+    background-color: #{css_window_color};
+    }
+    div.timeline_left div.timeline_element:before {
+    border-left: 10px solid #{css_window_color};
+    }
+    div.timeline_dual div.timeline_element_left:before {
+    border-left: 10px solid #{css_window_color};
+    }
+    div.timeline_right div.timeline_element:before {
+    border-right: 10px solid #{css_window_color};
+    }
+    div.timeline_dual div.timeline_element_right:before {
+    border-right: 10px solid #{css_window_color};
+    }
+    div.timeline_left div.timeline_element:after,
+    div.timeline_right div.timeline_element:after,
+    div.timeline_dual div.timeline_element_left:after,
+    div.timeline_dual div.timeline_element_right:after {
+    border: 6px solid #{css_window_color};
+    }
+    {/if}   
+
+    /*CSS Custom Box Radius*/
+    {if css_custom_box_radius !=""}
+    div.timeline_element_box {
+    -webkit-border-radius: {css_custom_box_radius}px;
+    -moz-border-radius: {css_custom_box_radius}px;
+    border-radius: {css_custom_box_radius}px;
+    }
+    {/if}   
+
+    /*CSS Custom Box Shadow*/
+    {if css_box_shadow_color !="FFFFFF"}
+    div.timeline_element_box {
+    box-shadow: 1px 2px 4px #{css_box_shadow_color};
+
+    }
+    {/if}   
+
+    /*CSS Date Display Color*/
+    {if css_date_display_color !="FFFFFF"}
+    div.timeline_title span.timeline_title_date {
+    color: #{css_date_display_color};
+    }
+    {/if}
+
+    /*CSS Default Title Color*/
+    {if css_default_title_color !="FFFFFF"}
+    div.timeline_title span.timeline_title_label {
+    color: #{css_default_title_color};
+    }
+    {/if}
+
+    /*CSS Default Sub-Title Color*/
+    {if css_default_sub_title_color !="FFFFFF"}
+    span.subtitle {
+    color: #{css_default_sub_title_color};
+    }
+    {/if}
+
+
+    /*CSS Month Delimiter Color (Inner)*/
+    {if css_month_delimiter_color_inner !="FFFFFF"}
+    div.timeline_left div.timeline_element:after,
+    div.timeline_right div.timeline_element:after,
+    div.timeline_dual div.timeline_element_left:hover:after,
+    div.timeline_dual div.timeline_element_right:hover:after {
+    background-color: #{css_month_delimiter_color_inner};
+    }
+
+    div.timeline div.date_separator span {
+    background-color: #{css_month_delimiter_color_inner};
+    }
+    {/if}
+
+    /*CSS Month Delimiter Color (Outer)*/
+    {if css_month_delimiter_color_outer !="FFFFFF"}
+    div.timeline_left div.timeline_element:after,
+    div.timeline_right div.timeline_element:after,
+    div.timeline_dual div.timeline_element_left:hover:after,
+    div.timeline_dual div.timeline_element_right:hover:after {
+    border: 4px solid #{css_month_delimiter_color_outer};
+    }
+
+    div.timeline div.date_separator span {
+    border: 14px solid #{css_month_delimiter_color_outer};
+    }
+    {/if}
+
+    /*  CSS Month Delimiter Color (Text)*/
+    {if css_month_delimiter_color_text !="FFFFFF"}
+    div.timeline div.date_separator span {
+    color: #{css_month_delimiter_color_text};
+    }
+    {/if}
+
+    /*CSS Text Copy Color*/
+    {if css_text_copy_color !="FFFFFF"}
+    div.timeline_element.blog_post div.content {
+    color:#{css_text_copy_color};
+    }
+    {/if}       
+
+    /*CSS Text Copy Link Idle Color*/
+    {if css_text_copy_link_idle_color !="FFFFFF"}
+    div.timeline_element.blog_post div.content a{
+    color:#{css_text_copy_link_idle_color};
+    }
+    {/if}   
+
+    /*CSS Text Copy Link Hover Color*/
+    {if css_text_copy_link_hover_color !="FFFFFF"}
+    div.timeline_element.blog_post div.content a:hover{
+    color:#{css_text_copy_link_hover_color};
+    }
+    {/if}   
+
+
+    /* Scroll Bar Background*/
+    {if css_scrollbar_background_color !="FFFFFF"}
+    div.timeline_element ::-webkit-scrollbar {  /* Webkit only */
+    background-color: #{css_scrollbar_background_color};
+    }
+    {/if}   
+
+    /* Scroll Bar Handle*/
+    {if css_scrollbar_handle_color !="FFFFFF"}
+    div.timeline_element ::-webkit-scrollbar-thumb {
+    background-color: #{css_scrollbar_handle_color};
+    }
+    {/if}   
+
+    /* Scroll Bar Hover or Active*/
+    {if css_scrollbar_active_color !="FFFFFF"}
+    div.timeline_element ::-webkit-scrollbar-thumb:hover {
+    background-color: #{css_scrollbar_active_color};
+    }
+    {/if}       
+
+    /*CSS Text Copy Font*/
+    {if css_text_copy_font !=""}
+    div.timeline_element.blog_post div.content {
+    font-family: {css_text_copy_font};
+    }   
+    {/if}   
+
+    /*CSS Month Delimiter Font*/
+    {if css_month_delimiter_font !=""}
+    div.timeline div.date_separator span {
+    font-family: {css_month_delimiter_font};
+    }   
+    {/if}   
+
+
+    /*Milestone CSS Changes*/
+    {if css_milestone_background !="FFFFFF"}
+    div.timeline_element_box.milestone_toggle-milestone{
+    background-color: #{css_milestone_background};
+    }   
+
+    div.timeline_element_box.milestone_toggle-milestone{
+    background-color: #{css_milestone_background};
+    border: 3px solid #{css_milestone_background};
+    }
+
+    div.timeline_element.milestone_toggle-milestone.blog_post span.milestone_flag,
+    div.timeline_element.milestone_toggle-milestone.slider span.milestone_flag,
+    div.timeline_element.milestone_toggle-milestone.gallery span.milestone_flag,
+    div.timeline_element.milestone_toggle-milestone.video span.milestone_flag,
+    div.timeline_element.milestone_toggle-milestone.iframe span.milestone_flag{
+    color: #{css_window_color};
+    }
+
+    div.timeline_element.milestone_toggle-milestone.blog_post span.milestone_title,
+    div.timeline_element.milestone_toggle-milestone.slider span.milestone_title,
+    div.timeline_element.milestone_toggle-milestone.gallery span.milestone_title,
+    div.timeline_element.milestone_toggle-milestone.video span.milestone_title,
+    div.timeline_element.milestone_toggle-milestone.iframe span.milestone_title{
+    color: #{css_window_color};
+    }
+
+    div.timeline_dual div.timeline_element_right.milestone_toggle-milestone:before {
+    border-right: 10px solid #{css_milestone_background};
+    }
+
+    div.timeline_dual div.timeline_element_left.milestone_toggle-milestone:before {
+    border-left: 10px solid #{css_milestone_background};
+    }
+
+    div.timeline_dual div.timeline_element_left.milestone_toggle-milestone:hover:after, div.timeline_dual div.timeline_element_right.milestone_toggle-milestone:hover:after {
+    z-index: 100;
+    background-color: #{css_window_color};
+    border: 6px solid #{css_milestone_background};
+    }
+
+    div.timeline_dual div.timeline_element_left.milestone_toggle-milestone:after{
+    background-color: #fff;
+    border: 8px solid #{css_milestone_background};
+    }
+
+    div.timeline_dual div.timeline_element_right.milestone_toggle-milestone:after {
+    background-color: #fff;
+    border: 8px solid #{css_milestone_background};
+    }
+	
+	div.timeline_loadmore {
+	  font-size: 12px;
+	  font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+	  font-family: "proxima-nova",sans-serif;
+	  cursor: pointer;
+	  margin: 10px auto;
+	  width: 100%;
+	  background: #{css_milestone_background};
+	  text-align: center;
+	  padding: 10px 0px;
+	  border-radius: 4px;
+	  text-decoration: none;
+	  color: #FFFFFF;
+	  /*fade*/
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+/* ...and now for the proper property */
+    transition:.2s;
+	  
+   }
+	div.timeline_loadmore:hover {
+	background: #8c62e6;
+	  /*fade*/
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+/* ...and now for the proper property */
+    transition:.2s;
+   }   
+
+    {/if}
+
+    {if css_milestone_content_copy !="FFFFFF"}
+    /*Milestone CSS Changes*/
+
+    div.timeline_element_box.milestone_toggle-milestone{
+    color: #{css_milestone_content_copy};
+    }
+
+
+    /*style milestone flag copy if flagged*/
+    div.timeline_element.milestone_toggle-milestone.blog_post div.content,
+    div.timeline_element.milestone_toggle-milestone.slider div.content,
+    div.timeline_element.milestone_toggle-milestone.gallery div.content,
+    div.timeline_element.milestone_toggle-milestone.video div.content,
+    div.timeline_element.milestone_toggle-milestone.iframe div.content{
+
+    color: #{css_milestone_content_copy};
+    }
+    {/if}
+
+    /*Custom Images*/
+    {if custom_images_enable =="Enable"}
+    @media (min-width: 835px) {
+    .header_container_desktop{
+    display:none;
+    }
+    .header_container_mobile{
+    display:none;
+    }
+    }
+    @media (max-width: 834px) {
+    .header_container_desktop{
+    display:none;
+    }
+    .header_container_mobile{
+    display:none;
+    }
+    }
+
+
+    @media (min-width: 835px) {
+    .footer_container_desktop{
+    display:none;
+    }
+    .footer_container_mobile{
+    display:none;
+    }
+    }
+    @media (max-width: 834px) {
+    .footer_container_desktop{
+    display:none;
+    }
+    .footer_container_mobile{
+    display:none;
+    }
+    }
+    {/if}   
+
+    {/exp:channel:entries}
+
+    </style>

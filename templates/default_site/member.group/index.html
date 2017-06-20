@@ -1,0 +1,90 @@
+{if logged_in}{redirect='welcome'}{/if}
+
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>Annika Kathleen Dalton | My Life</title>
+        
+        <!--Global Viewport and Meta Included-->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!--include_globaltags FAV ICON-->
+        <link rel="shortcut icon" href="{site_url}/favicon.ico" />
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="mobile-web-app-capable" content="yes"/>
+	    <meta name="apple-mobile-web-app-status-bar-style"content="black"/>
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>-->
+        <meta name="viewport" content="width=device-width, user-scalable=0"/>
+        <meta name="robots" content="noindex">
+        <!--include_globaltags APPLE TOUCH ICONS-->    
+        <link href="{site_url}/apple-touch-icon.png" rel="apple-touch-icon" />
+        <link href="{site_url}/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
+        <link href="{site_url}/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
+        <link href="{site_url}/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
+
+
+    
+        <!--<link rel="stylesheet" type="text/css" href="{site_url}/timeline/css/basic_styles.css" />-->
+        <!--Stylesheets-->
+        <!--<link rel="stylesheet" type="text/css" href="{site_url}/timeline/css/custom_styles.css" />-->
+        
+        <!--Login Stylesheets-->
+        <link rel="stylesheet" type="text/css" href="http://www.annikadalton.com/timeline/css/login_styles.css"/>
+        
+        
+        <!--TypeKit-->
+        <script type="text/javascript" src="//use.typekit.net/nlg7djn.js"></script>
+		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <!--Timeline Scripts-->
+        <script type="text/javascript" src="{site_url}/timeline/javascript/jquery.js"></script>
+        <script type="text/javascript" src="{site_url}/timeline/javascript/timeline.min.js"></script>
+        <!--Shadowbox-->
+        <link rel="stylesheet" type="text/css" href="{site_url}/shadowbox/shadowbox.css">
+        <script type="text/javascript" src="{site_url}/shadowbox/shadowbox.js"></script>
+        
+        <script type="text/javascript">
+        Shadowbox.init();
+        </script>
+
+
+
+</head>
+
+<body>
+<!--</header>-->
+{exp:member:login_form form_id="login" return="welcome"} 
+    
+        <div class="middlebox" style="padding-top:0px;">
+            <h1>LOGIN</h1>
+            <!--<div class="loginerror"></div>-->
+                
+                USERNAME<br/>
+                <input class="inputclassbig" type="text" name="username" value=""><br/>
+                PASSWORD:<br/>
+                <input class="inputclassbig" type="password" name="password" value="">
+                {if auto_login}
+                <span class="remember-box checkbox">
+                <label for="rememberme">
+                    <input type="checkbox" name="auto_login" id="rememberme">remember me
+                </label>
+				</span>
+                {/if}
+                <br/>
+                                                    
+                <input class="whitebutton inputclassbig" name="submit" type="submit" value="submit" data-loading-text="Loading...">
+            </form>
+        </div>
+        
+{/exp:member:login_form}
+
+<!-- END CONTENT --> 
+
+	<!-- Include Footer-->
+	{embed="embeds/include_footer"}
+    
+	<!-- Include Google Analytics-->
+	{embed="embeds/include_analytics"}
+
+
+</div>    
+</body>
+</html>

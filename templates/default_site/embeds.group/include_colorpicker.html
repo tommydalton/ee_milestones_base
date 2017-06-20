@@ -1,0 +1,40 @@
+    <!--Color Picker-->
+    <!-- <button onclick="$colors.colorPicker('destroy')">destroy</button> -->
+    <script type="text/javascript" src="{site_url}/timeline/submit/colorpicker/colors.js"></script>
+    <script type="text/javascript" src="{site_url}/timeline/submit/colorpicker/colorPicker.data.js"></script>
+    <script type="text/javascript" src="{site_url}/timeline/submit/colorpicker/colorPicker.js"></script>
+    <!--<script type="text/javascript" src="{site_url}/timeline/submit/colorpicker/index.js"></script>-->
+    <!-- <script type="text/javascript" src="../color.all.min.js"></script> -->
+    
+    <script type="text/javascript" src="{site_url}/timeline/submit/colorpicker/jQuery_implementation/jqColor.js"></script>
+    <!-- <script type="text/javascript" src="jQueryColorPicker.min.js"></script> -->
+
+	<script type="text/javascript">
+        var $colors = $('input.color').colorPicker({
+        customBG: '#222',
+        readOnly: true,
+        init: function(elm, colors) { // colors is a different instance (not connected to colorPicker)
+          elm.style.backgroundColor = elm.value;
+          elm.style.color = colors.rgbaMixCustom.luminance > 0.22 ? '#222' : '#ddd';
+        }
+      }).each(function(idx, elm) {
+            // $(elm).css({'background-color': this.value})
+        });
+    </script>
+    
+    
+    <!--Initial Small Color Picker
+    <div class="cp-app alpha-bg-w light ui-draggable S XS" style="position: absolute; left: 83px; top: 683px; display: block;">    <div class="cp-slds hsv-h hue-light">-->
+    
+    <!--Force to on window ready:
+    <div class="cp-app alpha-bg-w light ui-draggable" style="position: absolute; left: 83px; top: 683px; display: block;">
+    <div class="cp-slds hsv-h hue-light">-->
+    
+	<script>    
+    $("input.color").click(function(){
+		//alert ('opening a color field'),
+        //$(".cp-app").removeClass("S");
+        $(".cp-app").removeClass("XS");
+		//$(".cp-resize").css("display", "none");
+    });
+    </script>  

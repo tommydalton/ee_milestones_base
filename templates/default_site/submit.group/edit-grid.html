@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit Tag | {site_name}</title>
+    
+    <!-- Include App Touch & FA4.4.0-->
+    {embed="embeds/include_global_icons"}   
+     
+    <!-- Include Global Meta-->
+    {embed="embeds/include_global_meta"}
+    
+    <!-- Include Global Styles-->
+    {embed="embeds/include_global_styles"}
+    
+    <!-- Include Styles Sandbox-->
+    {embed="embeds/include_sandbox_css"}
+    
+    <!-- Include Core Scripts-->
+    {embed="embeds/include_core_scripts"}
+    
+    <!-- Include Scripts Sandbox-->
+    {embed="embeds/include_sandbox_scripts"}
+
+    <!-- Include Dynamic Stylesheet-->
+    {embed="embeds/include_dynamic_css"}
+
+    <!-- Include Google Analytics-->
+    {embed="embeds/include_analytics"}    
+    
+</head>
+
+    <!-- Include Graphic Headers-->
+    {embed="embeds/include_header"}
+    
+    <!-- Include Publish Options-->
+    {embed="embeds/include_publish_options"}
+
+		<div class="header_container">
+			<div class="header clearfix">
+			
+			</div>
+		</div>
+        
+		<div class="page relative">
+			<div class="page_layout clearfix">
+				<div class="page_header clearfix">
+<!--Page Header ===============================================================================================-->
+					<div class="page_header_left">
+						<h1 class="color-dark-copy top-title-bot-margin">{presentation_title}</h1>
+                        <h3 class="color-primary-1">{presentation_event_asscoiation}</h3>
+                        <span class="gradient_line-thick-solid"></span>
+						<h4 class="color-primary-tint-4">{presentation_agenda_add}{presentation_agenda_day format="%D, %F %d, %Y"}{/presentation_agenda_add}</h4>
+
+                        </h4>
+                        <br>
+					</div>
+					<div class="page_header_right">
+						<!--<form class="search">
+							<input class="search_input" type="text" value="Site search" placeholder="Site search" />
+							<input class="icon_small_arrow margin_right_white" type="submit" value="Search" />
+                            
+						</form>-->
+					</div>
+				</div>
+ 
+
+<!--Tabbed Group ===============================================================================================-->
+		<div id="tab-container">
+
+                      
+		<section id="tabbed">
+			<!--First tab input and label-->
+            <input id="t-1" name="tabbed-tabs" type="radio" {if segment_5 == "tab-files"}checked="checked"{/if}  />
+			<label for="t-1" class="tabs shadow entypo-archive">File Bin</label>{/if}
+
+			<!--Second tab input and label-->
+			<input id="t-2" name="tabbed-tabs" type="radio" {if segment_5 == "tab-gear"}checked="checked"{/if}/>
+			<label for="t-2" class="tabs shadow icon entypo-clipboard">Gear List</label>{/if}    
+
+			<!--Third tab input and label-->
+			<input id="t-3" name="tabbed-tabs" type="radio" {if segment_5 == "tab-labor"}checked="checked"{/if}/>
+			<label for="t-3" class="tabs shadow icon entypo-users">Labor</label>{/if}    
+
+			<!--Fourth tab input and label-->
+			<input id="t-4" name="tabbed-tabs" type="radio" {if segment_5 == "tab-floor"}checked="checked"{/if}/>
+			<label for="t-4" class="tabs shadow entypo-layout">Floor Plan</label>{/if}    
+            
+
+
+
+            
+
+{/exp:channel:entries}              
+            
+			<!--Tabs wrapper-->
+			<div class="wrapper shadow">
+
+<!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////             
+                                                                                    _____  ___  _      _____  ____  
+                                                                                   |  ___||_ _|| |    | ____|/ ___| 
+                                                                                   | |_    | | | |    |  _|  \___ \ 
+                                                                                   |  _|   | | | |___ | |___  ___) |
+                                                                                   |_|    |___||_____||_____||____/ 
+                                                                                     
+                                                                                     
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->     
+<div class="tab-1">
+                    <!--title-->
+					<div class="row">
+						<div class="cell w-100">
+							<div class="title large"><span class="icon entypo-archive marleft3"></span><span class="marleft6">Files</span></div>
+						</div>
+					</div>
+                    
+                <!--if file bin description-->
+					
+					<!--<div class="row">
+						<div class="cell w-100">
+							<p class="normal">If a file bin description is added.</p>
+						</div>
+					</div>
+                    <div class="clrfx mt-20"></div>-->
+                    
+					<!--Table Headers Block-->
+					<div class="row">
+						<div class="cell w-7">
+							<p class="tab-gridcell-header-small">Type</p>
+						</div>
+						<div class="cell w-46">
+							<p class="tab-gridcell-header-small">Filename</p>
+						</div>
+						<div class="cell w-9">
+							<p class="tab-gridcell-header-small">Version</p>
+						</div>
+						<div class="cell w-15">
+							<p class="tab-gridcell-header-small"></p>
+						</div>
+						<div class="cell w-15">
+							<p class="tab-gridcell-header-small"></p>
+						</div>
+					</div> 
+
+
+                    <div id="deletionRow" class="row">
+
+						<div class="cell w-7"> 
+							<p class="tab-gridcell filetype displaytext-highlight-remove">7</p>
+						</div>   
+                          
+						<div class="cell w-46"> 
+							<p class="tab-gridcell displaytext-highlight-remove">46</p>
+						</div>
+
+                        <div class="cell w-9">
+                            <p class="tab-gridcell fileversion">9</p>
+                        </div>
+                        
+                        <div class="cell w-15">
+                            <input type="hidden" name="tab-files[row_id_{row_id}][col_id_34]" id="Remove" value="Removed">
+                            <input id="removeConfirmTrigger-{row_id}" type="submit" name="submit" class="tab-gridcell removeConfirm" value="&nbsp;&nbsp;Confirm Removal" >
+                        </div>
+						<div class="cell w-15">
+							<a href="{pm_url}presentation/{segment_2}/{segment_3}/{segment_4}/tab-files" title="Remove"><p class="tab-gridcell cancel">Cancel</p></a>
+						</div>
+                    </div> 
+                    
+					<script>
+                    $( "#removeConfirmTrigger-{row_id}" ).hover(
+                      function() {
+                        $("p.tab-gridcell.displaytext-highlight-remove").addClass( "confirmingRemove" );
+                      }, function() {
+                        $("p.tab-gridcell.displaytext-highlight-remove").removeClass( "confirmingRemove" );
+                      }
+                    );
+                    </script> 
+
+					{case value="sel-prf-version"}                    
+                    {exp:channel:form
+                    channel="presentations" 
+                    return="/presentation/{segment_2}/{segment_3}/{segment_4}/{segment_5}"
+                    url_title="{segment_3}"
+                    entry_id="{segment_4}"
+                    include_jquery="yes"
+                    include_assets="yes"                    
+                    }  
+
+					<div class="row">
+                    
+						<div class="cell w-7">
+							<a href="{pm_url}presentation/{segment_2}/{segment_3}/{segment_4}/tab-files" title="Remove"><p class="tab-gridcell cancel-select">Cancel</p></a>
+						</div>
+						<div class="cell w-46"> 
+                                <!--SELECFT A FILE IN THIS DIRECTORIES BINDER ENTRY-->
+                                {exp:portal}<!--Initialize Portal-->
+                                <select id="filter-p" class="tab-gridcell dropdown">
+                                <option data-pfieldname="{original_name}" data-pfieldurl="{url}" data-pfieldext="{original_name}" value="{original_name}" {selected}>&downarrow; &nbsp;Select a file from your Binder</option>
+                                {tab-binder}
+                                        {options:tab-binder}
+                                                <option data-pfieldname="{original_name}" data-pfieldurl="{url}" data-pfieldext="{original_name}" value="{original_name}" {selected}>{original_name}</option>
+                                {/tab-binder}
+                                </select>
+                                                            
+                                                            <input id="field-name-p" type="hidden" name="tab-files[row_new_0][col_id_58]" value="field-name" />
+                                                            <input id="field-url-p" type="hidden" name="tab-files[row_new_0][col_id_59]" value="field-url" />
+                                                            <input id="field-ext-p" type="hidden" name="tab-files[row_new_0][col_id_60]" value="ext" />
+                                {/exp:portal}<!--Close Portal-->
+                                </div>
+<script>                            
+document.getElementById('filter-p').onchange = function () {
+	 var selected = $(this).find('option:selected');
+	 var getExtensionOnly = selected.data('pfieldext');
+	 var remExtensionOnly = selected.data('pfieldext');
+	//document.getElementById('field-name').value = event.target.value
+	document.getElementById('field-name-p').value = remExtensionOnly.substring(0, remExtensionOnly.length - 4);
+	document.getElementById('field-url-p').value = selected.data('pfieldurl');
+	document.getElementById('field-ext-p').value = getExtensionOnly.split(".").pop();
+	
+}   
+</script> 
+
+                        
+						<div class="cell w-9">
+                            <input type="hidden" name="tab-files[row_new_0][col_id_2]"  value="PRF" />
+							<p class="tab-gridcell fileversion version-final">Final</p>
+						</div>    
+						<div class="cell w-32">
+							<input type="submit" name="submit" class="tab-gridcell reviseConfirm" value="&nbsp;&nbsp;Save Entry" >
+						</div>
+					</div>  
+                    {/exp:channel:form}                
+                    {/case} 
+<!--
+            __                                                       
+    |      /              / /                   /              |     
+ ___| ___ (     ___      ( (___            ___ (  ___  ___  ___| ___ 
+|   )|___)|___ |   )|   )| |         |   )|   )| |   )|   )|   )|___ 
+|__/ |__  |    |__/||__/ | |__       |__/ |__/ | |__/ |__/||__/  __/ 
+                                          |                          
+
+  -->             
+					<!--Add A Final Version ===============================================================================================-->
+
+					<div class="row">
+                    
+						<div class="cell w-10">
+							<a href="{pm_url}presentation/{segment_2}/{segment_3}/{segment_4}/tab-files" title="Remove"><p class="tab-gridcell delete">&nbsp;Cancel</p></a>
+						</div>
+						<div class="cell w-43"> 
+                            <input name="tab-files[row_new_0][col_id_1]" type="file" class="tab-gridcell displaytext-highlight-revise" />
+                            <input type="hidden" name="tab-files[row_new_0][col_id_1]" value="{tab-files}{presentation_files_file_upload}{/tab-files}" />
+                        </div>
+						<div class="cell w-9">
+                            <input type="hidden" name="tab-files[row_new_0][col_id_2]"  value="Final" />
+							<p class="tab-gridcell fileversion version-final">Final</p>
+						</div>    
+						<div class="cell w-32">
+							<input type="submit" name="submit" class="tab-gridcell reviseConfirm" value="&nbsp;&nbsp;Save Entry" >
+						</div>
+					</div>  
+ 
+
+					<div class="row">
+						<div class="cell w-100">
+							<p class="tab-gridcell-header-small">&nbsp;</p>
+						</div>
+					</div> 
+
+					<div class="row">
+						<div class="cell w-100">
+							<p class="tab-gridcell-header-small"></p>
+						</div>
+					</div> 
+
+			                              
+<script>
+$( "#more-itemid" ).toggle(
+  function() {
+	$( ".previous_versions" ).css( "display", "block" );
+    $( this ).find('p').addClass( "versionsOpened" );
+}, function() {
+	$( ".previous_versions" ).css( "display", "none" );
+    $( this ).find('p').removeClass( "versionsOpened" );
+});
+</script>  
+</div>
+
+<!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////             
+                                                                          ____  _____     _     ____    _      ___  ____  _____ 
+                                                                         / ___|| ____|   / \   |  _ \  | |    |_ _|/ ___||_   _|
+                                                                        | |  _ |  _|    / _ \  | |_) | | |     | | \___ \  | |  
+                                                                        | |_| || |___  / ___ \ |  _ <  | |___  | |  ___) | | |  
+                                                                         \____||_____|/_/   \_\|_| \_\ |_____||___||____/  |_|  
+                                                                                     
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->         
+		
+<!--Tab 2 content == Gear List ================================================-->
+<div class="tab-2">
+                    <!--title-->
+					<div class="row">
+						<div class="cell w-100">
+                            <div class="title large"><span class="icon entypo-clipboard marleft3"></span><span class="marleft6">Gear List</span></div>
+						</div>
+					</div>
+
+					<div class="row">
+
+						<div class="cell w-49">
+							<p class="tab-gridcell-header-small">Item</p>
+						</div>
+						<div class="cell w-4">
+							<p class="tab-gridcell-header-small">Qty</p>
+						</div>
+						<div class="cell w-14">
+							<p class="tab-gridcell-header-small">Location</p>
+						</div>
+						<div class="cell w-15">
+							<p class="tab-gridcell-header-small">Category</p>
+						</div>
+						<div class="cell w-4">
+							<p class="tab-gridcell-header-small">Edit</p>
+						</div>
+						<div class="cell w-4">
+							<p class="tab-gridcell-header-small">Delete</p>
+						</div>
+					</div> 
+                
+
+                    <div class="row">
+                        <div class="cell w-49"> 
+                            <input name="tab-gear[row_id_{row_id}][col_id_4]" type="text" value="{presentation_gearlist_item_gear}" class="tab-gridcell displaytext-highlight-revise" placeholder="{presentation_gearlist_item_gear}" />
+                        </div>
+                        <div class="cell w-4">
+                            <input name="tab-gear[row_id_{row_id}][col_id_3]" type="text" value="{presentation_gearlist_item_qty}" class="tab-gridcell displaytext-highlight-revise" placeholder="{presentation_gearlist_item_qty}" />
+                        </div>
+                        <div class="cell w-14">
+                            <input name="tab-gear[row_id_{row_id}][col_id_5]" type="text" value="{presentation_gearlist_item_loc}" class="tab-gridcell displaytext-highlight-revise" placeholder="{presentation_gearlist_item_loc}" /></p>
+                        </div>
+                        <div class="cell w-15">
+                            <input name="tab-gear[row_id_{row_id}][col_id_6]" type="text" value="{presentation_gearlist_item_tag}" class="tab-gridcell displaytext-highlight-revise" placeholder="{presentation_gearlist_item_tag}" /></p>
+                        </div>
+                        <div class="cell w-10">
+                            <input id="reviseConfirmTrigger-{row_id}" type="submit" name="submit" class="tab-gridcell reviseConfirm" value="Save Changes" >
+                        </div>
+                    </div> 
+					{/exp:channel:form}
+                    
+
+					<script>
+                    $( "#reviseConfirmTrigger-{row_id}" ).hover(
+                      function() {
+                        $("input.tab-gridcell.displaytext-highlight-revise").addClass( "confirmingRevise" );
+                      }, function() {
+                        $("input.tab-gridcell.displaytext-highlight-revise").removeClass( "confirmingRevise" );
+                      }
+                    );
+                    </script> 
+                    
+               
+
+                    <div id="deletionRow" class="row">
+                        <div class="cell w-49"> 
+                            <p class="tab-gridcell displaytext-highlight-remove">{presentation_gearlist_item_gear}</p>
+                        </div>
+                        <div class="cell w-4">
+                            <p class="tab-gridcell displaytext-highlight-remove">{presentation_gearlist_item_qty}</p>
+                        </div>
+                        <div class="cell w-14">
+                            <p class="tab-gridcell displaytext-highlight-remove">{presentation_gearlist_item_loc}</p>
+                        </div>
+                        <div class="cell w-15">
+                            <p class="tab-gridcell displaytext-highlight-remove">{presentation_gearlist_item_tag}</p>
+                        </div>
+                        <div class="cell w-10">
+                            <input type="hidden" name="tab-gear[row_id_{row_id}][col_id_35]" id="Remove" value="Removed">
+                            <input id="removeConfirmTrigger-{row_id}" type="submit" name="submit" class="tab-gridcell removeConfirm" value="{if presentation_gearlist_item_qty !="1"}Remove Items{/if}{if presentation_gearlist_item_qty =="1"}Remove Item{/if}" >
+                        </div>
+                    </div> 
+
+					<script>
+                    $( "#removeConfirmTrigger-{row_id}" ).hover(
+                      function() {
+                        $("p.tab-gridcell.displaytext-highlight-remove").addClass( "confirmingRemove" );
+                      }, function() {
+                        $("p.tab-gridcell.displaytext-highlight-remove").removeClass( "confirmingRemove" );
+                      }
+                    );
+                    </script> 
+                    
+
+					<div class="row">
+						<div class="cell w-49"> 
+							<p class="tab-gridcell displaytext">&nbsp;{presentation_gearlist_item_gear}</p>
+						</div>
+						<div class="cell w-4">
+							<p class="tab-gridcell displaytext">&nbsp;{presentation_gearlist_item_qty}</p>
+						</div>
+						<div class="cell w-14">
+							<p class="tab-gridcell displaytext">&nbsp;{presentation_gearlist_item_loc}</p>
+						</div>
+						<div class="cell w-15">
+							<p class="tab-gridcell displaytext">&nbsp;{presentation_gearlist_item_tag}</p>
+						</div>
+						<div class="cell w-4">
+							<a href="{pm_url}presentation/{segment_2}/{segment_3}/{segment_4}/tab-gear/edit/revise/{row_id}" title="Edit"><p class="tab-gridcell editItem"></p></a>
+						</div>
+						<div class="cell w-4">
+							<a href="{pm_url}presentation/{segment_2}/{segment_3}/{segment_4}/tab-gear/edit/remove/{row_id}" title="Remove"><p class="tab-gridcell deleteItem"></p></a>
+						</div>
+                    </div>
+
+					{exp:switchee variable="{segment_7}" parse="inward"} 
+					{case value="#^P(\d+)$#|''" default="Yes" limit="1"}	
+					<!--Add List Item Block-->
+					<div class="row">
+						<div class="cell w-100">
+                        <a href="{pm_url}presentation/{segment_2}/{segment_3}/{segment_4}/tab-gear/edit/add" title="Add Gear"><p class="tab-gridcell addItem">Add Gear</p></a>
+						</div>
+					</div>
+
+
+					<div class="row">
+						<div class="cell w-49"> 
+							<input name="tab-gear[row_new_0][col_id_4]" type="text" value="" class="tab-gridcell displaytext" placeholder="Enter Item" />
+						</div>
+						<div class="cell w-4">
+							<input name="tab-gear[row_new_0][col_id_3]" type="text" value="" class="tab-gridcell displaytext" placeholder="Qty" />
+						</div>
+						<div class="cell w-14">
+							<input name="tab-gear[row_new_0][col_id_5]" type="text" value="" class="tab-gridcell displaytext" placeholder="Enter Location/Notes" />
+						</div>
+						<div class="cell w-15">
+							<input name="tab-gear[row_new_0][col_id_6]" type="text" value="" class="tab-gridcell displaytext" placeholder="Enter Group/Category" />
+						</div>
+						<div class="cell w-10">
+							<input type="submit" name="submit" class="tab-gridcell addItem" value="&nbsp;&nbsp;Add to List" >
+						</div>
+					</div>  
+                
+                    {/case}
+                    {/exp:switchee}                    
+
+					<!--Add Options ===============================================================================================-->					
+					<!--Add Print Option-->
+					<!--<div class="row">
+						<div class="cell w-100">
+                        <a href="#" title="All Workshops" class="clearfix tabs_navigation ui-state-active"><p class="tab-gridcell printlist">Print Gear List</p></a>
+						</div>
+					</div>--> 
+					<!--Categories Option-->
+					<!--<div class="row">
+						<div class="cell w-100">
+                        <a href="#" title="All Workshops" class="clearfix tabs_navigation ui-state-active"><p class="tab-gridcell editcat">Edit Categories</p></a>
+						</div>
+					</div>--> 
+					<!--Missing Link Management-->
+					<!--<div class="row">
+						<div class="cell w-100">
+                        <a href="#" title="All Workshops" class="clearfix tabs_navigation ui-state-active"><p class="tab-gridcell printlist">Manage this entry</p></a>
+						</div>
+					</div>--> 
+
+</div>               
+			
+<!--Tab 3 content == Binder ====================================================-->
+<div class="tab-3">
+                <!--title-->
+					<div class="row">
+						<div class="cell w-100">
+							<div class="title large"><span class="icon entypo-folder"></span>&nbsp;&nbsp;Binder</div>
+						</div>
+					</div>
+                    
+                    <!--binder-->  
+					<div class="row">
+						<div class="cell w-100">
+                        <a href="{pm_url}filebin/{segment_2}/{segment_3}/{segment_4}/" target="_blank"><p class="tab-gridcell upload">Launch the <span class="binder-label">Binder</span> in a new tab</p></a>
+                        </div>
+					</div> 
+					<div class="row">
+						<div class="cell w-100"> 
+                        <a href="{pm_url}filebin/{segment_2}/{segment_3}/{segment_4}/" rel="shadowbox"><p class="tab-gridcell upload">Launch the <span class="binder-label">Binder</span> in a lightbox</p></a>
+                        </div>
+					</div> 
+
+                
+</div> <!--/ Tab 3 content-->    
+<!--Tab 4 content == Event ===================================================-->
+<div class="tab-4">
+ 
+                    <!--Spacer Row-->
+					<div class="row">
+						<div class="cell w-100">
+							<div class="tab-gridcell spacer">&nbsp;</div>
+						</div>
+					</div>
+
+
+                    <!--Title Row-->
+					<div class="row">
+						<div class="cell w-100">
+							<div class="title large"><span class="icon entypo-doc-landscape marleft3"></span><span class="marleft6">Presentation</span></div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="cell w-26">
+                           <p class="tab-gridcell tab-gridcell-tint-right">Presentation Title</p>
+                        </div>
+						<div class="cell w-72"> 
+                           <p class="tab-gridcell displaytext">{presentation_title}</p>
+                        </div>
+					</div> 
+					<div class="row">
+						<div class="cell w-26">
+                           <p class="tab-gridcell tab-gridcell-tint-right">Presentation Date</p>
+                        </div>
+						<div class="cell w-72"> 
+                           <p class="tab-gridcell displaytext">{presentation_agenda_add}{presentation_agenda_day format="%l, %F %d, %Y"}{/presentation_agenda_add}</p>
+                        </div>
+					</div>
+					<div class="row">
+						<div class="cell w-26">
+                           <p class="tab-gridcell tab-gridcell-tint-right">Scheduled Time</p>
+                        </div>
+						<div class="cell w-72"> 
+                           <p class="tab-gridcell displaytext">{presentation_agenda_add}{presentation_agenda_stime format="%g:%i %A"}{/presentation_agenda_add} to {presentation_agenda_add}{presentation_agenda_stime format="%g:%i %A"}{/presentation_agenda_add}</p>
+                        </div>
+					</div>
+					<div class="row">
+						<div class="cell w-26">
+                           <p class="tab-gridcell tab-gridcell-tint-right">Assigned Room</p>
+                        </div>
+                        {exp:ifelse parse="inward"}{if tab-room}
+						<div class="cell w-72"> 
+                           <p class="tab-gridcell displaytext">{tab-room}{presentation_tab_room_display show_expired="yes" limit="1"}{title}{/presentation_tab_room_display}{/tab-room}</p>
+                        </div>
+                        {if:else}
+						<div class="cell w-72"> 
+                           <p class="tab-gridcell displaytext" style="color:#F07148"><span class="icon entypo-attention"></span>&nbsp;&nbsp;This Presentation was not assigned a room</p>
+                        </div>{/if} 
+                        {/exp:ifelse}
+					</div>
+
+ {/exp:channel:entries}
+
+                    <!--Spacer Row-->
+					<div class="row">
+						<div class="cell w-100">
+							<div class="tab-gridcell spacer">&nbsp;</div>
+						</div>
+					</div>
+
+                    <!--Title Row-->
+					<div class="row">
+						<div class="cell w-100">
+							<div class="title large"><span class="icon entypo-calendar marleft3"></span><span class="marleft6">Agenda</span></div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="cell w-100"> 
+                        <a href="{pm_url}agenda/{exp:channel:entries channel="events" sort="asc" orderby="date" show_future_entries="yes" show_expired_entries="yes" limit="1"}{event_client_association}{/exp:channel:entries}/{exp:channel:entries channel="events" sort="asc" orderby="date" show_future_entries="yes" show_expired_entries="yes" limit="1"}{url_title}{/exp:channel:entries}/{segment_2}/
+ "><p class="tab-gridcell link">View Event Agenda</p></a>
+                        </div>
+					</div> 
+                
+
+ 
+ 
+
+
+     
+
+          
+ <!--End Event Info ===============================================================================================-->                
+</div> <!--/ Tab 9 content-->                       
+ 
+
+<!--                                                                                                                                                      
+_|_|_|_|  _|      _|  _|_|_|        _|_|_|_|_|    _|_|    _|_|_|          _|_|_|    _|_|    _|      _|  _|_|_|_|_|  _|_|_|_|  _|      _|  _|_|_|_|_|  
+_|        _|_|    _|  _|    _|          _|      _|    _|  _|    _|      _|        _|    _|  _|_|    _|      _|      _|        _|_|    _|      _|      
+_|_|_|    _|  _|  _|  _|    _|          _|      _|_|_|_|  _|_|_|        _|        _|    _|  _|  _|  _|      _|      _|_|_|    _|  _|  _|      _|      
+_|        _|    _|_|  _|    _|          _|      _|    _|  _|    _|      _|        _|    _|  _|    _|_|      _|      _|        _|    _|_|      _|      
+_|_|_|_|  _|      _|  _|_|_|            _|      _|    _|  _|_|_|          _|_|_|    _|_|    _|      _|      _|      _|_|_|_|  _|      _|      _|      
+                                                                                                                                                      
+-->
+ 
+                           
+                
+		   </div><!--/ Tabs wrapper-->
+	   </section>
+       <!--</div>-->
+    </div>
+  
+{embed="embeds/include_sticky_footer"}
+{embed="embeds/include_copyright_area"}
+{embed="embeds/include_menu_app"}
+{embed="embeds/include_last_call"}
+
+
+
+			</div>
+		</div>
+{embed="embeds/include_developer"}
+
+	</body>
+</html>
+    
+    {/exp:portal}
+    
+    </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bandwidth Speedtest 0697kb</title>
+    
+    <!--Global Viewport and Meta Included-->
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta content="width=device-width, user-scalable=0" name="viewport">
+    <meta name="robots" content="noindex">
+
+
+<script>
+var BandwidthTest = function() {  
+  
+};  
+BandwidthTest.prototype = {  
+  imgUrl: ""    // Where the image is located at  
+  ,size: 0                // bytes  
+  ,run: function( options ) {  
+  
+    if( options && options.onStart )  
+      options.onStart();  
+  
+    var imgUrl = this.imgUrl + "?r=" + (new Date()).getTime();  
+    this.startTime = (new Date()).getTime() ;  
+  
+    var testImage = new Image();  
+    var me = this;  
+    testImage.onload = function() {  
+      me.endTime = (new Date()).getTime();  
+      me.runTime = me.endTime - me.startTime;  
+  
+      if( options && options.onEnd )  
+        options.onEnd( me.getResults() );  
+    };  
+    testImage.src = imgUrl;  
+  }  
+  
+  ,getResults: function() {  
+    if( !this.runTime )  
+      return null;  
+  
+    return {  
+      runTime: this.runTime  
+      ,Mbps: ( ((this.size * 8 / 1024) / 1024) / ( this.runTime / 1000 ) )  
+      ,MBps: ( ((this.size / 1024) / 1024) / ( this.runTime / 1000 ) )  
+    };  
+  }  
+}  
+
+$(document).ready(function(){
+
+  $(window).load(function() {
+    var bt800 = new BandwidthTest();
+	
+    bt800.imgUrl = 'http://www.annikadalton.com/timeline/libs/bandwidth/bandwidth-test-assets/javascript-bandwidth-test-800.jpg';  
+    bt800.size = 712817; 
+    bt800.run({  
+      onStart: function() {          
+      }       
+      ,onEnd: function(speed800) {  
+        //$('header').html( $('header').html()+' 800x600 (697KB) Downloaded @ '+speed800.Mbps+' Mbps - Avg Runtime '+speed800.avgRunTime+'ms<br />');   
+		$('header').html( $('header').html() + '{portal:speed-output0800}' + speed800.Mbps + '{/portal:speed-output0800}' );         
+      }  
+    });  
+  });
+});
+</script>
+</head>
+    <body> 
+        <header> 
+        
+        </header>                  
+    </body>
+</html>

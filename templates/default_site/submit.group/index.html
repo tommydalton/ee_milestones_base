@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit {site_name}</title>
+
+    <!-- Include App Touch & FA4.4.0-->
+    {embed="embeds/include_global_icons"}
+
+    <!-- Include Global Meta-->
+    {embed="embeds/include_global_meta"}
+
+    <!-- Include Global Styles-->
+    {embed="embeds/include_global_styles"}
+
+
+    <!-- Include Template Styles-->
+    <link href="{site_url}/timeline/css/template_styles_submit.css" rel="stylesheet" type="text/css">
+    <link href="{site_url}/timeline/css/template_styles_submit_edit-mode.css" rel="stylesheet" type="text/css">
+
+    <!-- Include Styles Sandbox-->
+    {embed="embeds/include_sandbox_css"}
+
+    <!--Load jQuery UI Styles-->
+    <link rel="stylesheet" href="{site_url}/timeline/jquery/jquery-ui-custom/1.11.4/jquery-ui.css">
+    <link rel="stylesheet" href="{site_url}/timeline/jquery/jquery-ui-custom/1.11.4/jquery-ui.theme.css">
+
+    <!-- Include Core Scripts-->
+    {embed="embeds/include_core_scripts"}
+
+     <!--Load jQuery UI-->
+    <script src="{site_url}/timeline/jquery/jquery-ui-custom/1.11.4/jquery-ui.js" type="text/javascript"></script>
+
+    <!-- Include Scripts Sandbox-->
+    {embed="embeds/include_sandbox_scripts"}
+
+    <!-- Include Dynamic Stylesheet-->
+    {embed="embeds/include_dynamic_css"}
+
+    <!-- Include Google Analytics-->
+    {embed="embeds/include_analytics"}
+
+    <!--Open Portal-->
+    {exp:portal}
+
+ <script>
+  $(function() {
+    $( document ).tooltip({
+      position: {
+        my: "center bottom-20",
+        at: "center top",
+        using: function( position, feedback ) {
+          $( this ).css( position );
+          $( "<div>" )
+            .addClass( "arrow" )
+            .addClass( feedback.vertical )
+            .addClass( feedback.horizontal )
+            .appendTo( this );
+        }
+      }
+    });
+  });
+  </script>
+  <style>
+
+
+  </style>
+
+</head>
+<body>
+
+    <!--Header Render-->
+    {embed="embeds/include_header"}
+
+    <!-- Include Publish Options-->
+    {embed="embeds/include_publish_options"}
+
+<div id="comments" style="max-width:768px;margin:auto;">
+
+<div class="timeline_edit_bar">
+<!--Table Header Labeled-->
+						<a href="{site_url}/submit/sort/edit-date"><div class="edit edit_admin list_header" ><i class="fa fa-sliders fa-2"></i></div></a>
+            <a href="{site_url}/submit/sort/edit-date"><div class="edit edit_open list_header" >Edit</div></a>
+            <a href="{site_url}/submit/sort/edit-date"><div class="edit edit_mods list_header" ><i class="fa fa-pencil-square-o"></i>&nbsp;Last Edit</div></a>
+            <a href="{site_url}/submit/sort/post-type"><div class="edit edit_type list_header" >Type</div></a>
+            <a href="{site_url}/submit/sort/post-title"><div class="edit edit_title list_header"><i class="fa fa-sitemap"></i>&nbsp;Post Title<i class="fa fa-bookmark milestone-icon"></i><span id="milestones-sort" class="milestone-icon-label">milestone</span></div></a>
+            <a href="{site_url}/submit/sort/entry-id"><div class="edit edit_id list_header"><i class="fa fa-folder"></i> ID</div></a>
+            <a href="{site_url}/submit/sort/post-time"> <div class="edit edit_time list_header"><i class="fa fa-clock-o"></i> Added</div></a>
+            <a href="{site_url}/submit/sort/post-date"><div class="edit edit_date list_header"><i class="fa fa-calendar"></i>&nbsp;Published</div></a>
+</div>
+
+    <script>
+    $( window ).load(function() {
+			$('#milestones-sort').click(function() {
+			   window.location = "{site_url}/submit/sort-milestones";
+			});
+    });
+    </script>
+
+    {if segment_2 =="sort" && segment_3 =="post-date"}
+    {exp:channel:entries channel="timeline_post" disable="categories|pagination" sort="desc" orderby="entry_date" limit="100"}
+    {if:elseif segment_2 =="sort" && segment_3 =="post-time"}
+    {exp:channel:entries channel="timeline_post" disable="categories|pagination" sort="desc" orderby="timeline_entry_date" limit="100"}
+    {if:elseif segment_2 =="sort" && segment_3 =="entry-id"}
+    {exp:channel:entries channel="timeline_post" disable="categories|pagination" sort="desc" orderby="entry_id" limit="100"}
+    {if:elseif segment_2 =="sort" && segment_3 =="post-title"}
+    {exp:channel:entries channel="timeline_post" disable="categories|pagination" sort="asc" orderby="title" limit="300"}
+    {if:elseif segment_2 =="sort" && segment_3 =="edit-date"}
+    {exp:channel:entries channel="timeline_post" disable="categories|pagination" sort="desc" orderby="edit_date" limit="100"}
+    {if:elseif segment_2 =="sort" && segment_3 =="post-type"}
+    {exp:channel:entries channel="timeline_post" disable="categories|pagination" sort="desc" orderby="timeline_entry_type" limit="100"}
+    {if:else}
+    {exp:channel:entries channel="timeline_post" disable="categories|pagination" sort="desc" orderby="edit_date" limit="100"}
+    {/if}
+
+<!-- DEVELOPMENT /////////////////////////////////// Publish Form Fields --
+
+<!--Render Table-->
+<div class="timeline_edit_bar">
+						<a href='{site_url}/submit/post-customized/edit/{url_title}' class='editAdmin'><div class="edit edit_admin list_output" ><i class="fa fa-sliders fa-2"></i></div></a>
+            <a href='{site_url}/submit/{if timeline_entry_type =="message"}post-message/edit/{url_title}{if:elseif timeline_entry_type =="blog_post"}post-gallery/edit/{url_title}{if:elseif timeline_entry_type =="photo"}post-gallery/edit/{url_title}{if:elseif timeline_entry_type =="gallery"}post-gallery/edit/{url_title}{if:elseif timeline_entry_type =="slider"}post-gallery/edit/{url_title}{if:elseif timeline_entry_type =="video"}post-video/edit/{url_title}{if:elseif timeline_entry_type =="audio"}post-audio/edit/{url_title}{if:elseif timeline_entry_type =="vimeo"}post-vimeo/edit/{url_title}{if:elseif timeline_entry_type =="youtube"}post-youtube/edit/{url_title}{if:elseif timeline_entry_type =="iframe"}post-iframe/edit/{url_title}{if:else}post-customized/edit/{url_title}{/if}/' class='editLink'><div class="edit edit_open list_output" ><i class="fa fa-pencil fa-2"></i></div></a>
+            <div class="edit edit_mods list_output">{edit_date format="%m/%d/%y %g:%i"}</div>
+            <div class="edit edit_type list_output">
+            {if timeline_entry_type =="message"}<i class="fa fa-comments fa-2"></i>
+						{if:elseif timeline_entry_type =="blog_post"}<i class="fa fa-comments fa-2"></i>
+						{if:elseif timeline_entry_type =="photo"}<i class="fa fa-picture-o fa-2"></i>
+						{if:elseif timeline_entry_type =="gallery"}<i class="fa fa-picture-o fa-2"></i>
+						{if:elseif timeline_entry_type =="slider"}<i class="fa fa-comments fa-2"></i>
+						{if:elseif timeline_entry_type =="video"}<i class="fa fa-video-camera fa-2"></i>
+						{if:elseif timeline_entry_type =="audio"}<i class="fa fa-microphone fa-2"></i>
+						{if:elseif timeline_entry_type =="vimeo"}<i class="fa fa-vimeo fa-2"></i>
+						{if:elseif timeline_entry_type =="youtube"}<i class="fa fa-youtube-square fa-2"></i>
+						{if:elseif timeline_entry_type =="iframe"}<i class="fa fa-comments fa-2"></i>
+						{if:else}<i class="fa fa-exclamation-triangle fa-2"></i>
+						{/if}
+						</div>
+            <div class="edit edit_title list_output">{title}{if timeline_milestone =="milestone"}<i class="fa fa-bookmark milestone-icon"></i>{/if} </div>
+            <div class="edit edit_id list_output"> {entry_id}</div>
+            <div class="edit edit_time list_output">  {timeline_entry_date format="%g:%i %a"}</div>
+            <div class="edit edit_date list_output"> {entry_date format="%M %d, %Y"}</div>
+
+            <!--
+            <a title="System Title"                  href="#">{title}</a>
+            <a title="URL Title"                     href="#"><i class="fa fa-terminal"></i></a>
+            <a title="Milestone Tag"                 href="#"><i class="fa fa-bookmark"></i></a>
+            <a title="Entry Type"                    href="#"><i class="fa fa-columns"></i></a>
+            <a title="Display Title"                 href="#"><i class="fa fa-font"></i></a>
+            <a title="Display Subtitle"              href="#"><i class="fa fa-text-width"></i></a>
+            <a title="Display Date"                  href="#"><i class="fa fa-calendar"></i></a>
+            <a title="Entry Height"                  href="#"><i class="fa fa-arrows-v"></i></a>
+            <a title="Title Font Size"               href="#"><i class="fa fa-text-height"></i></a>
+            <a title="Title Color (Hexidecimal)"     href="#"><i class="fa fa-sliders"></i></a>
+            <a title="Subtitle Font Size"            href="#"><i class="fa fa-text-height"></i></a>
+            <a title="Subtitle Color (Hexidecimal)"  href="#"><i class="fa fa-sliders"></i></a>
+            <a title="Description Field"             href="#"><i class="fa fa-comment"></i></a>
+            <a title="Allow Comments"                href="#"><i class="fa fa-comments"></i></a>
+            <a title="Upload Image 1-10"             href="#"><i class="fa fa-picture-o"></i></a>
+            <a title="Upload Video File MP4 or M4V"  href="#"><i class="fa fa-video-camera"></i></a>
+            <a title="Upload Video File WebM"        href="#"><i class="fa fa-video-camera"></i></a>
+            <a title="Upload Video File OGV"         href="#"><i class="fa fa-video-camera"></i></a>
+            <a title="Upload Video Placeholder JPG"  href="#"><i class="fa fa-file-video-o"></i></a>
+            <a title="Upload Audio File MP3"         href="#"><i class="fa fa-file-audio-o"></i></a>
+            <a title="Upload Audio File OGG"         href="#"><i class="fa fa-file-audio-o"></i></a>
+            <a title="YouTube Link"                  href="#"><i class="fa fa-youtube-square"></i></a>
+            <a title="Vimeo Link"                    href="#"><i class="fa fa-vimeo"></i></a>
+            <a title="iFrame URL"                    href="#"><i class="fa fa-link"></i></a>
+            -->
+
+        </div>
+
+{/exp:channel:entries}
+</div>
+</div>
+    <!--Close Portal-->
+    {/exp:portal}
+
+    </body>
+</html>

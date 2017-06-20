@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit {site_name}</title>
+    
+    <!--Global Viewport and Meta Included-->
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>-->
+    <meta content="width=device-width, user-scalable=0" name="viewport">
+    <meta name="robots" content="noindex">
+
+    <!--Lazy Load Add-Ons Styles and Scripts from ../timeline/libs/lazy-load-xt-master/dist
+    
+    <!--include_globaltags fav icon-->
+    <link href="{site_url}/favicon.ico" rel="shortcut icon">
+    
+    <!--include_globaltags APPLE TOUCH ICONS-->
+    <link href="{site_url}/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="{site_url}/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+    <link href="{site_url}/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+    <link href="{site_url}/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+    
+    <!--Stylesheets-->
+    <!--<link href="{site_url}/timeline/css/basic_styles.css" rel="stylesheet" type="text/css">-->
+    <link href="{site_url}/timeline/css/custom_styles.css" rel="stylesheet" type="text/css">
+    <link href="{site_url}/timeline/css/comment_styles.css" rel="stylesheet" type="text/css">
+
+	<!-- Forms Stylesheet -->
+	<link rel="stylesheet" type="text/css" href="{site_url}/timeline/submit/css/ee2-timeline-entry-form.css" media="screen" />
+    
+    <!-- EE2 Forms CSS Assets -->
+    <link href="{path=css/_ee_channel_form_css}" type="text/css" rel="stylesheet" media="screen">
+
+    <!--fa 4.3.0 & bootstrap-->
+    <link href="{site_url}/timeline/font-a4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!--Load jQuery-->
+    <script src="{site_url}/timeline/libs/jquery.js" type="text/javascript"></script>
+    
+    <!--TypeKit-->
+    <script src="//use.typekit.net/nlg7djn.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    try{Typekit.load();}catch(e){}
+    </script>
+
+    <!--Shadowbox-->
+    <link href="{site_url}/shadowbox/shadowbox.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="{site_url}/shadowbox/shadowbox.js"></script>
+        
+    <script type="text/javascript">
+    Shadowbox.init();
+    </script>
+     
+    <script>
+    $(window).on('ajaxComplete', function() {
+        setTimeout(function() {
+            $(window).lazyLoadXT();
+        }, 50);
+    });
+    </script>
+
+    <!--Open Portal-->
+    {exp:portal}
+
+   
+    <style>
+    video.lazy-hidden {
+    opacity:1;
+    }
+    </style>
+
+<!--CUSTOM STYLES from EE2 Timeline CSS Channel Fields  -->     
+    {exp:channel:entries channel="timeline_styles" disable="categories|pagination" limit="1"} 
+    <style type="text/css">
+
+    body {
+    {if css_window_color !="FFFFFF"}background-color: #{css_window_color};{/if} 
+    /*CSS Background Image*/
+    {if css_background_image !=""}background-image: url('{css_background_image}');{/if} 
+    /*CSS Background Tile Settings*/
+    {if css_background_tile_settings =="Tile X, Tile Y"}background-repeat: repeat;{/if} 
+    {if css_background_tile_settings =="Tile X"}background-repeat: repeat-x;{/if}   
+    {if css_background_tile_settings =="Tile Y"}background-repeat: repeat-y;{/if}   
+    }       
+
+
+    /* CSS Window Color Related */
+    {if css_window_color !="FFFFFF"}
+    /* Spine */
+    div.timeline div.spine {
+    background-color: #{css_window_color};
+    }   
+    /* Entry Windows */
+    div.timeline_element_box {
+    background-color: #{css_window_color};
+    }
+    div.timeline_left div.timeline_element:before {
+    border-left: 10px solid #{css_window_color};
+    }
+    div.timeline_dual div.timeline_element_left:before {
+    border-left: 10px solid #{css_window_color};
+    }
+    div.timeline_right div.timeline_element:before {
+    border-right: 10px solid #{css_window_color};
+    }
+    div.timeline_dual div.timeline_element_right:before {
+    border-right: 10px solid #{css_window_color};
+    }
+    div.timeline_left div.timeline_element:after,
+    div.timeline_right div.timeline_element:after,
+    div.timeline_dual div.timeline_element_left:after,
+    div.timeline_dual div.timeline_element_right:after {
+    border: 6px solid #{css_window_color};
+    }
+    {/if}   
+
+    /*CSS Custom Box Radius*/
+    {if css_custom_box_radius !=""}
+    div.timeline_element_box {
+    -webkit-border-radius: {css_custom_box_radius}px;
+    -moz-border-radius: {css_custom_box_radius}px;
+    border-radius: {css_custom_box_radius}px;
+    }
+    {/if}   
+
+    /*CSS Custom Box Shadow*/
+    {if css_box_shadow_color !="FFFFFF"}
+    div.timeline_element_box {
+    box-shadow: 1px 2px 4px #{css_box_shadow_color};
+
+    }
+    {/if}   
+
+    /*CSS Date Display Color*/
+    {if css_date_display_color !="FFFFFF"}
+    div.timeline_title span.timeline_title_date {
+    color: #{css_date_display_color};
+    }
+    {/if}
+
+    /*CSS Default Title Color*/
+    {if css_default_title_color !="FFFFFF"}
+    div.timeline_title span.timeline_title_label {
+    color: #{css_default_title_color};
+    }
+    {/if}
+
+    /*CSS Default Sub-Title Color*/
+    {if css_default_sub_title_color !="FFFFFF"}
+    span.subtitle {
+    color: #{css_default_sub_title_color};
+    }
+    {/if}
+
+
+    /*CSS Month Delimiter Color (Inner)*/
+    {if css_month_delimiter_color_inner !="FFFFFF"}
+    div.timeline_left div.timeline_element:after,
+    div.timeline_right div.timeline_element:after,
+    div.timeline_dual div.timeline_element_left:hover:after,
+    div.timeline_dual div.timeline_element_right:hover:after {
+    background-color: #{css_month_delimiter_color_inner};
+    }
+
+    div.timeline div.date_separator span {
+    background-color: #{css_month_delimiter_color_inner};
+    }
+    {/if}
+
+    /*CSS Month Delimiter Color (Outer)*/
+    {if css_month_delimiter_color_outer !="FFFFFF"}
+    div.timeline_left div.timeline_element:after,
+    div.timeline_right div.timeline_element:after,
+    div.timeline_dual div.timeline_element_left:hover:after,
+    div.timeline_dual div.timeline_element_right:hover:after {
+    border: 4px solid #{css_month_delimiter_color_outer};
+    }
+
+    div.timeline div.date_separator span {
+    border: 14px solid #{css_month_delimiter_color_outer};
+    }
+    {/if}
+
+    /*  CSS Month Delimiter Color (Text)*/
+    {if css_month_delimiter_color_text !="FFFFFF"}
+    div.timeline div.date_separator span {
+    color: #{css_month_delimiter_color_text};
+    }
+    {/if}
+
+    /*CSS Text Copy Color*/
+    {if css_text_copy_color !="FFFFFF"}
+    div.timeline_element.blog_post div.content {
+    color:#{css_text_copy_color};
+    }
+    {/if}       
+
+    /*CSS Text Copy Link Idle Color*/
+    {if css_text_copy_link_idle_color !="FFFFFF"}
+    div.timeline_element.blog_post div.content a{
+    color:#{css_text_copy_link_idle_color};
+    }
+    {/if}   
+
+    /*CSS Text Copy Link Hover Color*/
+    {if css_text_copy_link_hover_color !="FFFFFF"}
+    div.timeline_element.blog_post div.content a:hover{
+    color:#{css_text_copy_link_hover_color};
+    }
+    {/if}   
+
+
+    /* Scroll Bar Background*/
+    {if css_scrollbar_background_color !="FFFFFF"}
+    div.timeline_element ::-webkit-scrollbar {  /* Webkit only */
+    background-color: #{css_scrollbar_background_color};
+    }
+    {/if}   
+
+    /* Scroll Bar Handle*/
+    {if css_scrollbar_handle_color !="FFFFFF"}
+    div.timeline_element ::-webkit-scrollbar-thumb {
+    background-color: #{css_scrollbar_handle_color};
+    }
+    {/if}   
+
+    /* Scroll Bar Hover or Active*/
+    {if css_scrollbar_active_color !="FFFFFF"}
+    div.timeline_element ::-webkit-scrollbar-thumb:hover {
+    background-color: #{css_scrollbar_active_color};
+    }
+    {/if}       
+
+    /*CSS Text Copy Font*/
+    {if css_text_copy_font !=""}
+    div.timeline_element.blog_post div.content {
+    font-family: {css_text_copy_font};
+    }   
+    {/if}   
+
+    /*CSS Month Delimiter Font*/
+    {if css_month_delimiter_font !=""}
+    div.timeline div.date_separator span {
+    font-family: {css_month_delimiter_font};
+    }   
+    {/if}   
+
+
+    /*Milestone CSS Changes*/
+    {if css_milestone_background !="FFFFFF"}
+    div.timeline_element_box.milestone_toggle-milestone{
+    background-color: #{css_milestone_background};
+    }   
+
+    div.timeline_element_box.milestone_toggle-milestone{
+    background-color: #{css_milestone_background};
+    border: 3px solid #{css_milestone_background};
+    }
+
+    div.timeline_element.milestone_toggle-milestone.blog_post span.milestone_flag,
+    div.timeline_element.milestone_toggle-milestone.slider span.milestone_flag,
+    div.timeline_element.milestone_toggle-milestone.gallery span.milestone_flag,
+    div.timeline_element.milestone_toggle-milestone.video span.milestone_flag,
+    div.timeline_element.milestone_toggle-milestone.iframe span.milestone_flag{
+    color: #{css_window_color};
+    }
+
+    div.timeline_element.milestone_toggle-milestone.blog_post span.milestone_title,
+    div.timeline_element.milestone_toggle-milestone.slider span.milestone_title,
+    div.timeline_element.milestone_toggle-milestone.gallery span.milestone_title,
+    div.timeline_element.milestone_toggle-milestone.video span.milestone_title,
+    div.timeline_element.milestone_toggle-milestone.iframe span.milestone_title{
+    color: #{css_window_color};
+    }
+
+    div.timeline_dual div.timeline_element_right.milestone_toggle-milestone:before {
+    border-right: 10px solid #{css_milestone_background};
+    }
+
+    div.timeline_dual div.timeline_element_left.milestone_toggle-milestone:before {
+    border-left: 10px solid #{css_milestone_background};
+    }
+
+    div.timeline_dual div.timeline_element_left.milestone_toggle-milestone:hover:after, div.timeline_dual div.timeline_element_right.milestone_toggle-milestone:hover:after {
+    z-index: 100;
+    background-color: #{css_window_color};
+    border: 6px solid #{css_milestone_background};
+    }
+
+    div.timeline_dual div.timeline_element_left.milestone_toggle-milestone:after{
+    background-color: #fff;
+    border: 8px solid #{css_milestone_background};
+    }
+
+    div.timeline_dual div.timeline_element_right.milestone_toggle-milestone:after {
+    background-color: #fff;
+    border: 8px solid #{css_milestone_background};
+    }
+	
+	div.timeline_loadmore {
+	  font-size: 12px;
+	  font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+	  font-family: "proxima-nova",sans-serif;
+	  cursor: pointer;
+	  margin: 10px auto;
+	  width: 100%;
+	  background: #{css_milestone_background};
+	  text-align: center;
+	  padding: 10px 0px;
+	  border-radius: 4px;
+	  text-decoration: none;
+	  color: #FFFFFF;
+	  /*fade*/
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+/* ...and now for the proper property */
+    transition:.2s;
+	  
+   }
+	div.timeline_loadmore:hover {
+	background: #8c62e6;
+	  /*fade*/
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+/* ...and now for the proper property */
+    transition:.2s;
+   }   
+
+    {/if}
+
+    {if css_milestone_content_copy !="FFFFFF"}
+    /*Milestone CSS Changes*/
+
+    div.timeline_element_box.milestone_toggle-milestone{
+    color: #{css_milestone_content_copy};
+    }
+
+
+    /*style milestone flag copy if flagged*/
+    div.timeline_element.milestone_toggle-milestone.blog_post div.content,
+    div.timeline_element.milestone_toggle-milestone.slider div.content,
+    div.timeline_element.milestone_toggle-milestone.gallery div.content,
+    div.timeline_element.milestone_toggle-milestone.video div.content,
+    div.timeline_element.milestone_toggle-milestone.iframe div.content{
+
+    color: #{css_milestone_content_copy};
+    }
+    {/if}
+
+    /*Custom Images*/
+    {if custom_images_enable =="Enable"}
+    @media (min-width: 835px) {
+    .header_container_desktop{
+    display:none;
+    }
+    .header_container_mobile{
+    display:none;
+    }
+    }
+    @media (max-width: 834px) {
+    .header_container_desktop{
+    display:none;
+    }
+    .header_container_mobile{
+    display:none;
+    }
+    }
+
+
+    @media (min-width: 835px) {
+    .footer_container_desktop{
+    display:none;
+    }
+    .footer_container_mobile{
+    display:none;
+    }
+    }
+    @media (max-width: 834px) {
+    .footer_container_desktop{
+    display:none;
+    }
+    .footer_container_mobile{
+    display:none;
+    }
+    }
+    {/if}   
+
+    {/exp:channel:entries}
+
+    </style>
+
+
+    <!-- Include Google Analytics-->
+    {embed="embeds/include_analytics"}
+
+
+
+</head>
+
+    <!-- Include Graphic Headers-->
+    {embed="embeds/include_header"}
+    
+    <!-- Include Publish Options-->
+    {embed="embeds/include_publish_options"}
+    
+<body>
+
+
+    <!--Header Render-->
+    <div id="header">
+        {exp:channel:entries channel="timeline_styles" disable="categories|pagination" limit="1"}
+        <div class="header_container_desktop_custom"><img alt="&nbsp;&nbsp;&nbsp;loading timeline content.....&nbsp;&nbsp;&nbsp;" onerror="this.style.borderWidth=0" style="border:0px solid black" data-src="{custom_header_desktop}" width="100%"></div>
+        <div class="header_container_mobile_custom"><img alt="&nbsp;&nbsp;&nbsp;loading timeline content.....&nbsp;&nbsp;&nbsp;" onerror="this.style.borderWidth=0" style="border:0px solid black" data-src="{custom_header_mobile}" width="100%"></div>
+        {/exp:channel:entries}
+
+        <div class="header_container_desktop"><img alt="&nbsp;&nbsp;&nbsp;loading timeline content.....&nbsp;&nbsp;&nbsp;" onerror="this.style.borderWidth=0" style="border:0px solid black" src="{site_url}/timeline/images/standard/header.png" width="100%"></div>
+        <div class="header_container_mobile"><img alt="&nbsp;&nbsp;&nbsp;loading timeline content.....&nbsp;&nbsp;&nbsp;" onerror="this.style.borderWidth=0" style="border:0px solid black" src="{site_url}/timeline/images/standard/header700W.png" width="100%"></div>
+    
+    <!--Timeline Render-->
+    <div id="timeline" style="max-width:768px;margin:auto;">
+
+    </div>
+        
+    <!--Timeline Render-->
+    <div id="comments" style="max-width:768px;margin:auto;">
+
+
+<!--Color Picker-->
+<script type="text/javascript" src="{site_url}/timeline/submit/colorpicker/colors.js"></script>
+	<script type="text/javascript" src="{site_url}/timeline/submit/colorpicker/jqColorPicker.js">
+    <script type="text/javascript">
+        $('.color').colorPicker(); // that's it
+    </script>
+<script type="text/javascript" src="http://www.annikadalton.com/timeline/submit/colorpicker/index.js"></script>
+
+
+
+
+<!--CHANNEL ENTRY FORM =============================================================================================-->
+	<section id="slick">
+		<!-- Social buttons -->
+		<!--<div class="sb">
+			<a href="#" class="fb entypo-thumbs-up"><span class="slick-tip right">Login with Facebook</span></a>
+			<a href="#" class="gc entypo-google-circles"><span class="slick-tip right">Login with Google</span></a>
+			<a href="#" class="tw entypo-twitter"><span class="slick-tip right">Login with Twitter</span></a>
+		</div> -->
+		<!-- Comment form -->
+		<div class="comment-form">
+  {exp:channel:form site="annika"
+                    channel="timeline_post"
+                    return="{site_url}/app/desc/"
+                    include_assets="yes"
+                    logged_out_member_id="3" 
+                    secure_action="no"     
+           
+                    }  
+
+
+
+		<!-- Milestone Check -->
+        <div class="field">
+        <select name="timeline_milestone" id="timeline_milestone">
+        <option value=""{selected}>do not tag as milestone</option>
+          {options:timeline_milestone}
+            <option value="{option_value}"{selected}>{option_name}</option>
+          {/options:timeline_milestone}
+        </select>
+		<span class="entypo-colours icon"></span>
+		<span class="slick-tip left">Is this a milestone?</span>
+		</div>  
+        
+		<!-- Entry Type -->
+		<div class="field">
+        <select name="timeline_entry_type">
+                {options:timeline_entry_type}
+                        <option value="{option_value}"{selected}>{option_name}</option>
+                {/options:timeline_entry_type}
+        </select>
+		<span class="entypo-colours icon"></span>
+		<span class="slick-tip left">Entry Type (Required)</span>
+		</div> 
+
+		<!-- Title input -->
+		<div class="field">
+        <input type="text" name="title" id="title" value="{title}" size="50" maxlength="100" onkeyup="liveUrlTitle();">
+		<span class="entypo-book icon"></span>
+		<span class="slick-tip left">Enter a Title</span>
+		</div>
+
+		<!-- URL Title input -->
+		<div class="field">
+        <input type="text" name="url_title" id="url_title" value="{url_title}" maxlength="75" size="50">
+		<span class="entypo-link icon"></span>
+		<span class="slick-tip left">Enter a URL Title</span>
+		</div>
+
+		<!-- Date input -->
+		<div class="field">
+        <input type="text" name="entry_date" value="{entry_date}" maxlength="23" size="25">
+		<span class="entypo-calendar icon"></span>
+		<span class="slick-tip left">Select a Date</span>
+		</div>
+        
+        <!--<input type="text" name="timeline_entry_height" id="timeline_entry_height" value="{timeline_entry_height}">-->
+
+		<!-- Display Title input -->
+		<div class="field">
+        <input type="text" name="timeline_entry_title" id="timeline_entry_title" value="{timeline_entry_title}">
+		<span class="entypo-book icon"></span>
+		<span class="slick-tip left">Enter Title to be displayed</span>
+		</div>
+
+		<!-- Title Font Size input -->
+		<div class="field">
+        <input type="text" name="timeline_entry_title_font_size" id="timeline_entry_title_font_size" value="{timeline_entry_title_font_size}" maxlength="3">
+		<span class="entypo-sound-mix icon"></span>
+		<span class="slick-tip left">Change the font size of title?</span>
+		</div>
+
+		<!-- Title Hex Color input -->
+		<div class="field">
+        <input class="color no-alpha" type="text" name="timeline_entry_subtitle_color" id="timeline_entry_subtitle_color" value="#333333" maxlength="6">
+		<span class="entypo-colours icon"></span>
+		<span class="slick-tip left">Select a color for title</span>
+		</div>
+
+		<!-- Display SubTitle input -->
+		<div class="field">
+        <input type="text" name="timeline_entry_subtitle" id="timeline_entry_subtitle" value="{timeline_entry_subtitle}">
+		<span class="entypo-book icon"></span>
+		<span class="slick-tip left">Enter Subtitle to be displayed</span>
+		</div>
+
+		<!-- SubTitle Font Size input -->
+		<div class="field">
+        <input type="text" name="timeline_entry_subtitle_fontsize" id="timeline_entry_subtitle_fontsize" value="{timeline_entry_subtitle_fontsize}" maxlength="3">
+		<span class="entypo-sound-mix icon"></span>
+		<span class="slick-tip left">Change the font size of subtitle?</span>
+		</div>
+
+		<!-- SubTitle Hex Color input -->
+		<div class="field">
+        <input type="text" name="timeline_entry_subtitle_color" id="timeline_entry_subtitle_color" value="{timeline_entry_subtitle_color}" maxlength="6">
+		<span class="entypo-colours icon"></span>
+		<span class="slick-tip left">Select a color for subtitle</span>
+		</div>
+
+		<!-- Comment input -->
+		<div class="field">
+        <textarea name="comment" name="timeline_entry_copy" id="timeline_entry_copy" value="{timeline_entry_copy}" rows="4" form="publishForm">Enter description here...</textarea>
+        <!--<input type="text" name="timeline_entry_copy" id="timeline_entry_copy" value="{timeline_entry_copy}" rows="4">-->
+		<span class="entypo-comment icon"></span>
+		<span class="slick-tip left">Description</span>
+		</div>
+
+		<!-- File upload -->
+		<div class="field">
+        <input type="file" name="timeline_image_01" />
+        <input type="hidden" name="timeline_image_01_directory" value="29" />
+        <input type="hidden" name="timeline_image_01_hidden_file" value="{timeline_image_01}{file_name}{/timeline_image_01}" />
+	    <span class="entypo-folder icon"></span>
+		<span class="slick-tip left">Upload a file</span>
+		</div>
+               
+		<!-- Submit form -->
+		<div class="field">
+         <input type="submit" name="submit" value="Submit">
+        </div>
+
+
+        
+{/exp:channel:form}
+</section>
+
+</div>
+    
+    {/exp:portal}
+
+    </body>
+</html>

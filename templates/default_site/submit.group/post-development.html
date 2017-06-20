@@ -1,0 +1,473 @@
+{if logged_out}{redirect='login'}{/if}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit Customized | {site_name}</title>
+    
+    <!-- Include App Touch & FA4.4.0-->
+    {embed="embeds/include_global_icons"}   
+     
+    <!-- Include Global Meta-->
+    {embed="embeds/include_global_meta"}
+    
+    <!-- Include Global Styles-->
+    {embed="embeds/include_global_styles"}
+    
+    <!-- Include Global Styles-->
+    {embed="embeds/include_forms_styles"}
+    
+    <!-- Include Template Styles-->
+    <link href="{site_url}/timeline/css/template_styles_submit.css" rel="stylesheet" type="text/css">
+    
+    <!-- Include Styles Sandbox-->
+    {embed="embeds/include_sandbox_css"}
+    
+    <!-- Include Core Scripts-->
+    {embed="embeds/include_core_scripts"}
+    
+    <!-- Include Scripts Sandbox-->
+    {embed="embeds/include_sandbox_scripts"}
+
+    <!-- Include Dynamic Stylesheet-->
+    {embed="embeds/include_dynamic_css"}
+
+    <!-- Include Google Analytics-->
+    {embed="embeds/site-specific-google_analytics"}
+    
+
+    <!-- Include Template Styles for Edit Mode-->
+		<!--Is in edit mode? -->			
+		{if segment_3 == "edit"}
+    <link href="{site_url}/timeline/css/template_styles_submit_edit-mode.css" rel="stylesheet" type="text/css">
+    {/if} 
+    
+    <!-- Page Specific CSS-->
+		<style>
+
+		
+		</style>
+
+
+</head>
+
+    <!-- Include Graphic Headers-->
+    {embed="embeds/include_header"}
+
+
+    <!--Timeline Render-->
+    <div id="comments" style="max-width:768px;margin:auto;">
+
+<!--CHANNEL ENTRY FORM =============================================================================================-->
+	<section id="milestones">
+		<!-- Social buttons -->
+		<!--<div class="sb">
+			<a href="#" class="fb entypo-thumbs-up"><span class="slick-tip right">Login with Facebook</span></a>
+			<a href="#" class="gc entypo-google-circles"><span class="slick-tip right">Login with Google</span></a>
+			<a href="#" class="tw entypo-twitter"><span class="slick-tip right">Login with Twitter</span></a>
+		</div> -->
+		<!-- Comment form -->
+
+		<div class="comment-form">
+
+		<!--Instantiate Form ================================================================================================-->	         
+		<!--Is in edit mode? -->			
+		{if segment_3 == "edit"}	
+	  {exp:channel:form site="{gv_site-name}"
+	                    channel="timeline_post"
+	                    url_title="{segment_4}"
+	                    return="app/desc/"
+	                    include_assets="yes"
+	                    include_jquery="yes"
+	                    logged_out_member_id="{gv_lom-id}" 
+	                    secure_action="{gv_formsec}"   
+	                    }  
+		{if:else}    
+		<!--Is in new entry mode? -->	     		
+	  {exp:channel:form site="{gv_site-name}"
+	                    channel="timeline_post"
+	                    return="app/desc/"
+	                    include_assets="yes"
+	                    include_jquery="yes"
+	                    logged_out_member_id="{gv_lom-id}" 
+	                    secure_action="{gv_formsec}"   
+	                    }  
+		{/if}  
+
+		<!-- Form Title -->
+		<!--Is in edit mode? -->			
+		{if segment_3 == "edit"}			
+		<div class="form-title">edit custom entry<i class="fa fa-tasks"></i></div>
+		{if:else}    
+		<!--Is in new entry mode? -->	     		
+		<div class="form-title">publish custom entry<i class="fa fa-tasks"></i></div>
+		{/if}            
+    
+    <!-- Include Graphic Headers-->
+    {embed="embeds/include_header"}
+
+    
+    <!-- Initialize Portal-->
+    {exp:portal}
+
+    <!--Timeline Render-->
+    <div id="comments" style="max-width:768px;margin:auto;">
+
+<!--CHANNEL ENTRY FORM =============================================================================================-->
+	<section id="milestones">
+		<!-- Social buttons -->
+		<!--<div class="sb">
+			<a href="#" class="fb entypo-thumbs-up"><span class="slick-tip right">Login with Facebook</span></a>
+			<a href="#" class="gc entypo-google-circles"><span class="slick-tip right">Login with Google</span></a>
+			<a href="#" class="tw entypo-twitter"><span class="slick-tip right">Login with Twitter</span></a>
+		</div> -->
+		<!-- Comment form -->
+
+		<div class="comment-form">
+
+		<!--Instantiate Form ================================================================================================-->	         
+		<!--Is in edit mode? -->			
+		{if segment_3 == "edit"}	
+	  {exp:channel:form site="{gv_site-name}"
+	                    channel="timeline_post"
+	                    url_title="{segment_4}"
+	                    return="app/desc/"
+	                    include_assets="yes"
+	                    include_jquery="yes"
+	                    logged_out_member_id="{gv_lom-id}" 
+	                    secure_action="{gv_formsec}"   
+	                    }  
+		{if:else}    
+		<!--Is in new entry mode? -->	     		
+	  {exp:channel:form site="{gv_site-name}"
+	                    channel="timeline_post"
+	                    return="app/desc/"
+	                    include_assets="yes"
+	                    include_jquery="yes"
+	                    logged_out_member_id="{gv_lom-id}" 
+	                    secure_action="{gv_formsec}"   
+	                    }  
+		{/if}  
+
+		<!-- Form Title -->
+		<!--Is in edit mode? -->			
+		{if segment_3 == "edit"}			
+		<div class="form-title">edit custom entry<i class="fa fa-tasks"></i></div>
+		{if:else}    
+		<!--Is in new entry mode? -->	     		
+		<div class="form-title">publish custom entry<i class="fa fa-tasks"></i></div>
+		{/if}                   
+
+		<!-- Date input -->
+		<div class="field">
+        <input type="text" name="timeline_entry_date" value="{timeline_entry_date}" maxlength="23" size="25">
+		<span class="entypo-calendar icon"></span>
+		<span class="slick-tip left">select date</span>
+		</div>
+
+    <!-- Milestone Flag-->        
+		<!--Is in edit mode? -->			
+		{if segment_3 == "edit"}	
+		<!-- Milestone Check Dropdown -->
+        <div class="field">
+        <select name="timeline_milestone" id="timeline_milestone">
+        <option value=""{selected}>do not mark as milestone</option>
+          {options:timeline_milestone}
+            <option value="{option_value}"{selected}>{option_name}</option>
+          {/options:timeline_milestone}
+        </select>
+		<span class="entypo-bookmark icon"></span>
+		<span class="slick-tip left">is this a milestone?</span>
+		</div>  
+		{if:else}    
+		<!--Is in new entry mode? -->	     		
+		<!-- Milestone Check Box-->
+		<div class="field invert">
+    {options:timeline_milestone}
+    <fieldset>
+    	<p class="w-80 mt-10 mb-10 checkbox-text"><span class="entypo-bookmark icon"></span>is this a milestone? </p>
+          <div class="slide-chk">      
+          	<input type="checkbox" id="{option_value}" name="timeline_milestone[]" value="{option_value}"  />
+	          <label for="{option_value}"{checked}></label>
+					</div>
+	  </fieldset>	
+    {/options:timeline_milestone}
+		</div>  
+		{/if} 
+
+                         
+		<!-- spacer -->
+    <div class="field-spacer"></div> 		
+        
+		<!-- Entry Type -->
+		<div class="field">
+        <select name="timeline_entry_type">
+                {options:timeline_entry_type}
+                        <option value="{option_value}"{selected}>{option_name}</option>
+                {/options:timeline_entry_type}
+        </select>
+		<span class="entypo-menu icon"></span>
+		<span class="slick-tip left">entry type (required)</span>
+		</div> 
+		
+
+		<!-- Title input -->
+		<div class="field">
+        <input type="text" name="title" id="title" value="{title}" size="50" maxlength="100" onkeyup="liveUrlTitle();">
+		<span class="entypo-book icon"></span>
+		<span class="slick-tip left">enter title to be displayed</span>
+		</div>
+
+		<!-- URL Title input -->
+		<!--<div class="field">
+        <input type="text" name="url_title" id="url_title" value="{url_title}" maxlength="75" size="50">
+		<span class="entypo-link icon"></span>
+		<span class="slick-tip left">url title will auto-populate</span>
+		</div>-->
+		
+		<input type="hidden" name="url_title" id="url_title" value="{url_title}" maxlength="75" size="50">
+
+		<!-- Entry Height input -->
+		<div class="field">
+        <input type="text" name="timeline_entry_height" id="timeline_entry_height" value="{timeline_entry_height}">
+		<span class="entypo-publish icon"></span>
+		<span class="slick-tip left">enter height of gallery or element (example: 300)</span>
+		</div>
+
+		<!-- Display Title Entry Title -->
+        <!--<input type="hidden" name="timeline_entry_title" id="timeline_entry_title" value="{title}">-->
+        <!-- Display Title input -->
+		<div class="field">
+        <input type="text" name="timeline_entry_title" id="timeline_entry_title" value="{timeline_entry_title}">
+		<span class="entypo-book icon"></span>
+		<span class="slick-tip left">enter title to be displayed</span>
+		</div>
+
+		<!-- Title Font Size input -->
+		<div class="field">
+        <input type="text" name="timeline_entry_title_font_size" id="timeline_entry_title_font_size" value="{timeline_entry_title_font_size}" maxlength="3">
+		<span class="entypo-arrow-combo icon"></span>
+		<span class="slick-tip left">change the font size of title?</span>
+		</div>
+
+		<!-- Title Hex Color input -->
+		<div class="field">
+        <input class="color" type="text" name="timeline_entry_title_color" id="timeline_entry_title_color" value="FFFFFF" maxlength="6">
+		<span class="entypo-brush icon"></span>
+		<span class="slick-tip left">select a color for title</span>
+		</div>
+
+		<!-- Display SubTitle input -->
+		<div class="field">
+        <input type="text" name="timeline_entry_subtitle" id="timeline_entry_subtitle" value="{timeline_entry_subtitle}">
+		<span class="entypo-keyboard icon"></span>
+		<span class="slick-tip left">enter subtitle to be displayed</span>
+		</div>
+
+		<!-- SubTitle Font Size input -->
+		<div class="field">
+        <input type="text" name="timeline_entry_subtitle_fontsize" id="timeline_entry_subtitle_fontsize" value="{timeline_entry_subtitle_fontsize}" maxlength="3">
+		<span class="entypo-arrow-combo icon"></span>
+		<span class="slick-tip left">change the font size of subtitle?</span>
+		</div>
+
+		<!-- SubTitle Hex Color input -->
+		<div class="field">
+        <input class="color" type="text" name="timeline_entry_subtitle_color" id="timeline_entry_subtitle_color" value="FFFFFF" maxlength="6">
+		<span class="entypo-brush icon"></span>
+		<span class="slick-tip left">select a color for subtitle</span>
+		</div>
+
+		<!-- RTF Comment input -->
+		<div class="field">
+        <textarea name="timeline_entry_copy" id="timeline_entry_copy" value="{timeline_entry_copy}" rows="10" form="publishForm"></textarea>
+		<span class="entypo-comment icon"></span>
+		<span class="slick-tip left">this is what happened...</span>
+		</div>
+		
+		<!-- Timeline Post Tagging -->
+    <div class="field">
+        <select name="timeline_post_tagging" id="timeline_post_tagging">
+        <option value=""{selected}>--select an optional tag--</option>
+          {options:timeline_post_tagging}
+            <option value="{option_value}"{selected}>{option_name}</option>
+          {/options:timeline_post_tagging}
+        </select>
+		<span class="entypo-tag icon"></span>
+		<span class="slick-tip left">tag this entry?</span>
+		</div>  
+        
+		<!-- YouTube Video input -->
+		<div class="field">
+        <input type="text" name="timeline_youtube_video" id="timeline_youtube_video" value="{timeline_youtube_video}" rows="4">
+		<span class="entypo-video icon"></span>
+		<span class="slick-tip left">paste you tube url after www.youtube.com/watch?v=<span class="tooltip-highlight">XXXXXXXXXXX</span></span>
+		</div>
+        
+		<!-- Vimeo Video input -->
+		<div class="field">
+        <input type="text" name="timeline_vimeo_video" id="timeline_vimeo_video" value="{timeline_vimeo_video}" rows="4">
+		<span class="entypo-vimeo icon"></span>
+		<span class="slick-tip left">paste vimeo url after www.vimeo.com/watch/<span class="tooltip-highlight">XXXXXXXXXXX</span></span>
+		</div>
+        
+		<!-- field-header ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+    <div class="field-header">Uploads</div> 
+ 
+		<!-- File upload 01-->
+		<div class="field">
+        <input type="file" id="uploadingFileInput01" name="timeline_image_01" class="fileuploader" onchange="readURL01(this);"/>
+        <input type="hidden" name="timeline_image_01_directory" value="{gv_img-dir}" />
+        <input type="hidden" name="timeline_image_01_hidden_file" value="{timeline_image_01}{file_name}{/timeline_image_01}" />
+        <div class="preview-div">
+            <div id="preview-content01"  class="preview-content">
+                <div id="progress_bar01"><div id="percent01" class="percent">0%</div></div>
+                <img id="filePreview01"  class="filePreview"/>           
+            </div>
+        </div>
+	    <span class="entypo-folder icon"></span>
+		<span class="slick-tip left">upload a file</span>
+		</div>	
+        <!-- File upload - embedded var passID=01-->
+		{embed="embeds/form-script_upload-preview-functions" passID="01"}
+
+
+		<!-- File upload 02-->
+		<div class="field">
+        <input type="file" id="uploadingFileInput02" name="timeline_image_02" class="fileuploader" onchange="readURL02(this);"/>
+        <input type="hidden" name="timeline_image_02_directory" value="{gv_img-dir}" />
+        <input type="hidden" name="timeline_image_02_hidden_file" value="{timeline_image_02}{file_name}{/timeline_image_02}" />
+        <div class="preview-div">
+            <div id="preview-content02"  class="preview-content">
+                <div id="progress_bar02"><div id="percent02" class="percent">0%</div></div>
+                <img id="filePreview02"  class="filePreview"/>           
+            </div>
+        </div>
+	    <span class="entypo-folder icon"></span>
+		<span class="slick-tip left">upload a file</span>
+		</div>	
+        <!-- File upload - embedded var passID=02-->
+		{embed="embeds/form-script_upload-preview-functions" passID="02"}
+        
+        
+		<!-- File upload 03-->
+		<div class="field">
+        <input type="file" id="uploadingFileInput03" name="timeline_image_03" class="fileuploader" onchange="readURL03(this);"/>
+        <input type="hidden" name="timeline_image_03_directory" value="{gv_img-dir}" />
+        <input type="hidden" name="timeline_image_03_hidden_file" value="{timeline_image_03}{file_name}{/timeline_image_03}" />
+        <div class="preview-div">
+            <div id="preview-content03"  class="preview-content">
+                <div id="progress_bar03"><div id="percent03" class="percent">0%</div></div>
+                <img id="filePreview03"  class="filePreview"/>           
+            </div>
+        </div>
+	    <span class="entypo-folder icon"></span>
+		<span class="slick-tip left">upload a file</span>
+		</div>	
+        <!-- File upload - embedded var passID=03-->
+		{embed="embeds/form-script_upload-preview-functions" passID="03"}    
+        
+		<!-- mp3 upload -->
+		<div class="field">
+        <input type="file" name="timeline_audio_mp3" />
+        <input type="hidden" name="timeline_audio_mp3_directory" value="{gv_aud-dir}" />
+        <input type="hidden" name="timeline_audio_mp3_hidden_file" value="{timeline_audio_mp3}{file_name}{/timeline_audio_mp3}" />
+	    <span class="entypo-folder icon"></span>
+		<span class="slick-tip left">upload an .mp3 or .m4a recording.</span>
+		</div>
+        
+		<!-- ogg upload -->
+		<div class="field">
+        <input type="file" name="timeline_audio_ogg" />
+        <input type="hidden" name="timeline_audio_ogg_directory" value="{gv_aud-dir}" />
+        <input type="hidden" name="timeline_audio_ogg_hidden_file" value="{timeline_audio_ogg}{file_name}{/timeline_audio_ogg}" />
+	    <span class="entypo-folder icon"></span>
+		<span class="slick-tip left">upload an .ogg or .oga recording.</span>
+		</div>
+        
+		<!-- mp4 upload -->
+		<div class="field">
+        <input type="file" name="timeline_video_mp4" />
+        <input type="hidden" name="timeline_video_mp4_directory" value="{gv_vid-dir}" />
+        <input type="hidden" name="timeline_video_mp4_hidden_file" value="{timeline_video_mp4}{file_name}{/timeline_video_mp4}" />
+	    <span class="entypo-folder icon"></span>
+		<span class="slick-tip left">upload an .mp4 or .m4v video</span>
+		</div>
+        
+		<!-- upload poster-->
+		<div class="field">
+        <input type="file" name="timeline_video_jpg" />
+        <input type="hidden" name="timeline_video_jpg" value="{gv_vid-dir}" />
+        <input type="hidden" name="timeline_video_jpg_hidden_file" value="{timeline_video_jpg}{file_name}{/timeline_video_jpg}" />
+	    <span class="entypo-folder icon"></span>
+		<span class="slick-tip left">upload an image to go with the video</span>
+		</div> 
+        
+		<!--Submit Form ================================================================================================-->	         
+		<!--Is in edit mode? -->			
+		{if segment_3 == "edit"}		
+		    <!-- Save Changes -->
+				<div class="field">
+		         <input type="submit" name="submit" value="Save Changes" id="submit-form">
+		    </div>
+		{if:else}      
+		<!--Is in new entry mode? -->	     		
+		    <!-- Submit Form -->
+				<div class="field">
+		         <input type="submit" name="submit" value="Submit" id="submit-form">
+		    </div>
+		{/if}   
+        
+{/exp:channel:form}
+</section>
+
+</div>
+
+    <!-- Include Publish Options-->
+    {embed="embeds/include_publish_options"}
+    
+    <!-- Close Portal Strings-->
+    {/exp:portal}
+    
+    <!-- Include Color Picker-->
+    {embed="embeds/include_colorpicker"}
+    
+    <!-- Include Form Auto-Populate Scripts-->
+	<script>                            
+        document.getElementById('title').onchange = function () {
+			var titleStringEntered = document.getElementById('title').value = event.target.value
+			var titleStringClength = titleStringEntered.length;
+			//alert('The title is ' +titleStringClength+ ' characters long')
+            document.getElementById('timeline_entry_title').value = event.target.value
+			if (titleStringClength <= 10) {
+				document.getElementById('timeline_entry_title_font_size').value = 40
+			} else if (titleStringClength > 10 && titleStringClength <= 20) {
+				document.getElementById('timeline_entry_title_font_size').value = 32
+			} else if (titleStringClength > 20 && titleStringClength <= 30) {
+				document.getElementById('timeline_entry_title_font_size').value = 22
+			} else if (titleStringClength > 30 && titleStringClength <= 40) {
+				document.getElementById('timeline_entry_title_font_size').value = 13
+			} else {
+				document.getElementById('timeline_entry_title_font_size').value = 10
+			}
+        }   
+        document.getElementById('timeline_entry_subtitle').onchange = function () {
+			var subtitleStringEntered = document.getElementById('timeline_entry_subtitle').value = event.target.value
+			var subtitleStringClength = subtitleStringEntered.length;
+			//alert('The subtitle is ' +subtitleStringClength+ ' characters long')
+            document.getElementById('timeline_entry_subtitle').value = event.target.value
+			if (subtitleStringClength <= 10) {
+				document.getElementById('timeline_entry_subtitle_fontsize').value = 20
+			} else if (subtitleStringClength > 10 && subtitleStringClength <= 20) {
+				document.getElementById('timeline_entry_subtitle_fontsize').value = 19
+			} else if (subtitleStringClength > 20 && subtitleStringClength <= 30) {
+				document.getElementById('timeline_entry_subtitle_fontsize').value = 16
+			} else if (subtitleStringClength > 30 && subtitleStringClength <= 40) {
+				document.getElementById('timeline_entry_subtitle_fontsize').value = 17
+			} else {
+				document.getElementById('timeline_entry_subtitle_fontsize').value = 14
+			}
+        }   
+    </script> 
+     
+   </body>
+</html>

@@ -1,0 +1,133 @@
+
+{if segment_2 && segment_2 !="sort"}
+<br>
+{/if}
+
+<div id="comments" class="options_publish" style="max-width:768px;margin:auto;padding-top:20px;min-height:36px;margin-bottom:14px;">
+<div id="publish_options">    
+	
+{if segment_2 && segment_2 !="sort"}
+    <!--Return to Publish and Edit Main Menu-->
+        <div class="publish_option_bar" id="publish_option_return">
+            <a href="{site_url}/submit/"><div class="publish_option_return"><i class="fa fa-arrow-left"></i>Return to Publish and Edit Main Menu.</div></a>
+       </div>
+{/if}	
+    <!--Publish a tag-->
+        <div class="publish_option_bar">
+            <a href="{site_url}/submit/post-tags/"><div class="publish_option_button"><i class="fa fa-tags"></i>Publish a tag.</div></a>
+       </div>
+
+    <!--Publish Photos-->
+        <div class="publish_option_bar">
+            <a href="{site_url}/submit/post-gallery/"><div class="publish_option_button"><i class="fa fa-photo"></i>Publish photos.</div></a>
+        </div>
+        
+    <!--Publish Photo-->
+        <div class="publish_option_bar">
+            <a href="{site_url}/submit/post-photo/"><div class="publish_option_button"><i class="fa fa-camera"></i>Post from camera.</div></a>
+        </div>
+
+    <!--Publish Video-->
+        <div class="publish_option_bar">
+            <a href="{site_url}/submit/post-video/"><div class="publish_option_button"><i class="fa fa-video-camera"></i>Publish a video.</div></a>
+        </div>
+        
+    <!--Publish Audio-->
+        <div class="publish_option_bar">
+            <a href="{site_url}/submit/post-audio/"><div class="publish_option_button"><i class="fa fa-microphone"></i>Publish an audio recording.</div></a>
+        </div>
+        
+    <!--Publish YouTube-->
+        <div class="publish_option_bar">
+            <a href="{site_url}/submit/post-youtube/"><div class="publish_option_button"><i class="fa fa-youtube"></i>Post YouTube video.</div></a>
+        </div>
+                
+    <!--Publish Vimeo-->
+        <div class="publish_option_bar">
+            <a href="{site_url}/submit/post-vimeo/"><div class="publish_option_button"><i class="fa fa-vimeo"></i>Post Vimeo video.</div></a>
+        </div>
+        
+    <!--Publish iFrame-->
+        <div class="publish_option_bar">
+            <a href="{site_url}/submit/post-iframe/"><div class="publish_option_button"><i class="fa fa-link"></i>Post Web link.</div></a>
+        </div>
+        
+    <!--Publish Message-->
+        <div class="publish_option_bar">
+            <a href="{site_url}/submit/post-message/"><div class="publish_option_button"><i class="fa fa-comments-o"></i>Post basic message.</div></a>
+        </div> 
+               
+   
+
+{if segment_3 !="edit"}       
+    <!--Publish Custom-->
+        <div class="publish_option_bar">
+            <a href="{site_url}/submit/post-customized/"><div class="publish_option_button alert"><i class="fa fa-sliders"></i>Advanced Publish Tool</div></a>
+        </div>
+{/if}        
+        
+</div>
+</div>
+</div>  
+
+{if segment_2 && segment_2 !="sort"}
+<div id="comments" class="options_open" style="max-width:768px;margin:auto;padding-top:20px;padding-bottom:14px;min-height:36px;margin-bottom:8px;">
+<div id="publish_options_open"> 
+    <!--Return to Publish and Edit Main Menu-->
+        <div class="publish_option_bar" id="publish_option_return_bottom">
+            <a href="{site_url}/submit/"  style="text-decoration: none;"><div class="publish_option_return"><i class="fa fa-arrow-left"></i>Return to Publish and Edit Main Menu.</div></a>
+       </div>
+       
+{if segment_4 && segment_3 && segment_3 == "edit" && segment_2 != "post-customized" }       
+    <!--Publish Custom-->
+        <div class="publish_option_bar">
+            <a href="{site_url}/submit/post-customized/edit/{segment_4}" style="text-decoration:none;"><div class="publish_option_button alert"><i class="fa fa-sliders"></i>Edit this with Advanced Publish Tool</div></a>
+        </div>
+{/if}  
+	
+    <!--Menu Open-->
+        <div class="publish_option_bar" style="position:relative;top:2px;">
+        <div class="publish_option_button" id="publish_option_toggle_open"><i class="fa fa-arrow-down" style="position:relative;top:-3px;"></i>Publish a different type of entry.</div>
+        </div>
+    <!--Menu Close-->
+        <div class="publish_option_bar" style="position:relative;top:-4px;">
+        <div class="publish_option_button"  id="publish_option_toggle_close"><i class="fa fa-close" style="position:relative;top:-4px;"></i>Close Menu</div>
+
+</div>
+</div>  
+</div>  
+{/if}
+
+
+{if segment_2 && segment_2 !="sort"}
+<script>
+$( window ).load(function() {
+  $( "div#comments.options_publish" ).hide( 0, function() {
+  });
+  $( "#publish_option_toggle_close" ).hide( 0, function() {
+  });
+});
+$( "div#publish_option_toggle_open" ).click(function() {
+  $( "div#comments.options_publish" ).slideDown( "fast", function() {
+  $( "div#publish_option_return_bottom" ).hide( 0, function() {
+  });
+  $( "div#publish_option_toggle_open" ).hide( 0, function() {
+  });
+  $( "div#publish_option_toggle_close" ).show( 0, function() {
+  });
+    // Animation complete.
+  });
+});
+$( "#publish_option_toggle_close" ).click(function() {
+  $( "div#comments.options_publish" ).slideUp( "fast", function() {
+  $( "div#publish_option_toggle_close" ).hide( 0, function() {
+  });
+  $( "div#publish_option_toggle_open" ).show( 0, function() {
+  });
+  $( "div#publish_option_return_bottom" ).show( 0, function() {
+  });
+    // Animation complete.
+  });
+});
+</script>
+{/if}

@@ -1,0 +1,68 @@
+<!--SITE-SPECIFIC--annika----CHANNEL ENTRY FORM =============================================================================================-->
+		<!-- Comment form -->
+		<div class="comment-form"  style="padding:0px">
+  {exp:channel:form site="annika"
+                    channel="timeline_post"
+                    return="entry/{segment_2}/"
+                    include_assets="yes"
+                    include_jquery="yes"
+                    logged_out_member_id="3" 
+                    secure_action="no"     
+                    url_title="{segment_2}"
+                    }   
+                    
+		<!-- Form Title -->
+		<div class="form-title-small">LEAVE A COMMENT<span class="entypo-comment icon"></span><!--<i class="fa fa-comment"></i>--></div>
+
+        <!-- User Name input -->
+		<div class="field">
+        <input name="timeline_comments[row_new_0][col_id_7]"/>
+		<span class="entypo-user icon"></span>
+        <!--<span class="icon"><i class="fa fa-user"></span></i>-->
+		<span class="slick-tip left">enter your name</span>
+		</div>
+
+		<!-- RTF Comment input -->
+		<div class="field">
+        <textarea name="timeline_comments[row_new_0][col_id_6]" id="RTEfield" value="{timeline_comments}{user_comment_rte}{/timeline_comments}" rows="10" form="publishForm"></textarea>
+        <!--<input type="hidden" name="timeline_comments[row_new_0][col_id_6]" value="{timeline_comments}{user_comment_rte}{/timeline_comments}" />-->
+		<span class="entypo-comment icon"></span>
+		<span class="slick-tip left">enter a comment</span>
+		</div>
+ 
+		<!-- Date input -->
+		<input type="hidden" name="timeline_comments[row_new_0][col_id_4]" value="{current_time format="%D, %F %d, %Y - %g:%i %a"}">
+ 
+		<!-- Form Title -->
+		<div class="form-title-small">SHARE PHOTOS<i class="fa fa-cloud-upload"></i></div>
+      
+ 		<!-- Attachment input -->
+		<div class="field">     
+        <input type="file" name="timeline_comments[row_new_0][col_id_1]" label="Share an Attachment"/>
+        <input type="hidden" name="timeline_comments[row_new_0][col_id_1]" value="{timeline_comments}{user_attachment}{/timeline_comments}">
+	    <span class="entypo-folder icon"></span>
+		<span class="slick-tip left">share an attachment</span>
+		</div>
+        
+ 		<!-- Attachment input -->
+		<div class="field">     
+        <input type="file" name="timeline_comments[row_new_0][col_id_2]" label="Share an Attachment"/>
+        <input type="hidden" name="timeline_comments[row_new_0][col_id_2]" value="{timeline_comments}{user_attachment}{/timeline_comments}">
+	    <span class="entypo-folder icon"></span>
+		<span class="slick-tip left">share an attachment</span>
+		</div>
+        
+ 		<!-- Attachment input -->
+		<div class="field">     
+        <input type="file" name="timeline_comments[row_new_0][col_id_3]" label="Share an Attachment"/>
+        <input type="hidden" name="timeline_comments[row_new_0][col_id_3]" value="{timeline_comments}{user_attachment}{/timeline_comments}">
+	    <span class="entypo-folder icon"></span>
+		<span class="slick-tip left">share an attachment</span>
+		</div>
+
+		<!-- Submit form -->
+		<div class="field">
+         <input type="submit" name="submit" value="Submit" id="submit-form">
+        </div>        
+   
+{/exp:channel:form}

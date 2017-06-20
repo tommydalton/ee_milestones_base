@@ -1,0 +1,199 @@
+{exp:portal}
+
+<script>
+var BandwidthTest = function() {
+
+};
+BandwidthTest.prototype = {
+  imgUrl: ""    // Where the image is located at
+  ,size: 0                // bytes
+  ,run: function( options ) {
+
+    if( options && options.onStart )
+      options.onStart();
+
+    var imgUrl = this.imgUrl + "?r=" + (new Date()).getTime();
+    this.startTime = (new Date()).getTime() ;
+
+    var testImage = new Image();
+    var me = this;
+    testImage.onload = function() {
+      me.endTime = (new Date()).getTime();
+      me.runTime = me.endTime - me.startTime;
+
+      if( options && options.onEnd )
+        options.onEnd( me.getResults() );
+    };
+    testImage.src = imgUrl;
+  }
+
+  ,getResults: function() {
+    if( !this.runTime )
+      return null;
+
+    return {
+      runTime: this.runTime
+      ,Mbps: ( ((this.size * 8 / 1024) / 1024) / ( this.runTime / 1000 ) ) //original
+      //,Mbps: ( ((this.size * 80 / 1024) / 1024) / ( this.runTime / 1000 ) )
+      ,MBps: ( ((this.size / 1024) / 1024) / ( this.runTime / 1000 ) )
+    };
+  }
+}
+
+$(document).ready(function(){
+
+    // declare function to average any two numbers
+    function doCalcAvg(inpNum1, inpNum2)
+    {
+    var averageCalculated;
+    averageCalculated = (Number(inpNum1) + Number(inpNum2)) / 2;
+    return (averageCalculated).toFixed(2);
+    };
+
+    // declare function to average the speed results in Megabytes (MBps)
+    function doCalcAvgMBpsMegabytes(inpNum1, inpNum2)
+    {
+    var averageSpeedMegabyte;
+    averageSpeedMegabyte = (Number(inpNum1) + Number(inpNum2)) / 2;
+    return (averageSpeedMegabyte).toFixed(2);
+    };
+
+    // declare function to average the speed results in Megabits (Mbps)
+    function doCalcAvgMbpsMegabits(inpNum1, inpNum2)
+    {
+    var averageSpeedMegabits;
+    var averageSpeedMBps;
+    averageSpeedMBps = (Number(inpNum1) + Number(inpNum2)) / 2;
+    averageSpeedMegabits = averageSpeedMBps * 8;
+    return (averageSpeedMegabits).toFixed(2);
+    };
+
+    // declare function to calculate file weight in Mb
+    function doGetFileWeight(howMany, aveSize)
+    {
+    var approxLoad;
+    approxLoad = (Number(howMany) * Number(aveSize)) / 1000;
+    return (approxLoad).toFixed(2);
+    };
+
+    // declare function to calculate total load time
+    function doGetLoadTime(loadMb, speedMbps)
+    {
+    var approxTime;
+    approxTime = (Number(loadMb) / Number(speedMbps)) / 1;
+    return (approxTime).toFixed(2);
+    };
+
+    // declare function to calculate total page render time in seconds with decimal
+    function doGetRenderTime(loadMb, speedMbps)
+    {
+    var approxRender;
+    approxRender = (Number(loadMb) / Number(speedMbps)) / .125;
+    return (approxRender).toFixed(2);
+    };
+
+    // declare function to calculate total page render time in minutes and seconds
+    function doGetRenderMinSecTime(loadMb, speedMbps)
+    {
+    var approxRenderMinSec;
+    var approxRenderSec;
+    var approxRenderSecDecimal;
+    var approxRenderSecsRemainder;
+    var approxRenderMins;
+    var approxRenderSecs;
+    approxRenderSec = (Number(loadMb) / Number(speedMbps)) / .125;
+    approxRenderSecDecimal = (approxRenderSec).toFixed(2);
+    approxRenderMins = Math.floor(approxRenderSecDecimal / 60);
+    approxRenderSecsRemainder = approxRenderSecDecimal - approxRenderMins * 60;
+    approxRenderSecs = (approxRenderSecsRemainder).toFixed();
+      if (approxRenderMins == 0 && approxRenderSecs != 1) {
+      return (approxRenderSecs + ' seconds');
+      } else if (approxRenderMins == 0 && approxRenderSecs == 1) {
+      return (approxRenderSecs + ' second');
+      } else if (approxRenderMins == 1 && approxRenderSecs != 1) {
+      return (approxRenderMins + ' minute and ' + approxRenderSecs + ' seconds');
+      } else if (approxRenderMins > 1 && approxRenderSecs == 1) {
+      return (approxRenderMins + ' minute and ' + approxRenderSecs + ' second');
+      } else if (approxRenderMins > 1 && approxRenderSecs > 1) {
+      return (approxRenderMins + ' minutes and ' + approxRenderSecs + ' seconds');
+      } else {
+      return (approxRenderMins + ' minutes and ' + approxRenderSecs + ' seconds');
+      }
+    };
+
+  $(window).load(function() {
+    var bt800 = new BandwidthTest();
+	  var bt1200 = new BandwidthTest();
+    // declare vars that will be parseFloat(passed).toFixed(2); to two decimal places and be used throughout function
+    var bandwidthFor800 = 0;
+    var bandwidthFor1200 = 0;
+    var averageBandwidthInMbpsMegabits = 0;
+    var averageBandwidthInMBpsMegabyte = 0;
+    var averageEntrySize = 1000;
+    var totalEntrysFound = {embed:total_open_entries};
+    var approxLoadSizekb = 0;
+    var approxLoadinSecs = 0;
+
+    bt800.imgUrl = 'http://www.annikadalton.com/timeline/libs/bandwidth/bandwidth-test-assets/javascript-bandwidth-test-800.jpg';
+    bt800.size = 712817;
+    bt800.run({
+      onStart: function() {
+      }
+      ,onEnd: function(speed800) {
+        // pass 0.00Mbps speed to first var bandwidthFor###
+        bandwidthFor800 = parseFloat(speed800.Mbps).toFixed(2);
+
+        // send this time in Mbps to a div container:
+        //$('header').html( $('header').html()+' 800x600 (697KB) Downloaded @ '+speed800.Mbps+' Mbps - Avg Runtime '+speed800.avgRunTime+'ms<br />');
+		//$('#output0800').html( $('#output0800').html() + '{portal:speed-output0800}' + speed800.Mbps + '{/portal:speed-output0800}{speed-output0800}' );
+      }
+    });
+
+    bt1200.imgUrl = 'http://www.annikadalton.com/timeline/libs/bandwidth/bandwidth-test-assets/javascript-bandwidth-test-1200.jpg';
+    bt1200.size = 1423793;
+    bt1200.run({
+      onStart: function() {
+      }
+      ,onEnd: function(speed1200) {
+        // pass 0.00Mbps speed to first var bandwidthFor###
+        bandwidthFor1200 = parseFloat(speed1200.Mbps).toFixed(2);
+
+
+        // get the average connection speed from tests in Megabits (Mbps)
+        var inpNum1 = bandwidthFor800;
+        var inpNum2 = bandwidthFor1200;
+        // in Megabits (Mbps)
+        averageBandwidthInMbpsMegabits = doCalcAvgMbpsMegabits(inpNum1, inpNum2);
+        // in Megabytes (MBps)
+        averageBandwidthInMBpsMegabyte = doCalcAvgMBpsMegabytes(inpNum1, inpNum2);
+
+        // get the approximate total file weight in kb
+        var howMany = totalEntrysFound;
+        var aveSize = averageEntrySize;
+        approxLoadSizekb = doCalcAvg(howMany, aveSize);
+
+        //________Using Calculations Above_____________
+
+        // get the approximate total load time in secs
+        var loadMb = approxLoadSizekb;
+        var speedMbps = averageBandwidthInMbpsMegabits;
+        approxLoadinSecs = doGetLoadTime(loadMb, speedMbps);
+
+        // get the approximate total render time in...
+        var loadMb = approxLoadSizekb;
+        var speedMbps = averageBandwidthInMbpsMegabits;
+        // ...seconds with 2 decimal points
+        approxRenderinSecs = doGetRenderTime(loadMb, speedMbps);
+        // ...minutes and seconds
+        approxRenderinMinutesSeconds = doGetRenderMinSecTime(loadMb, speedMbps);
+
+        // send this time in Mbps to a div container:
+        //$('header').html( $('header').html()+' 1200x800 (1,391KB) Downloaded @ '+speed1200.Mbps+' Mbps - Avg Runtime '+speed1200.avgRunTime+'ms<br />
+		//$('#output1200').html( $('#output1200').html() + '{portal:speed-output1200}' + speed1200.Mbps + '{/portal:speed-output1200}{speed-output1200}' );
+        $('#include_estimated-load-all').html( $('#include_estimated-load-all').html() + 'The entire timeline contains {embed:total_open_entries} total entries! At your current average connection speed of ' + averageBandwidthInMbpsMegabits + ' Mbps ('+ averageBandwidthInMBpsMegabyte +' MBps), it will take approximately ' + approxLoadinSecs + ' seconds to fetch and sort this data. The total timeline may take as long as ' + approxRenderinMinutesSeconds + ' to load and render image files totalling ' + approxLoadSizekb + ' Mb.');
+      }
+    });
+  });
+});
+</script>
+{/exp:portal}

@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Annika Kathleen Dalton</title>
+    
+    <!--Global Viewport and Meta Included-->
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>-->
+    <meta content="width=device-width, user-scalable=0" name="viewport">
+    <meta name="robots" content="noindex">
+    
+     <!--include_globaltags fav icon-->
+     <link href="{site_url}/favicon.ico" rel="shortcut icon">
+    
+     <!--include_globaltags APPLE TOUCH ICONS-->
+     <link href="{site_url}/apple-touch-icon.png" rel="apple-touch-icon">
+     <link href="{site_url}/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+     <link href="{site_url}/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+     <link href="{site_url}/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+    
+     <!--Stylesheets-->
+     <link href="{site_url}/timeline/css/basic_styles.css" rel="stylesheet" type="text/css">
+     <link href="{site_url}/timeline/css/custom_styles.css" rel="stylesheet" type="text/css">
+    
+     <!--TypeKit-->
+     <script src="//use.typekit.net/nlg7djn.js" type="text/javascript"></script>
+     <script type="text/javascript">
+     try{Typekit.load();}catch(e){}
+     </script>
+    
+     <!--fa 4.3.0 & bootstrap-->
+     <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">-->
+     <link href="{site_url}/timeline/font-a4.3.0/css/font-awesome.min.css" rel="stylesheet">
+     <!--<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>-->
+
+     <!--Timeline Scripts-->
+     <script src="{site_url}/timeline/javascript/jquery.js" type="text/javascript"></script>
+     <script src="{site_url}/timeline/javascript/timeline.js" type="text/javascript"></script>
+     
+     <!--Shadowbox-->
+     <link href="{site_url}/shadowbox/shadowbox.css" rel="stylesheet" type="text/css">
+     <script type="text/javascript" src="{site_url}/shadowbox/shadowbox.js"></script>
+        
+     <script type="text/javascript">
+     Shadowbox.init();
+     </script>
+     
+    <!--CUSTOM STYLES from EE2 Timeline CSS Channel Fields  -->     
+    {exp:channel:entries channel="timeline_styles" disable="categories|pagination" limit="1"} 
+    <style type="text/css">
+
+    body {
+    {if css_window_color !="FFFFFF"}background-color: #{css_window_color};{/if} 
+    /*CSS Background Image*/
+    {if css_background_image !=""}background-image: url('{css_background_image}');{/if} 
+    /*CSS Background Tile Settings*/
+    {if css_background_tile_settings =="Tile X, Tile Y"}background-repeat: repeat;{/if} 
+    {if css_background_tile_settings =="Tile X"}background-repeat: repeat-x;{/if}   
+    {if css_background_tile_settings =="Tile Y"}background-repeat: repeat-y;{/if}   
+    }       
+
+
+    /* CSS Window Color Related */
+    {if css_window_color !="FFFFFF"}
+    /* Spine */
+    div.timeline div.spine {
+    background-color: #{css_window_color};
+    }   
+    /* Entry Windows */
+    div.timeline_element_box {
+    background-color: #{css_window_color};
+    }
+    div.timeline_left div.timeline_element:before {
+    border-left: 10px solid #{css_window_color};
+    }
+    div.timeline_dual div.timeline_element_left:before {
+    border-left: 10px solid #{css_window_color};
+    }
+    div.timeline_right div.timeline_element:before {
+    border-right: 10px solid #{css_window_color};
+    }
+    div.timeline_dual div.timeline_element_right:before {
+    border-right: 10px solid #{css_window_color};
+    }
+    div.timeline_left div.timeline_element:after,
+    div.timeline_right div.timeline_element:after,
+    div.timeline_dual div.timeline_element_left:after,
+    div.timeline_dual div.timeline_element_right:after {
+    border: 6px solid #{css_window_color};
+    }
+    {/if}   
+
+    /*CSS Custom Box Radius*/
+    {if css_custom_box_radius !=""}
+    div.timeline_element_box {
+    -webkit-border-radius: {css_custom_box_radius}px;
+    -moz-border-radius: {css_custom_box_radius}px;
+    border-radius: {css_custom_box_radius}px;
+    }
+    {/if}   
+
+    /*CSS Custom Box Shadow*/
+    {if css_box_shadow_color !="FFFFFF"}
+    div.timeline_element_box {
+    box-shadow: 1px 2px 4px #{css_box_shadow_color};
+
+    }
+    {/if}   
+
+    /*CSS Date Display Color*/
+    {if css_date_display_color !="FFFFFF"}
+    div.timeline_title span.timeline_title_date {
+    color: #{css_date_display_color};
+    }
+    {/if}
+
+    /*CSS Default Title Color*/
+    {if css_default_title_color !="FFFFFF"}
+    div.timeline_title span.timeline_title_label {
+    color: #{css_default_title_color};
+    }
+    {/if}
+
+    /*CSS Default Sub-Title Color*/
+    {if css_default_sub_title_color !="FFFFFF"}
+    span.subtitle {
+    color: #{css_default_sub_title_color};
+    }
+    {/if}
+
+
+    /*CSS Month Delimiter Color (Inner)*/
+    {if css_month_delimiter_color_inner !="FFFFFF"}
+    div.timeline_left div.timeline_element:after,
+    div.timeline_right div.timeline_element:after,
+    div.timeline_dual div.timeline_element_left:hover:after,
+    div.timeline_dual div.timeline_element_right:hover:after {
+    background-color: #{css_month_delimiter_color_inner};
+    }
+
+    div.timeline div.date_separator span {
+    background-color: #{css_month_delimiter_color_inner};
+    }
+    {/if}
+
+    /*CSS Month Delimiter Color (Outer)*/
+    {if css_month_delimiter_color_outer !="FFFFFF"}
+    div.timeline_left div.timeline_element:after,
+    div.timeline_right div.timeline_element:after,
+    div.timeline_dual div.timeline_element_left:hover:after,
+    div.timeline_dual div.timeline_element_right:hover:after {
+    border: 4px solid #{css_month_delimiter_color_outer};
+    }
+
+    div.timeline div.date_separator span {
+    border: 14px solid #{css_month_delimiter_color_outer};
+    }
+    {/if}
+
+    /*  CSS Month Delimiter Color (Text)*/
+    {if css_month_delimiter_color_text !="FFFFFF"}
+    div.timeline div.date_separator span {
+    color: #{css_month_delimiter_color_text};
+    }
+    {/if}
+
+    /*CSS Text Copy Color*/
+    {if css_text_copy_color !="FFFFFF"}
+    div.timeline_element.blog_post div.content {
+    color:#{css_text_copy_color};
+    }
+    {/if}       
+
+    /*CSS Text Copy Link Idle Color*/
+    {if css_text_copy_link_idle_color !="FFFFFF"}
+    div.timeline_element.blog_post div.content a{
+    color:#{css_text_copy_link_idle_color};
+    }
+    {/if}   
+
+    /*CSS Text Copy Link Hover Color*/
+    {if css_text_copy_link_hover_color !="FFFFFF"}
+    div.timeline_element.blog_post div.content a:hover{
+    color:#{css_text_copy_link_hover_color};
+    }
+    {/if}   
+
+
+    /* Scroll Bar Background*/
+    {if css_scrollbar_background_color !="FFFFFF"}
+    div.timeline_element ::-webkit-scrollbar {  /* Webkit only */
+    background-color: #{css_scrollbar_background_color};
+    }
+    {/if}   
+
+    /* Scroll Bar Handle*/
+    {if css_scrollbar_handle_color !="FFFFFF"}
+    div.timeline_element ::-webkit-scrollbar-thumb {
+    background-color: #{css_scrollbar_handle_color};
+    }
+    {/if}   
+
+    /* Scroll Bar Hover or Active*/
+    {if css_scrollbar_active_color !="FFFFFF"}
+    div.timeline_element ::-webkit-scrollbar-thumb:hover {
+    background-color: #{css_scrollbar_active_color};
+    }
+    {/if}       
+
+    /*CSS Text Copy Font*/
+    {if css_text_copy_font !=""}
+    div.timeline_element.blog_post div.content {
+    font-family: {css_text_copy_font};
+    }   
+    {/if}   
+
+    /*CSS Month Delimiter Font*/
+    {if css_month_delimiter_font !=""}
+    div.timeline div.date_separator span {
+    font-family: {css_month_delimiter_font};
+    }   
+    {/if}   
+
+
+    /*Milestone CSS Changes*/
+    {if css_milestone_background !="FFFFFF"}
+    div.timeline_element_box.milestone_toggle-milestone{
+    background-color: #{css_milestone_background};
+    }   
+
+    div.timeline_element_box.milestone_toggle-milestone{
+    background-color: #{css_milestone_background};
+    border: 3px solid #{css_milestone_background};
+    }
+
+    div.timeline_element.milestone_toggle-milestone.blog_post span.milestone_flag,
+    div.timeline_element.milestone_toggle-milestone.slider span.milestone_flag,
+    div.timeline_element.milestone_toggle-milestone.gallery span.milestone_flag,
+    div.timeline_element.milestone_toggle-milestone.video span.milestone_flag,
+    div.timeline_element.milestone_toggle-milestone.iframe span.milestone_flag{
+    color: #{css_window_color};
+    }
+
+    div.timeline_element.milestone_toggle-milestone.blog_post span.milestone_title,
+    div.timeline_element.milestone_toggle-milestone.slider span.milestone_title,
+    div.timeline_element.milestone_toggle-milestone.gallery span.milestone_title,
+    div.timeline_element.milestone_toggle-milestone.video span.milestone_title,
+    div.timeline_element.milestone_toggle-milestone.iframe span.milestone_title{
+    color: #{css_window_color};
+    }
+
+    div.timeline_dual div.timeline_element_right.milestone_toggle-milestone:before {
+    border-right: 10px solid #{css_milestone_background};
+    }
+
+    div.timeline_dual div.timeline_element_left.milestone_toggle-milestone:before {
+    border-left: 10px solid #{css_milestone_background};
+    }
+
+    div.timeline_dual div.timeline_element_left.milestone_toggle-milestone:hover:after, div.timeline_dual div.timeline_element_right.milestone_toggle-milestone:hover:after {
+    z-index: 100;
+    background-color: #{css_window_color};
+    border: 6px solid #{css_milestone_background};
+    }
+
+    div.timeline_dual div.timeline_element_left.milestone_toggle-milestone:after{
+    background-color: #fff;
+    border: 8px solid #{css_milestone_background};
+    }
+
+    div.timeline_dual div.timeline_element_right.milestone_toggle-milestone:after {
+    background-color: #fff;
+    border: 8px solid #{css_milestone_background};
+    }
+
+    {/if}
+
+    {if css_milestone_content_copy !="FFFFFF"}
+    /*Milestone CSS Changes*/
+
+    div.timeline_element_box.milestone_toggle-milestone{
+    color: #{css_milestone_content_copy};
+    }
+
+
+    /*style milestone flag copy if flagged*/
+    div.timeline_element.milestone_toggle-milestone.blog_post div.content,
+    div.timeline_element.milestone_toggle-milestone.slider div.content,
+    div.timeline_element.milestone_toggle-milestone.gallery div.content,
+    div.timeline_element.milestone_toggle-milestone.video div.content,
+    div.timeline_element.milestone_toggle-milestone.iframe div.content{
+
+    color: #{css_milestone_content_copy};
+    }
+    {/if}
+
+    /*Custom Images*/
+    {if custom_images_enable =="Enable"}
+    @media (min-width: 835px) {
+    .header_container_desktop{
+    display:none;
+    }
+    .header_container_mobile{
+    display:none;
+    }
+    }
+    @media (max-width: 834px) {
+    .header_container_desktop{
+    display:none;
+    }
+    .header_container_mobile{
+    display:none;
+    }
+    }
+
+
+    @media (min-width: 835px) {
+    .footer_container_desktop{
+    display:none;
+    }
+    .footer_container_mobile{
+    display:none;
+    }
+    }
+    @media (max-width: 834px) {
+    .footer_container_desktop{
+    display:none;
+    }
+    .footer_container_mobile{
+    display:none;
+    }
+    }
+    {/if}   
+
+    </style>
+    {/exp:channel:entries}
+    
+    <!--Timeline Rendering Scripts Loop Through EE2 Entries-->
+	<script type="text/javascript">
+    $(document).ready(function() {
+    var timeline_data = [
+                
+    {exp:channel:entries channel="timeline_post" disable="categories|pagination|category_fields" orderby="date" sort="desc" limit="9999" search:timeline_milestone="milestone"}
+	{if no_results}
+	No result
+	{/if} 
+    {
+
+    type:     "{timeline_entry_type}",
+    milestone:"{timeline_milestone}",
+    date:     "{timeline_entry_date format='%Y-%m-%d'}",
+    {if timeline_entry_type !="slider"}
+    title:    "<span style='font-size:{timeline_entry_title_font_size}px;color:#{timeline_entry_title_color};'>{timeline_entry_title}<\/span><br><span class='subtitle' style='font-size:{timeline_entry_subtitle_fontsize}px;color:#{timeline_entry_subtitle_color};'>{timeline_entry_subtitle}<\/span>",{/if}
+
+    {if timeline_entry_copy !=""}content:  "{timeline_entry_copy}",{/if}
+    {if timeline_entry_height !=""}height:   {timeline_entry_height},{/if}
+
+    {if timeline_entry_type =="blog_post"}image: "{timeline_image_01}{file_name}{/timeline_image_01}"{/if}
+    {if timeline_entry_type =="gallery"}images: [ "{timeline_image_01}{file_name}{/timeline_image_01}"{if timeline_image_02 !=""}, "{timeline_image_02}{file_name}{/timeline_image_02}"{/if}{if timeline_image_03 !=""}, "{timeline_image_03}{file_name}{/timeline_image_03}"{/if}{if timeline_image_04 !=""}, "{timeline_image_04}{file_name}{/timeline_image_04}"{/if}{if timeline_image_05 !=""}, "{timeline_image_05}{file_name}{/timeline_image_05}"{/if}{if timeline_image_06 !=""}, "{timeline_image_06}{file_name}{/timeline_image_06}"{/if}{if timeline_image_07 !=""}, "{timeline_image_07}{file_name}{/timeline_image_07}"{/if}{if timeline_image_08 !=""}, "{timeline_image_08}{file_name}{/timeline_image_08}"{/if}{if timeline_image_09 !=""}, "{timeline_image_09}{file_name}{/timeline_image_09}"{/if}{if timeline_image_10 !=""}, "{timeline_image_10}{file_name}{/timeline_image_10}"{/if}{if timeline_entry_type =="gallery"}]{/if}{/if}
+    {if timeline_entry_type =="slider"}images: [ "{timeline_image_01}{file_name}{/timeline_image_01}"{if timeline_image_02 !=""}, "{timeline_image_02}{file_name}{/timeline_image_02}"{/if}{if timeline_image_03 !=""}, "{timeline_image_03}{file_name}{/timeline_image_03}"{/if}{if timeline_image_04 !=""}, "{timeline_image_04}{file_name}{/timeline_image_04}"{/if}{if timeline_image_05 !=""}, "{timeline_image_05}{file_name}{/timeline_image_05}"{/if}{if timeline_image_06 !=""}, "{timeline_image_06}{file_name}{/timeline_image_06}"{/if}{if timeline_image_07 !=""}, "{timeline_image_07}{file_name}{/timeline_image_07}"{/if}{if timeline_image_08 !=""}, "{timeline_image_08}{file_name}{/timeline_image_08}"{/if}{if timeline_image_09 !=""}, "{timeline_image_09}{file_name}{/timeline_image_09}"{/if}{if timeline_image_10 !=""}, "{timeline_image_10}{file_name}{/timeline_image_10}"{/if}{if timeline_entry_type =="slider"}],{/if}{/if} 
+
+    {if timeline_entry_type =="slider"}speed:{timeline_slider_speed}{/if} 
+    /*{if timeline_entry_type =="blog_post" }readmore: "{timeline_read_more_link}"{/if}*/
+    {if timeline_entry_type =="iframe" }url: "{timeline_iframe_url}"{/if}
+    {if timeline_entry_type =="video" }url: '<video controls  poster="{timeline_video_jpg}" style="width:100%"><source src="{timeline_video_mp4}" /><source src="{timeline_video_webm}" /><source src="{timeline_video_ogv}" type="video/ogg" /><\/video>'{/if}
+    /*{if timeline_entry_type =="video" }mp4v: "{timeline_video_mp4}"{/if}
+    {if timeline_entry_type =="video" }webm: "{timeline_video_webm}"{/if}
+    {if timeline_entry_type =="video" }oggv: "{timeline_video_ogg}"{/if}
+    {if timeline_entry_type =="video" }jpeg: "{timeline_video_jpg}"{/if}*/
+    },         
+    {/if}
+      
+    {/exp:channel:entries}
+
+                ];
+                
+
+                var timeline = new Timeline($("#timeline"), timeline_data);
+                timeline.setOptions({
+                    animation:        true,
+                    lightbox:         true,
+                    separator:        "month",
+                    columnMode:       "dual",
+                    
+                    {exp:ifelse parse="inward"}    
+                        {if last_segment == 'desc'}
+                            order:          "desc",
+                        {if:elseif last_segment == 'asc'}
+                            order:                 "asc",
+                        {if:else}
+                            order:          "desc",
+                        {/if}
+                    {/exp:ifelse}
+                    /*order:    "{last_segment}",*/                    
+                    responsive_width: 700
+                });
+                timeline.display();
+            });
+            
+    </script>
+    
+    <!--Include jQuery.mmenu .css files-->
+    <link href="{site_url}/timeline/mMenu/css/jquery.mmenu.all.css" rel="stylesheet" type="text/css">
+    <link href="{site_url}/timeline/mMenu/css/app-menu.css" rel="stylesheet" type="text/css">
+    
+    <!--jQuery.mmenu .js files-->
+    <script src="{site_url}/timeline/mMenu/js/jquery.mmenu.all.js" type="text/javascript"></script>
+    <script src="{site_url}/timeline/mMenu/js/addons/jquery.mmenu.toggles.js" type="text/javascript"></script>
+    
+    <!--Fire the mMenu plugin onDocumentReady-->
+    <script type="text/javascript">
+    $(document).ready(function() {
+            $("#menu").mmenu({
+               "classes": "mm-white",
+               "counters": true,
+               "footer": {
+                  "add": true,
+                  "title": "Annika Kathleen Dalton"
+               },
+               "searchfield": true
+            });
+            $("#mm-1").click(function(){
+                $(this).toggleFunctionOne();
+                /*alert('mm-1 clicked!');*/
+            });
+            $("#mm-2").click(function(){
+                $(this).toggleFunctionTwo();
+            });
+            $("#mm-3").click(function(){
+                alert('mm-3 clicked!');
+            });
+            
+            
+      /*check the state of toggles, if none assign defaults*/   
+      jQuery(function(){
+      if (localStorage.getItem("a-dToggler") == "desc") {
+          {exp:ifelse parse="inward"}    
+                {if segment_2 =='desc'}
+                    $("#mm-1").prop('checked', false);/*Sort Descending*/
+                {if:elseif segment_2 =='asc'}
+                    $("#mm-1").prop('checked', false),/*Sort Descending*/
+                    window.location.href = "{site_url}/{segment_1}/desc/";
+                {if:else}
+                    $("#mm-1").prop('checked', false),/*Sort Descending*/
+                    window.location.href = "{site_url}/{segment_1}/desc/";
+                {/if}
+          {/exp:ifelse}
+      } else if (localStorage.getItem("a-dToggler") == "asc") {
+          {exp:ifelse parse="inward"}    
+                {if segment_2 =='asc'}
+                    $("#mm-1").prop('checked', true);/*Sort Ascending*/  
+                {if:elseif segment_2 =='desc'}
+                    $("#mm-1").prop('checked', true),/*Sort Ascending*/  
+                    window.location.href = "{site_url}/{segment_1}/asc/";
+                {if:else}
+                    $("#mm-1").prop('checked', true),/*Sort Ascending*/ 
+                    window.location.href = "{site_url}/{segment_1}/asc/";
+                {/if}
+          {/exp:ifelse}
+      } else {localStorage.setItem("a-dToggler", "desc");/*Sort Descending Default*/
+                    {if segment_2 !='desc' || no_results}
+                        window.location.href = "{site_url}/{segment_1}/desc/";
+                    {/if}
+      }  
+          
+          
+          
+      if (localStorage.getItem("m-aToggler") == "all") {
+              $("#mm-2").prop('checked', false),/*Show All*/
+              $(".milestone_toggle-").css( "display", "block" );
+              /*$('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', '{site_url}/timeline/css/reload_milestones_only.css') );*/
+      } else if (localStorage.getItem("m-aToggler") == "milestones") {
+              $("#mm-2").prop('checked', true),/*Show Milestones Only*/ 
+              $(".milestone_toggle-").css( "display", "none" );
+              /*$('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', '{site_url}/timeline/css/reload_alltimeline_post.css') );*/
+      } else {localStorage.setItem("m-aToggler", "all");/*Show All Default*/
+          }     
+      });
+      
+      /*toggle mm-1 function*/        
+      $.fn.toggleFunctionOne = function() { 
+      if (localStorage.getItem("a-dToggler") == "asc") {
+              $("#mm-1").prop('checked', false), 
+                    {if segment_2 !='desc'}
+                        window.location.href = "{site_url}/{segment_1}/desc/",
+                    {/if}
+              localStorage.setItem("a-dToggler", "desc");/*Sort Descending*/ 
+      } else if (localStorage.getItem("a-dToggler") == "desc") {
+              $("#mm-1").prop('checked', true), 
+                    {if segment_2 !='asc'}
+                        window.location.href = "{site_url}/{segment_1}/asc/",
+                    {/if}
+              localStorage.setItem("a-dToggler", "asc");/*Sort Ascending*/ 
+      } else {localStorage.setItem("a-dToggler", "desc"),/*Sort Descending Default*/ 
+                    {if segment_2 !='desc'}
+                        window.location.href = "{site_url}/{segment_1}/desc/",
+                    {/if}
+              $("#mm-1").prop('checked', false); 
+          }  
+      }
+      
+      /*toggle mm-2 function*/
+      $.fn.toggleFunctionTwo = function() { 
+      if (localStorage.getItem("m-aToggler") == "milestones") {
+              $("#mm-2").prop('checked', false),
+              $(".milestone_toggle-").css( "display", "block" ), 
+              localStorage.setItem("m-aToggler", "all");/*Show All*/
+      } else if (localStorage.getItem("m-aToggler") == "all") {
+              $("#mm-2").prop('checked', true),
+              $(".milestone_toggle-").css( "display", "none" ),
+              localStorage.setItem("m-aToggler", "milestones");/*Show Milestones Only*/
+      } else {localStorage.setItem("m-aToggler", "all"),
+              $(".milestone_toggle-").css( "display", "block" ),
+              $("#mm-2").prop('checked', false); /*Show All*/
+              
+          }  
+      }
+            
+     /*$.fn.triggerTestFunction = function() { 
+        alert('triggered'); 
+     }*/
+    });
+    </script>
+    
+    <!--appMode-->
+    <link href="{site_url}/timeline/css/appMode.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="{site_url}/timeline/javascript/appMode.js"></script>    
+    
+    <!-- Include Google Analytics-->
+    {embed="embeds/include_analytics"}
+    
+</head>
+
+<body>
+
+    <div class="app-header">
+        <a href="#menu" id="hamburger"><span></span></a>
+        <!--<span class="header-delimiter"></span><span class="header-pagetitle"></a></span>-->
+    </div>
+    
+    <!--Header Render-->
+    <div id="header">
+        {exp:channel:entries channel="timeline_styles" disable="categories|pagination" limit="1"}
+        <div class="header_container_desktop_custom"><img alt="annikakathleendalton.com" src="{custom_header_desktop}" width="100%"></div>
+        <div class="header_container_mobile_custom"><img alt="annikakathleendalton.com" src="{custom_header_mobile}" width="100%"></div>
+        {/exp:channel:entries}
+
+        <div class="header_container_desktop"><img alt="annikakathleendalton.com" src="{site_url}/timeline/images/akd_header.png" width="100%"></div>
+        <div class="header_container_mobile"><img alt="annikakathleendalton.com" src="{site_url}/timeline/images/akd_header700W.png" width="100%"></div>
+    </div>
+    
+    <!--Timeline Render-->
+    <div id="timeline" style="max-width:800px;margin:auto;"></div>
+    
+    <!--Footer Render-->
+    <div id="footer">
+        {exp:channel:entries channel="timeline_styles" disable="categories|pagination" limit="1"}
+        <div class="footer_container_desktop_custom"><img alt="bye-bye!" src="{custom_footer_desktop}" width="100%"></div>
+        <div class="footer_container_mobile_custom"><img alt="bye-bye!" src="{custom_footer_mobile}" width="100%"></div>
+        {/exp:channel:entries}
+
+        <div class="footer_container_desktop"><img alt="bye-bye!" src="{site_url}/timeline/images/akd_footer.png" width="100%"></div>
+        <div class="footer_container_mobile"><img alt="bye-bye!" src="{site_url}/timeline/images/akd_footer700W.png" width="100%"></div>
+    </div>
+    
+    <!--Download App Video-->
+    <!--<div id="download">
+        <div class="download_container_desktop"><a href="{site_url}/video/index.html" rel="shadowbox:;height=720;width=1280"><img src="{site_url}/timeline/images/akd_download.png" width="100%" alt=""></a></div>
+        <div class="download_container_mobile"><a href="{site_url}/video/index.html" rel="shadowbox:;height=720;width=1280"><img src="{site_url}/timeline/images/akd_download700W.png" width="100%" alt=""></a></div>
+        </div>-->
+        
+    <!--Download App Instructions Fixed Size-->
+    <!--<div id="download">
+        <div class="download_container_desktop"><a href="{site_url}/timeline/images/addToHomeScreen.jpg" rel="shadowbox:;width=1866;height=3300"><img src="{site_url}/timeline/images/akd_download.png" width="100%" alt=""></a></div>
+        <div class="download_container_mobile"><a href="{site_url}/timeline/images/addToHomeScreen.jpg" rel="shadowbox:;width=1866;height=3300"><img src="{site_url}/timeline/images/akd_download700W.png" width="100%" alt=""></a></div>
+        </div>-->
+        
+        
+    <!--Download App Instructions-->
+    <div id="download">
+        <div class="download_container_desktop">
+            <a href="{site_url}/annika-app" target="_blank"><img alt="" src="{site_url}/timeline/images/akd_download.png" width="100%"></a>
+        </div>
+
+        <div class="download_container_mobile">
+            <a href="{site_url}/annika-app" target="_blank"><img alt="" src="{site_url}/timeline/images/akd_download700W.png" width="100%"></a>
+        </div>
+    </div>
+    
+    <audio id="sound-ro">
+    <source src="{site_url}/audio/SquirlRollOver.mp3">
+    <source src="{site_url}/audio/SquirlRollOver.ogg">Your browser isn't invited for super fun audio time.</audio>
+    
+    <audio id="sound-cl">
+    <source src="{site_url}/audio/SquirlClick.mp3">
+    <source src="{site_url}/audio/SquirlClick.ogg">Your browser isn't invited for super fun audio time.</audio>
+    
+	<script>
+    $("#footer").mouseenter(function () {
+    $('#sound-ro').get(0).play();
+    });
+    $("#footer").click(function () {
+    $('#sound-cl').get(0).play();
+    });
+    </script>
+    <!-- END CONTENT -->
+    
+    <!-- Include Footer-->
+    
+    
+    <!-- App Mode Home Screen Prompt-->
+    <div id="appModeNote">
+        <div id="appModeIcon">
+            <a href="{site_url}/annika-app" target="_blank"><img alt="" height="72" src="{site_url}/timeline/images/familyapp-icon.png" width="118"></a>
+        </div>
+
+        <div id="appModeCopy">
+            <b>Save this Web Application</b> <span class="appModeMessage">Click the family app icon at the<br>
+            bottom of this page for instructions.</span>
+        </div>
+    </div>
+    
+    
+    <!-- load jQuery mMenu ===============================================================================================-->
+    <nav id="menu">
+         <ul>
+            <li><a href="{site_url}/app/" title="Application Home">Application Home</a></li>
+            <!--<li><a href="{site_url}/{segment_1}/asc/" title="Ascending">Display Oldest Entries First</a></li>-->
+            <!--<li><a href="{site_url}/{segment_1}/desc/" title="Descending">Display Newest Entries First</a></li>-->
+            <!--<li><a href="{site_url}/milestones/{if segment_2 =='asc'}{segment_2}{/if}{if segment_2 =='desc'}{segment_2}{/if}" title="Milestones">Load Only Milestones</a></li>-->
+            <li><a href="{site_url}/app/{if segment_2 =='asc'}{segment_2}{/if}{if segment_2 =='desc'}{segment_2}{/if}" title="Show All">Load All Timeline Posts</a></li>
+            <li><a href="#" title="Find">Find</a>
+                <ul>
+                    <li><a href="#" title="By Title">By Title</a>
+                          <ul>
+                            {exp:channel:entries channel="timeline_post" disable="categories|pagination|category_fields" orderby="date" status="open" sort="{segment_2}" limit="999999" search:timeline_milestone="milestone"}
+                            <li><a href="{site_url}/app/{segment_2}/#{url_title}" title="{title}">{title}</a></li>
+                            {/exp:channel:entries}
+                          </ul>
+                    </li>
+                    <!--<li><a href="#" title="2014">2014</a>
+                          <ul>
+                            <li><a href="{site_url}/app/january" title="January">January</a></li>
+                            <li><a href="{site_url}/app/february" title="February">February</a></li>
+                            <li><a href="{site_url}/app/march" title="March">March</a></li>
+                            <li><a href="{site_url}/app/april" title="April">April</a></li>
+                            <li><a href="{site_url}/app/may" title="May">May</a></li>
+                            <li><a href="{site_url}/app/june" title="June">June</a></li>
+                            <li><a href="{site_url}/app/july" title="July">July</a></li>
+                            <li><a href="{site_url}/app/august" title="August">August</a></li>
+                            <li><a href="{site_url}/app/september" title="September">September</a></li>
+                            <li><a href="{site_url}/app/october" title="October">October</a></li>
+                            <li><a href="{site_url}/app/november" title="November">November</a></li>
+                            <li><a href="{site_url}/app/december" title="December">December</a></li>
+                          </ul>
+                    </li>-->
+                </ul>   
+            <li><a href="{site_url}/{segment_1}/asc/">Display Oldest Entries First</a>
+               <input type="checkbox" class="mm-toggle" name="menutoggle1" checked="checked"/></li>
+               <label for="menutoggle1"></label>
+               
+            <!--<li><a href="{site_url}/milestones/{if segment_2 =='asc'}{segment_2}{/if}{if segment_2 =='desc'}{segment_2}{/if}">Display Only Milestones</a>
+               <input type="checkbox" class="mm-toggle" name="menutoggle2" checked="checked"/></li>
+               <label for="menutoggle2"></label>-->
+               
+            <!--<li><a href="{site_url}/{segment_1}/asc/">Display Only Search Tags</a>
+               <input type="checkbox" class="mm-toggle" name="menutoggle3" checked="checked"/></li>
+               <label for="menutoggle3"></label>-->
+               <li><a href=" {path='logout'}" title="Print"><i class="fa fa-sign-out"></i>&nbsp;&nbsp;&nbsp;Logout</a></li>
+        </ul>
+    </nav>
+</body>
+</html>

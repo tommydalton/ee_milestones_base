@@ -1,0 +1,73 @@
+{exp:portal}
+
+<script>
+var BandwidthTest = function() {  
+  
+};  
+BandwidthTest.prototype = {  
+  imgUrl: ""    // Where the image is located at  
+  ,size: 0                // bytes  
+  ,run: function( options ) {  
+  
+    if( options && options.onStart )  
+      options.onStart();  
+  
+    var imgUrl = this.imgUrl + "?r=" + (new Date()).getTime();  
+    this.startTime = (new Date()).getTime() ;  
+  
+    var testImage = new Image();  
+    var me = this;  
+    testImage.onload = function() {  
+      me.endTime = (new Date()).getTime();  
+      me.runTime = me.endTime - me.startTime;  
+  
+      if( options && options.onEnd )  
+        options.onEnd( me.getResults() );  
+    };  
+    testImage.src = imgUrl;  
+  }  
+  
+  ,getResults: function() {  
+    if( !this.runTime )  
+      return null;  
+  
+    return {  
+      runTime: this.runTime  
+      ,Mbps: ( ((this.size * 8 / 1024) / 1024) / ( this.runTime / 1000 ) )  
+      ,MBps: ( ((this.size / 1024) / 1024) / ( this.runTime / 1000 ) )  
+    };  
+  }  
+}  
+
+$(document).ready(function(){
+
+  $(window).load(function() {
+    var bt800 = new BandwidthTest();
+	
+    bt800.imgUrl = 'http://www.annikadalton.com/timeline/libs/bandwidth/bandwidth-test-assets/javascript-bandwidth-test-800.jpg';  
+    bt800.size = 712817; 
+    bt800.run({  
+      onStart: function() {          
+      }       
+      ,onEnd: function(speed800) {  
+        //$('header').html( $('header').html()+' 800x600 (697KB) Downloaded @ '+speed800.Mbps+' Mbps - Avg Runtime '+speed800.avgRunTime+'ms<br />');   
+		$('#output0800').html( $('#output0800').html() + '{portal:speed-output0800}' + speed800.Mbps + '{/portal:speed-output0800}{speed-output0800}' );         
+      }  
+    });  
+    var bt1200 = new BandwidthTest();
+
+    bt1200.imgUrl = 'http://www.annikadalton.com/timeline/libs/bandwidth/bandwidth-test-assets/javascript-bandwidth-test-1200.jpg';  
+    bt1200.size = 1423793; 
+    bt1200.run({  
+      onStart: function() {          
+      }       
+      ,onEnd: function(speed1200) {  
+        //$('header').html( $('header').html()+' 1200x800 (1,391KB) Downloaded @ '+speed1200.Mbps+' Mbps - Avg Runtime '+speed1200.avgRunTime+'ms<br />    
+		$('#output1200').html( $('#output1200').html() + '{portal:speed-output1200}' + speed1200.Mbps + '{/portal:speed-output1200}{speed-output1200}' );         
+      }  
+    }); 
+  });
+});
+</script>
+
+

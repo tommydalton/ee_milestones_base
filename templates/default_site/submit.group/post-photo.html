@@ -1,0 +1,297 @@
+{if logged_out}{redirect='login'}{/if}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Post Photo | {site_name}</title>
+    
+    <!-- Include App Touch & FA4.4.0-->
+    {embed="embeds/include_global_icons"}   
+     
+    <!-- Include Global Meta-->
+    {embed="embeds/include_global_meta"}
+    
+    <!-- Include Global Styles-->
+    {embed="embeds/include_global_styles"}
+    
+    <!-- Include Global Styles-->
+    {embed="embeds/include_forms_styles"}
+    
+    <!-- Include Template Styles-->
+    <link href="{site_url}/timeline/css/template_styles_submit.css" rel="stylesheet" type="text/css">
+    
+    <!-- Include Styles Sandbox-->
+    {embed="embeds/include_sandbox_css"}
+    
+    <!-- Include Core Scripts-->
+    {embed="embeds/include_core_scripts"}
+    
+    <!-- Include Scripts Sandbox-->
+    {embed="embeds/include_sandbox_scripts"}
+
+    <!-- Include Dynamic Stylesheet-->
+    {embed="embeds/include_dynamic_css"}
+
+    <!-- Include Google Analytics-->
+    {embed="embeds/site-specific-google_analytics"}
+
+    <!-- Include Template Styles for Edit Mode-->
+		<!--Is in edit mode? -->			
+		{if segment_3 == "edit"}
+    <link href="{site_url}/timeline/css/template_styles_submit_edit-mode.css" rel="stylesheet" type="text/css">
+    {/if} 
+    
+    <!-- Page Specific CSS-->
+		<style>
+
+		
+		</style>
+
+
+</head>
+
+    <!-- Include Graphic Headers-->
+    {embed="embeds/include_header"}
+
+    
+    <!-- Initialize Portal-->
+    {exp:portal}
+
+    <!--Timeline Render-->
+    <div id="comments" style="max-width:768px;margin:auto;">
+
+<!--CHANNEL ENTRY FORM =============================================================================================-->
+	<section id="milestones">
+		<!-- Social buttons -->
+		<!--<div class="sb">
+			<a href="#" class="fb entypo-thumbs-up"><span class="slick-tip right">Login with Facebook</span></a>
+			<a href="#" class="gc entypo-google-circles"><span class="slick-tip right">Login with Google</span></a>
+			<a href="#" class="tw entypo-twitter"><span class="slick-tip right">Login with Twitter</span></a>
+		</div> -->
+		<!-- Comment form -->
+		<div class="comment-form">
+
+
+		<!--Instantiate Form ================================================================================================-->	         
+		<!--Is in edit mode? -->			
+		{if segment_3 == "edit"}	
+	  {exp:channel:form site="{gv_site-name}"
+	                    channel="timeline_post"
+	                    url_title="{segment_4}"
+	                    return="app/desc/"
+	                    include_assets="yes"
+	                    include_jquery="yes"
+	                    logged_out_member_id="{gv_lom-id}" 
+	                    secure_action="{gv_formsec}"   
+	                    }  
+		{if:else}    
+		<!--Is in new entry mode? -->	     		
+	  {exp:channel:form site="{gv_site-name}"
+	                    channel="timeline_post"
+	                    return="app/desc/"
+	                    include_assets="yes"
+	                    include_jquery="yes"
+	                    logged_out_member_id="{gv_lom-id}" 
+	                    secure_action="{gv_formsec}"   
+	                    }  
+		{/if}  
+
+		<!-- Form Title -->
+		<!--Is in edit mode? -->			
+		{if segment_3 == "edit"}	
+		
+		<div class="form-title">edit photo post<i class="fa fa-camera-o"></i></div>
+		{if:else}    
+		<!--Is in new entry mode? -->	     		
+		<div class="form-title">publish photo<i class="fa fa-camera-o"></i></div>
+		{/if}                    
+
+        
+		<!-- Date input -->
+		<div class="field">
+        <input type="text" name="timeline_entry_date" value="{timeline_entry_date}" maxlength="23" size="25">
+		<span class="entypo-calendar icon"></span>
+		<span class="slick-tip left">select date</span>
+		</div>
+
+    <!-- Milestone Flag-->        
+		<!--Is in edit mode? -->			
+		{if segment_3 == "edit"}	
+		<!-- Milestone Check Dropdown -->
+        <div class="field">
+        <select name="timeline_milestone" id="timeline_milestone">
+        <option value=""{selected}>do not mark as milestone</option>
+          {options:timeline_milestone}
+            <option value="{option_value}"{selected}>{option_name}</option>
+          {/options:timeline_milestone}
+        </select>
+		<span class="entypo-bookmark icon"></span>
+		<span class="slick-tip left">is this a milestone?</span>
+		</div>  
+		{if:else}    
+		<!--Is in new entry mode? -->	     		
+		<!-- Milestone Check Box-->
+		<div class="field invert">
+    {options:timeline_milestone}
+    <fieldset>
+    	<p class="w-80 mt-10 mb-10 checkbox-text"><span class="entypo-bookmark icon"></span>is this a milestone? </p>
+          <div class="slide-chk">      
+          	<input type="checkbox" id="{option_value}" name="timeline_milestone[]" value="{option_value}"  />
+	          <label for="{option_value}"{checked}></label>
+					</div>
+	  </fieldset>	
+    {/options:timeline_milestone}
+		</div>  
+		{/if} 
+
+        
+		<!-- Entry Type -->
+        <input type="hidden" name="timeline_entry_type" id="timeline_entry_type" value="gallery">
+
+		<!-- Title input -->
+		<div class="field">
+        <input type="text" name="title" id="title" value="{title}" size="50" maxlength="100" onkeyup="liveUrlTitle();">
+		<span class="entypo-book icon"></span>
+		<span class="slick-tip left">enter title to be displayed</span>
+		</div>
+
+		<!-- URL Title input -->
+		<div class="field">
+        <input type="text" name="url_title" id="url_title" value="{url_title}" maxlength="75" size="50">
+		<span class="entypo-link icon"></span>
+		<span class="slick-tip left">url title will auto-populate</span>
+		</div>
+
+		<!-- Entry Height input -->
+		<div class="field">
+        <input type="text" name="timeline_entry_height" id="timeline_entry_height" value="{timeline_entry_height}">
+		<span class="entypo-publish icon"></span>
+		<span class="slick-tip left">enter height of gallery or iframe (example: 300)</span>
+		</div>
+
+		<!-- Display Title Entry Title (hidden) -->
+    <input type="hidden" name="timeline_entry_title" id="timeline_entry_title" value="{title}">
+
+		<!-- Title Font Size (hidden) -->
+		<input type="hidden" name="timeline_entry_title_font_size" id="timeline_entry_title_font_size" value="22" maxlength="3">
+
+		<!-- Title Hex Color input -->
+		<div class="field">
+        <input class="color" type="text" name="timeline_entry_title_color" id="timeline_entry_title_color" value="FFFFFF" maxlength="6">
+		<span class="entypo-brush icon"></span>
+		<span class="slick-tip left">select a color for title</span>
+		</div>
+
+		<!-- Display SubTitle input -->
+		<div class="field">
+        <input type="text" name="timeline_entry_subtitle" id="timeline_entry_subtitle" value="{timeline_entry_subtitle}">
+		<span class="entypo-keyboard icon"></span>
+		<span class="slick-tip left">enter subtitle to be displayed</span>
+		</div>
+
+		<!-- SubTitle Font Size (hidden)-->
+		<input type="hidden" name="timeline_entry_subtitle_fontsize" id="timeline_entry_subtitle_fontsize" value="18" maxlength="3">
+
+		<!-- SubTitle Hex Color (hidden) -->
+    <input class="color" type="hidden" name="timeline_entry_subtitle_color" id="timeline_entry_subtitle_color" value="FFFFFF" maxlength="6">
+
+		<!-- RTF Comment input -->
+		<div class="field">
+        <textarea name="timeline_entry_copy" id="timeline_entry_copy" value="{timeline_entry_copy}" rows="10" form="publishForm">{timeline_entry_copy}</textarea>
+		<span class="entypo-comment icon"></span>
+		<span class="slick-tip left">this is what happened...</span>
+		</div>
+		
+		<!-- Timeline Post Tagging -->
+    <div class="field">
+        <select name="timeline_post_tagging" id="timeline_post_tagging">
+        <option value=""{selected}>--select an optional tag--</option>
+          {options:timeline_post_tagging}
+            <option value="{option_value}"{selected}>{option_name}</option>
+          {/options:timeline_post_tagging}
+        </select>
+		<span class="entypo-tag icon"></span>
+		<span class="slick-tip left">tag this entry?</span>
+		</div>  
+
+		<!-- File upload Channel Images-->
+		<div class="field">
+        <div class="preview-div" id="ci_upload_overrides">
+        {field:timeline_image_channel}
+
+        </div>
+	    <span class="entypo-folder icon"></span>
+		<span class="slick-tip left">upload image files</span>
+		</div>	
+       
+    <!-- Use Channel Images (hidden) -->
+    <input type="hidden" name="timeline_image_sources" id="timeline_image_sources" value="Use Image Channel">
+    	
+		<!--Submit Form ================================================================================================-->	         
+		<!--Is in edit mode? -->			
+		{if segment_3 == "edit"}		
+		    <!-- Save Changes -->
+				<div class="field">
+		         <input type="submit" name="submit" value="Save Changes" id="submit-form">
+		    </div>
+		{if:else}      
+		<!--Is in new entry mode? -->	     		
+		    <!-- Submit Form -->
+				<div class="field">
+		         <input type="submit" name="submit" value="Submit" id="submit-form">
+		    </div>
+		{/if}   
+        
+{/exp:channel:form}
+</section>
+
+</div>
+
+    <!-- Include Publish Options-->
+    {embed="embeds/include_publish_options"}
+    
+    <!-- Close Portal Strings-->
+    {/exp:portal}
+    
+    <!-- Include Color Picker-->
+    {embed="embeds/include_colorpicker"}
+    
+    <!-- Include Form Auto-Populate Scripts-->
+	<script>                            
+        document.getElementById('title').onchange = function () {
+			var titleStringEntered = document.getElementById('title').value = event.target.value
+			var titleStringClength = titleStringEntered.length;
+			//alert('The title is ' +titleStringClength+ ' characters long')
+            document.getElementById('timeline_entry_title').value = event.target.value
+			if (titleStringClength <= 10) {
+				document.getElementById('timeline_entry_title_font_size').value = 40
+			} else if (titleStringClength > 10 && titleStringClength <= 20) {
+				document.getElementById('timeline_entry_title_font_size').value = 32
+			} else if (titleStringClength > 20 && titleStringClength <= 30) {
+				document.getElementById('timeline_entry_title_font_size').value = 22
+			} else if (titleStringClength > 30 && titleStringClength <= 40) {
+				document.getElementById('timeline_entry_title_font_size').value = 13
+			} else {
+				document.getElementById('timeline_entry_title_font_size').value = 10
+			}
+        }   
+        document.getElementById('timeline_entry_subtitle').onchange = function () {
+			var subtitleStringEntered = document.getElementById('timeline_entry_subtitle').value = event.target.value
+			var subtitleStringClength = subtitleStringEntered.length;
+			//alert('The subtitle is ' +subtitleStringClength+ ' characters long')
+            document.getElementById('timeline_entry_subtitle').value = event.target.value
+			if (subtitleStringClength <= 10) {
+				document.getElementById('timeline_entry_subtitle_fontsize').value = 20
+			} else if (subtitleStringClength > 10 && subtitleStringClength <= 20) {
+				document.getElementById('timeline_entry_subtitle_fontsize').value = 19
+			} else if (subtitleStringClength > 20 && subtitleStringClength <= 30) {
+				document.getElementById('timeline_entry_subtitle_fontsize').value = 16
+			} else if (subtitleStringClength > 30 && subtitleStringClength <= 40) {
+				document.getElementById('timeline_entry_subtitle_fontsize').value = 17
+			} else {
+				document.getElementById('timeline_entry_subtitle_fontsize').value = 14
+			}
+        }   
+    </script> 
+     
+   </body>
+</html>

@@ -1,0 +1,333 @@
+{if logged_out}{redirect='login'}{/if}
+<!DOCTYPE html>
+<html>
+<head>
+    {exp:channel:entries channel="timeline_post" disable="categories|pagination" url_title="{segment_2}" limit="1"}
+    <title>{title} | {site_name}</title>
+    {/exp:channel:entries}
+    
+    <!-- Include App Touch & FA4.4.0-->
+    {embed="embeds/include_global_icons"}   
+    
+    <!-- Include Global Meta-->
+    {embed="embeds/include_global_meta"}
+    
+    <!-- Include Global Styles-->
+    {embed="embeds/include_global_styles"}
+    
+    <!-- Include Template Styles-->
+    <link href="{site_url}/timeline/css/template_styles_entry.css" rel="stylesheet" type="text/css">
+    <link href="{site_url}/timeline/css/template_styles_comment.css" rel="stylesheet" type="text/css">
+    
+    
+    
+    
+    <!-- Include Charts Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <!--<script src="{site_url}/timeline/libs/charts/highcharts/highcharts.js"></script>-->
+    <script src="{site_url}/timeline/libs/charts/highcharts/highcharts-custom.js"></script>
+    <!--<script src="{site_url}/timeline/libs/charts/highcharts/exporting.js"></script>-->
+    
+    <!--<script src="http://code.highcharts.com/highcharts.js"></script>-->
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+    <script src="{site_url}/timeline/libs/charts/highcharts/milestone-theme-female.js"></script>
+    <!--<script src="{site_url}/timeline/libs/charts/highcharts/milestone-theme-dark-unica.js"></script>-->
+
+<!--Chart Rendering Scripts Loop Through EE2 Entries-->
+	<script type="text/javascript">
+        $(function () {
+            $('#chart-height-container').highcharts({
+                chart: {
+                    type: 'areaspline'
+                },
+                title: {
+                    text: "Annika's Growth | Height"
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'left',
+                    verticalAlign: 'top',
+                    x: 150,
+                    y: 100,
+                    floating: true,
+                    borderWidth: 1,
+                    backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+                },
+                xAxis: {
+                    categories: [
+                        'BIRTH',
+                        '3 MONTHS',
+                        '6 MONTHS',
+                        '9 MONTHS',
+                        '12 MONTHS',
+                        '15 MONTHS',
+                        '18 MONTHS',
+                        '21 MONTHS',
+                        '24 MONTHS'
+                    ],
+                    plotBands: [{ 
+                        from: 3.5,
+                        to: 4.5,
+                        color: 'rgba(217, 138, 116, 0.6)'
+                    }]
+                },
+                yAxis: {
+                    title: {
+                        text: 'INCHES'
+                    }
+                },
+                tooltip: {
+                    shared: true,
+                    valueSuffix: '"'
+                },
+                credits: {
+                    enabled: false
+                },
+                plotOptions: {
+                    areaspline: {
+                        fillOpacity: 0.5
+                    },
+					series: {
+						marker: {
+							enabled: true
+						}
+					}
+                },
+                series: [{
+                    name: 'AVERAGE',
+                    data: [19.4,23.6,25.9,27.6,29.2,30.6,31.8,32.9,33.5]
+                }, {
+                    name: 'ANNIKA',
+                    data: [19.0,20.1,23.2,27.4,29.8]
+                }]
+            });
+        });
+    </script>
+    <script>
+        $(function () {
+            $('#chart-weight-container').highcharts({
+                chart: {
+                    type: 'areaspline'
+                },
+                title: {
+                    text: "Annika's Growth | Weight"
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'left',
+                    verticalAlign: 'top',
+                    x: 150,
+                    y: 100,
+                    floating: true,
+                    borderWidth: 1,
+                    backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+                },
+                xAxis: {
+                    categories: [
+                        'BIRTH',
+                        '3 MONTHS',
+                        '6 MONTHS',
+                        '9 MONTHS',
+                        '12 MONTHS',
+                        '15 MONTHS',
+                        '18 MONTHS',
+                        '21 MONTHS',
+                        '24 MONTHS'
+                    ],
+                    plotBands: [{ 
+                        from: 3.5,
+                        to: 4.5,
+                        color: 'rgba(217, 138, 116, 0.6)'
+                    }]
+                },
+                yAxis: {
+                    title: {
+                        text: 'POUNDS'
+                    }
+                },
+                tooltip: {
+                    shared: true,
+                    valueSuffix: ' LBS.'
+                },
+                credits: {
+                    enabled: false
+                },
+                plotOptions: {
+                    areaspline: {
+                        fillOpacity: 0.5
+                    }
+                },
+                series: [{
+                    name: 'AVERAGE',
+                    data: [7.3,13.3,16.6,18.8,20.4,22.0,23.4,24.9,26.5]
+                }, {
+                    name: 'ANNIKA',
+                    data: [6.6,12.1,15.2,17.4,19.1]
+                }]
+            });
+        });
+    </script>
+
+
+<!--SAVE These are graphed directly on point for some reason, not between markers on x-axis-->
+<!--<script type="text/javascript">
+	$(function () {
+		$('#chart-height-container').highcharts({
+			chart: {
+				type: 'areaspline'
+			},
+			title: {
+				text: "Annika's Growth | Height"
+			},
+			legend: {
+				layout: 'vertical',
+				align: 'left',
+				verticalAlign: 'top',
+				x: 150,
+				y: 100,
+				floating: true,
+				borderWidth: 1,
+				backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+			},
+			xAxis: {
+				categories: [
+					'BIRTH',
+					'3 MONTHS',
+					'6 MONTHS',
+					'9 MONTHS',
+					'12 MONTHS',
+					'15 MONTHS',
+					'18 MONTHS',
+					'21 MONTHS',
+					'24 MONTHS'
+				],
+				plotBands: [{
+					from: 4.5,
+					to: 6.5,
+					color: 'rgba(233, 141, 115, .2)'
+				}]
+			},
+			yAxis: {
+				title: {
+					text: 'HEIGHT'
+				}
+			},
+			xAxis: {
+				title: {
+					text: 'MONTHS'
+				}
+			},
+			tooltip: {
+				shared: true,
+				valueSuffix: ' inches'
+			},
+			credits: {
+				enabled: false
+			},
+			plotOptions: {
+				areaspline: {
+					fillOpacity: 0.5
+				}
+			},
+			series: [{
+				name: 'AVERAGE',
+				data: [19.4, 21.2, 22.1, 23.6, 24.5, 25.3, 25.9]
+			}, {
+				name: 'ANNIKA',
+				data: [19, 21, 22.5, 24, 25.2, 25.8, 26.5, 27.2, 27.4]
+			}]
+		});
+	});
+    </script>-->
+    
+    
+    <!-- Include Styles Sandbox-->
+    {embed="embeds/include_sandbox_css"}
+    
+    <!-- Include Core Scripts-->
+
+    
+    <!-- Include Scripts Sandbox-->
+    {embed="embeds/include_sandbox_scripts"}
+
+    <!-- Include Dynamic Stylesheet-->
+    {embed="embeds/include_dynamic_css"}
+
+    <!-- Include Google Analytics-->
+    {embed="embeds/site-specific-google_analytics"}
+
+
+    <!--Open Portal-->
+    {exp:portal}
+    
+
+<style>
+.highcharts-axis-labels.highcharts-xaxis-labels, .highcharts-axis-labels.highcharts-yaxis-labels{
+	/*font-family:Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;*/
+	text-transform:capitalize;
+}
+.highcharts-contextmenu{
+	font-family:Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+}
+rect.highcharts-background{
+	border-radius:10px;
+}
+.highcharts-legend, .highcharts-button{
+	z-index:7;
+	display:none;
+}
+</style>
+
+
+</head>
+<body>
+
+
+    <!--Header Render-->
+    <div id="header">
+        {exp:channel:entries channel="timeline_styles" disable="categories|pagination" limit="1"}
+        <div class="header_container_desktop_custom"><img alt="&nbsp;&nbsp;&nbsp;loading timeline content.....&nbsp;&nbsp;&nbsp;" onerror="this.style.borderWidth=0" style="border:0px solid black" data-src="{custom_header_desktop}" width="100%"></div>
+        <div class="header_container_mobile_custom"><img alt="&nbsp;&nbsp;&nbsp;loading timeline content.....&nbsp;&nbsp;&nbsp;" onerror="this.style.borderWidth=0" style="border:0px solid black" data-src="{custom_header_mobile}" width="100%"></div>
+        {/exp:channel:entries}
+
+        <div class="header_container_desktop"><img alt="&nbsp;&nbsp;&nbsp;loading timeline content.....&nbsp;&nbsp;&nbsp;" onerror="this.style.borderWidth=0" style="border:0px solid black" src="{site_url}/timeline/images/standard/header.png" width="100%"></div>
+        <div class="header_container_mobile"><img alt="&nbsp;&nbsp;&nbsp;loading timeline content.....&nbsp;&nbsp;&nbsp;" onerror="this.style.borderWidth=0" style="border:0px solid black" src="{site_url}/timeline/images/standard/header700W.png" width="100%"></div>
+	</div>
+
+<!--Get Return Link -->
+<!--{if referrer:segment_1 == "app"}
+{portal:return-link}{site_url}/{referrer:segment_1}/{referrer:segment_2}#{segment_2}{/portal:return-link}
+{/if}
+{if referrer:segment_1 != "app"}
+{portal:return-link}{site_url}/app/desc#{segment_2}{/portal:return-link}
+{/if}-->    
+
+    <!--Chart Height-->
+    <div id="ms-content" style="margin: 0 auto; margin-bottom:14px;">
+    <div id="chart-height-container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+    </div>
+
+    <!--Return-->
+    <div id="comments" class="return-and-print">
+
+        <div class="print-return-header">    
+        {exp:channel:entries channel="timeline_post" disable="categories|pagination" url_title="{segment_2}" limit="1"}
+            <div class="return"><a href="{return-link}"><span class="icon entypo-left-circled"></span></a></div>
+            <div class="chat"><span class="icon entypo-comments"></span></a></div>
+        {/exp:channel:entries}
+        </div>
+    </div>
+    
+    <!--Chart Weight-->
+    <div id="ms-content" style="margin: 0 auto; margin-bottom:14px;">
+    <div id="chart-weight-container" style="min-width: 310px; height: 400px; margin: 0 auto;"></div>
+    </div>
+
+</div>
+</div>
+<div class="floor"></div>    
+    {/exp:portal}
+    
+    
+    </body>
+</html>

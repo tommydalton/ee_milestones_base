@@ -1,0 +1,1462 @@
+{if logged_out}{redirect='login'}{/if}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{site_name}</title>
+
+    <!-- Include App Touch & FA4.4.0-->
+    {embed="embeds/include_global_icons"}
+
+    <!-- Include Global Meta-->
+    {embed="embeds/include_global_meta"}
+
+    <!-- Include Global Styles-->
+    {embed="embeds/include_global_styles"}
+
+    <!-- Include Styles Sandbox-->
+    {embed="embeds/include_sandbox_css"}
+
+    <!-- Include Core Scripts-->
+    {embed="embeds/include_core_scripts"}
+
+    <!-- Include Scripts Sandbox-->
+    {embed="embeds/include_sandbox_scripts"}
+
+    <!-- Include Dynamic Stylesheet-->
+    {embed="embeds/include_dynamic_css"}
+
+    <!-- Include Google Analytics-->
+    {embed="embeds/site-specific-google_analytics"}
+
+    <!--Open Portal-->
+    {exp:portal}
+
+    <!--Math Plus LAST YEAR-->
+    <!--{exp:math_plus calculate="({var1} - {var2})" var1="{segment_3}" var2="1"}{math_plus_result}{/exp:math_plus}-->
+    <!--MXCalc LAST YEAR-->
+    <!--{portal:last_year}{exp:mx_calc expression="sum(-1, {segment_3})"}{/portal:last_year}{last_year}-->
+    <!--Math Plus NEXT YEAR-->
+    <!--{exp:math_plus calculate="({var1} + {var2})" var1="{segment_3}" var2="1"}{math_plus_result}{/exp:math_plus}-->
+    <!--MXCalc NEXT YEAR-->
+    <!--{portal:next_year}{exp:mx_calc expression="sum(1, {segment_3})"}{/portal:next_year}{next_year}-->
+
+    <!--Timeline Scripts-->
+    <script src="{site_url}/timeline/libs/timeline-app.js" type="text/javascript"></script>
+
+    <!--Timeline Rendering Scripts Loop Through EE2 Entries-->
+	<script type="text/javascript">
+    $(document).ready(function() {
+    var timeline_data = [
+    {exp:ifelse parse="inward"}
+
+
+/*
+ _     _      _   _                             _   _
+| |   (_)    | | | |                           | | | |
+| |__  _ _ __| |_| |__    _ __ ___   ___  _ __ | |_| |__
+| '_ \| | '__| __| '_ \  | '_ ` _ \ / _ \| '_ \| __| '_ \
+| |_) | | |  | |_| | | | | | | | | | (_) | | | | |_| | | |
+|_.__/|_|_|   \__|_| |_| |_| |_| |_|\___/|_| |_|\__|_| |_|
+*/
+
+        {if segment_4 == "july" && segment_3 == "2014"}
+/*
+    {portal:current_message}Currently viewing July of {segment_3}.{/portal:current_message}
+    {portal:current_message_hover}Currently viewing July of {segment_3}.{/portal:current_message_hover}
+    {portal:menu_button}Explore{/portal:menu_button}
+    {portal:menu_button_hover}Open Menu{/portal:next_button_hover}
+    {portal:prev_button}This is the month I was born!{/portal:prev_button}
+    {portal:prev_button_hover}This is the month I was born!{/portal:prev_button_hover}
+    {portal:next_button}Forward to August of {next_year}{/portal:next_button}
+    {portal:next_button_hover}View August of {next_year}{/portal:next_button_hover}
+////Links//////////////////////////////////////////////////////////////////////////////////////////////
+    {portal:prev_uri}#menu{/portal:prev_uri}
+    {portal:next_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{next_year}/august{/portal:next_uri}
+*/
+{exp:channel:entries
+            channel="timeline_post"
+            disable="categories|pagination|category_fields"
+            start_on="{segment_3}-07-01 00:01"
+            stop_before="{segment_3}-07-31 23:59"
+            limit="250"
+            }
+
+/*====================================================*/
+/*
+                     _ _ _   _                   _
+                    | (_) | (_)                 | |
+  ___ ___  _ __   __| |_| |_ _  ___  _ __   __ _| |___
+ / __/ _ \| '_ \ / _` | | __| |/ _ \| '_ \ / _` | / __|
+| (_| (_) | | | | (_| | | |_| | (_) | | | | (_| | \__ \
+ \___\___/|_| |_|\__,_|_|\__|_|\___/|_| |_|\__,_|_|___/
+*/
+
+
+        {if:elseif segment_4 == "spring"}/*
+    {portal:current_message}Currently viewing Spring of {segment_3}.{/portal:current_message}
+    {portal:current_message_hover}Currently viewing Spring of {segment_3}.{/portal:current_message_hover}
+    {portal:menu_button}Explore{/portal:menu_button}
+    {portal:menu_button_hover}Open Menu{/portal:next_button_hover}
+    {portal:prev_button}Back to Winter of {last_year}{/portal:prev_button}
+    {portal:prev_button_hover}View Winter of {last_year}{/portal:prev_button_hover}
+    {portal:next_button}Forward to Summer of {segment_3}{/portal:next_button}
+    {portal:next_button_hover}View Summer of {segment_3}{/portal:next_button_hover}
+////Links//////////////////////////////////////////////////////////////////////////////////////////////
+    {portal:prev_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{last_year}/winter{/portal:prev_uri}
+    {portal:next_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{segment_3}/summer{/portal:next_uri}
+*/
+{exp:channel:entries
+            channel="timeline_post"
+            disable="categories|pagination|category_fields"
+            start_on="{segment_3}-03-01 00:01"
+            stop_before="{segment_3}-05-31 23:59"
+            limit="250"
+            }
+        {if:elseif segment_4 == "summer"}
+/*
+    {portal:current_message}Currently viewing Summer of {segment_3}.{/portal:current_message}
+    {portal:current_message_hover}Currently viewing Summer of {segment_3}.{/portal:current_message_hover}
+    {portal:menu_button}Explore{/portal:menu_button}
+    {portal:menu_button_hover}Open Menu{/portal:next_button_hover}
+    {portal:prev_button}Back to Spring of {segment_3}{/portal:prev_button}
+    {portal:prev_button_hover}View Winter of {segment_3}{/portal:prev_button_hover}
+    {portal:next_button}Forward to Autumn of {segment_3}{/portal:next_button}
+    {portal:next_button_hover}View Autumn of {segment_3}{/portal:next_button_hover}
+////Links//////////////////////////////////////////////////////////////////////////////////////////////
+    {portal:prev_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{segment_3}/spring{/portal:prev_uri}
+    {portal:next_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{segment_3}/autumn{/portal:next_uri}
+*/
+{exp:channel:entries
+            channel="timeline_post"
+            disable="categories|pagination|category_fields"
+            start_on="{segment_3}-06-01 00:01"
+            stop_before="{segment_3}-08-31 23:59"
+            limit="250"
+            }
+        {if:elseif segment_4 == "autumn"}
+/*
+    {portal:current_message}Currently viewing Autumn of {segment_3}.{/portal:current_message}
+    {portal:current_message_hover}Currently viewing Autumn of {segment_3}.{/portal:current_message_hover}
+    {portal:menu_button}Explore{/portal:menu_button}
+    {portal:menu_button_hover}Open Menu{/portal:next_button_hover}
+    {portal:prev_button}Back to Summer of {segment_3}{/portal:prev_button}
+    {portal:prev_button_hover}View Summer of {segment_3}{/portal:prev_button_hover}
+    {portal:next_button}Forward to Winter of {segment_3}{/portal:next_button}
+    {portal:next_button_hover}View Winter of {segment_3}{/portal:next_button_hover}
+////Links//////////////////////////////////////////////////////////////////////////////////////////////
+    {portal:prev_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{segment_3}/summer{/portal:prev_uri}
+    {portal:next_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{segment_3}/winter{/portal:next_uri}
+*/
+{exp:channel:entries
+            channel="timeline_post"
+            disable="categories|pagination|category_fields"
+            start_on="{segment_3}-09-01 00:01"
+            stop_before="{segment_3}-11-30 23:59"
+            limit="250"
+            }
+        {if:elseif segment_4 == "winter"}
+/*
+    {portal:current_message}Currently viewing Winter of {segment_3}.{/portal:current_message}
+    {portal:current_message_hover}Currently viewing Winter of {segment_3}.{/portal:current_message_hover}
+    {portal:menu_button}Explore{/portal:menu_button}
+    {portal:menu_button_hover}Open Menu{/portal:next_button_hover}
+    {portal:prev_button}Back to Autumn of {segment_3}{/portal:prev_button}
+    {portal:prev_button_hover}View Autumn of {segment_3}{/portal:prev_button_hover}
+    {portal:next_button}Forward to Spring of {next_year}{/portal:next_button}
+    {portal:next_button_hover}View Spring of {next_year}{/portal:next_button_hover}
+////Links//////////////////////////////////////////////////////////////////////////////////////////////
+    {portal:prev_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{segment_3}/autumn{/portal:prev_uri}
+    {portal:next_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{next_year}/spring{/portal:next_uri}
+*/
+{exp:channel:entries
+            channel="timeline_post"
+            disable="categories|pagination|category_fields"
+            start_on="2016-01-01 00:01"
+            stop_before="2017-01-28 23:59"
+            limit="250"
+            }
+        {if:elseif segment_4 == "january"}
+/*
+    {portal:current_message}Currently viewing January of {segment_3}.{/portal:current_message}
+    {portal:current_message_hover}Currently viewing January of {segment_3}.{/portal:current_message_hover}
+    {portal:menu_button}Explore{/portal:menu_button}
+    {portal:menu_button_hover}Open Menu{/portal:next_button_hover}
+    {portal:prev_button}Back to Previous December{/portal:prev_button}
+    {portal:prev_button_hover}View Previous December{/portal:prev_button_hover}
+    {portal:next_button}Forward to February of {segment_3}{/portal:next_button}
+    {portal:next_button_hover}View February of {segment_3}{/portal:next_button_hover}
+////Links//////////////////////////////////////////////////////////////////////////////////////////////
+    {portal:prev_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{last_year}/december{/portal:prev_uri}
+    {portal:next_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{segment_3}/february{/portal:next_uri}
+*/
+{exp:channel:entries
+            channel="timeline_post"
+            disable="categories|pagination|category_fields"
+            start_on="{segment_3}-01-01 00:01"
+            stop_before="{segment_3}-01-31 23:59"
+            limit="250"
+            }
+        {if:elseif segment_4 == "february"}
+/*
+    {portal:current_message}Currently viewing February of {segment_3}.{/portal:current_message}
+    {portal:current_message_hover}Currently viewing February of {segment_3}.{/portal:current_message_hover}
+    {portal:menu_button}Explore{/portal:menu_button}
+    {portal:menu_button_hover}Open Menu{/portal:next_button_hover}
+    {portal:prev_button}Back to January of {segment_3}{/portal:prev_button}
+    {portal:prev_button_hover}View January of {segment_3}{/portal:prev_button_hover}
+    {portal:next_button}Forward to March of {segment_3}{/portal:next_button}
+    {portal:next_button_hover}View March of {segment_3}{/portal:next_button_hover}
+////Links//////////////////////////////////////////////////////////////////////////////////////////////
+    {portal:prev_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{segment_3}/january{/portal:prev_uri}
+    {portal:next_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{segment_3}/march{/portal:next_uri}
+*/
+{exp:channel:entries
+            channel="timeline_post"
+            disable="categories|pagination|category_fields"
+            start_on="{segment_3}-02-01 00:01"
+            stop_before="{segment_3}-02-29 23:59"
+            limit="250"
+            }
+        {if:elseif segment_4 == "march"}
+/*
+    {portal:current_message}Currently viewing March of {segment_3}.{/portal:current_message}
+    {portal:current_message_hover}Currently viewing March of {segment_3}.{/portal:current_message_hover}
+    {portal:menu_button}Explore{/portal:menu_button}
+    {portal:menu_button_hover}Open Menu{/portal:next_button_hover}
+    {portal:prev_button}Back to February of {segment_3}{/portal:prev_button}
+    {portal:prev_button_hover}View February of {segment_3}{/portal:prev_button_hover}
+    {portal:next_button}Forward to April of {segment_3}{/portal:next_button}
+    {portal:next_button_hover}View April of {segment_3}{/portal:next_button_hover}
+////Links//////////////////////////////////////////////////////////////////////////////////////////////
+    {portal:prev_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{segment_3}/february{/portal:prev_uri}
+    {portal:next_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{segment_3}/april{/portal:next_uri}
+*/
+{exp:channel:entries
+            channel="timeline_post"
+            disable="categories|pagination|category_fields"
+            start_on="{segment_3}-03-01 00:01"
+            stop_before="{segment_3}-03-31 23:59"
+            limit="250"
+            }
+        {if:elseif segment_4 == "april"}
+/*
+    {portal:current_message}Currently viewing April of {segment_3}.{/portal:current_message}
+    {portal:current_message_hover}Currently viewing April of {segment_3}.{/portal:current_message_hover}
+    {portal:menu_button}Explore{/portal:menu_button}
+    {portal:menu_button_hover}Open Menu{/portal:next_button_hover}
+    {portal:prev_button}Back to March of {segment_3}{/portal:prev_button}
+    {portal:prev_button_hover}View March of {segment_3}{/portal:prev_button_hover}
+    {portal:next_button}Forward to May of {segment_3}{/portal:next_button}
+    {portal:next_button_hover}View May of {segment_3}{/portal:next_button_hover}
+////Links//////////////////////////////////////////////////////////////////////////////////////////////
+    {portal:prev_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{segment_3}/march{/portal:prev_uri}
+    {portal:next_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{segment_3}/may{/portal:next_uri}
+*/
+{exp:channel:entries
+            channel="timeline_post"
+            disable="categories|pagination|category_fields"
+            start_on="{segment_3}-04-01 00:01"
+            stop_before="{segment_3}-04-30 23:59"
+            limit="250"
+            }
+        {if:elseif segment_4 == "may"}
+/*
+    {portal:current_message}Currently viewing May of {segment_3}.{/portal:current_message}
+    {portal:current_message_hover}Currently viewing May of {segment_3}.{/portal:current_message_hover}
+    {portal:menu_button}Explore{/portal:menu_button}
+    {portal:menu_button_hover}Open Menu{/portal:next_button_hover}
+    {portal:prev_button}Back to April of {segment_3}{/portal:prev_button}
+    {portal:prev_button_hover}View April of {segment_3}{/portal:prev_button_hover}
+    {portal:next_button}Forward to June of {segment_3}{/portal:next_button}
+    {portal:next_button_hover}View June of {segment_3}{/portal:next_button_hover}
+////Links//////////////////////////////////////////////////////////////////////////////////////////////
+    {portal:prev_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{segment_3}/april{/portal:prev_uri}
+    {portal:next_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{segment_3}/june{/portal:next_uri}
+*/
+{exp:channel:entries
+            channel="timeline_post"
+            disable="categories|pagination|category_fields"
+            start_on="{segment_3}-05-01 00:01"
+            stop_before="{segment_3}-05-31 23:59"
+            limit="250"
+            }
+        {if:elseif segment_4 == "june"}
+/*
+    {portal:current_message}Currently viewing June of {segment_3}.{/portal:current_message}
+    {portal:current_message_hover}Currently viewing June of {segment_3}.{/portal:current_message_hover}
+    {portal:menu_button}Explore{/portal:menu_button}
+    {portal:menu_button_hover}Open Menu{/portal:next_button_hover}
+    {portal:prev_button}Back to May of {segment_3}{/portal:prev_button}
+    {portal:prev_button_hover}View May of {segment_3}{/portal:prev_button_hover}
+    {portal:next_button}Forward to July of {segment_3}{/portal:next_button}
+    {portal:next_button_hover}View July of {segment_3}{/portal:next_button_hover}
+////Links//////////////////////////////////////////////////////////////////////////////////////////////
+    {portal:prev_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{segment_3}/may{/portal:prev_uri}
+    {portal:next_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{segment_3}/july{/portal:next_uri}
+*/
+{exp:channel:entries
+            channel="timeline_post"
+            disable="categories|pagination|category_fields"
+            start_on="{segment_3}-06-01 00:01"
+            stop_before="{segment_3}-06-30 23:59"
+            limit="250"
+            }
+        {if:elseif segment_4 == "july"}
+/*
+    {portal:current_message}Currently viewing July of {segment_3}.{/portal:current_message}
+    {portal:current_message_hover}Currently viewing July of {segment_3}.{/portal:current_message_hover}
+    {portal:menu_button}Explore{/portal:menu_button}
+    {portal:menu_button_hover}Open Menu{/portal:next_button_hover}
+    {portal:prev_button}Back to June of {segment_3}{/portal:prev_button}
+    {portal:prev_button_hover}View June of {segment_3}{/portal:prev_button_hover}
+    {portal:next_button}Forward to August of {segment_3}{/portal:next_button}
+    {portal:next_button_hover}View August of {segment_3}{/portal:next_button_hover}
+////Links//////////////////////////////////////////////////////////////////////////////////////////////
+    {portal:prev_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{segment_3}/june{/portal:prev_uri}
+    {portal:next_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{segment_3}/august{/portal:next_uri}
+*/
+{exp:channel:entries
+            channel="timeline_post"
+            disable="categories|pagination|category_fields"
+            start_on="{segment_3}-07-01 00:01"
+            stop_before="{segment_3}-07-31 23:59"
+            limit="250"
+            }
+        {if:elseif segment_4 == "august"}
+/*
+    {portal:current_message}Currently viewing August of {segment_3}.{/portal:current_message}
+    {portal:current_message_hover}Currently viewing August of {segment_3}.{/portal:current_message_hover}
+    {portal:menu_button}Explore{/portal:menu_button}
+    {portal:menu_button_hover}Open Menu{/portal:next_button_hover}
+    {portal:prev_button}Back to July of {segment_3}{/portal:prev_button}
+    {portal:prev_button_hover}View July of {segment_3}{/portal:prev_button_hover}
+    {portal:next_button}Forward to September of {segment_3}{/portal:next_button}
+    {portal:next_button_hover}View September of {segment_3}{/portal:next_button_hover}
+////Links//////////////////////////////////////////////////////////////////////////////////////////////
+    {portal:prev_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{segment_3}/july{/portal:prev_uri}
+    {portal:next_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{segment_3}/september{/portal:next_uri}
+*/
+{exp:channel:entries
+            channel="timeline_post"
+            disable="categories|pagination|category_fields"
+            start_on="{segment_3}-08-01 00:01"
+            stop_before="{segment_3}-08-31 23:59"
+            limit="250"
+            }
+        {if:elseif segment_4 == "september"}
+/*
+    {portal:current_message}Currently viewing September of {segment_3}.{/portal:current_message}
+    {portal:current_message_hover}Currently viewing September of {segment_3}.{/portal:current_message_hover}
+    {portal:menu_button}Explore{/portal:menu_button}
+    {portal:menu_button_hover}Open Menu{/portal:next_button_hover}
+    {portal:prev_button}Back to August of {segment_3}{/portal:prev_button}
+    {portal:prev_button_hover}View August of {segment_3}{/portal:prev_button_hover}
+    {portal:next_button}Forward to October of {segment_3}{/portal:next_button}
+    {portal:next_button_hover}View October of {segment_3}{/portal:next_button_hover}
+////Links//////////////////////////////////////////////////////////////////////////////////////////////
+    {portal:prev_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{segment_3}/august{/portal:prev_uri}
+    {portal:next_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{segment_3}/october{/portal:next_uri}
+*/
+{exp:channel:entries
+            channel="timeline_post"
+            disable="categories|pagination|category_fields"
+            start_on="{segment_3}-09-01 00:01"
+            stop_before="{segment_3}-09-30 23:59"
+            limit="250"
+            }
+        {if:elseif segment_4 == "october"}
+/*
+    {portal:current_message}Currently viewing October of {segment_3}.{/portal:current_message}
+    {portal:current_message_hover}Currently viewing October of {segment_3}.{/portal:current_message_hover}
+    {portal:menu_button}Explore{/portal:menu_button}
+    {portal:menu_button_hover}Open Menu{/portal:next_button_hover}
+    {portal:prev_button}Back to September of {segment_3}{/portal:prev_button}
+    {portal:prev_button_hover}View September of {segment_3}{/portal:prev_button_hover}
+    {portal:next_button}Forward to November of {segment_3}{/portal:next_button}
+    {portal:next_button_hover}View November of {segment_3}{/portal:next_button_hover}
+////Links//////////////////////////////////////////////////////////////////////////////////////////////
+    {portal:prev_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{segment_3}/september{/portal:prev_uri}
+    {portal:next_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{segment_3}/november{/portal:next_uri}
+*/
+{exp:channel:entries
+            channel="timeline_post"
+            disable="categories|pagination|category_fields"
+            start_on="{segment_3}-10-01 00:01"
+            stop_before="{segment_3}-10-31 23:59"
+            limit="250"
+            }
+        {if:elseif segment_4 == "november"}
+/*
+    {portal:current_message}Currently viewing November of {segment_3}.{/portal:current_message}
+    {portal:current_message_hover}Currently viewing November of {segment_3}.{/portal:current_message_hover}
+    {portal:menu_button}Explore{/portal:menu_button}
+    {portal:menu_button_hover}Open Menu{/portal:next_button_hover}
+    {portal:prev_button}Back to October of {segment_3}{/portal:prev_button}
+    {portal:prev_button_hover}View October of {segment_3}{/portal:prev_button_hover}
+    {portal:next_button}Forward to December of {segment_3}{/portal:next_button}
+    {portal:next_button_hover}View December of {segment_3}{/portal:next_button_hover}
+////Links//////////////////////////////////////////////////////////////////////////////////////////////
+    {portal:prev_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{segment_3}/october{/portal:prev_uri}
+    {portal:next_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{segment_3}/december{/portal:next_uri}
+*/
+{exp:channel:entries
+            channel="timeline_post"
+            disable="categories|pagination|category_fields"
+            start_on="{segment_3}-11-01 00:01"
+            stop_before="{segment_3}-11-30 23:59"
+            limit="250"
+            }
+        {if:elseif segment_4 == "december"}
+/*
+    {portal:current_message}Currently viewing December of {segment_3}.{/portal:current_message}
+    {portal:current_message_hover}Currently viewing December of {segment_3}.{/portal:current_message_hover}
+    {portal:menu_button}Explore{/portal:menu_button}
+    {portal:menu_button_hover}Open Menu{/portal:next_button_hover}
+    {portal:prev_button}Back to November of {segment_3}{/portal:prev_button}
+    {portal:prev_button_hover}View November of {segment_3}{/portal:prev_button_hover}
+    {portal:next_button}Forward to January of {next_year}{/portal:next_button}
+    {portal:next_button_hover}View January of {next_year}{/portal:next_button_hover}
+////Links//////////////////////////////////////////////////////////////////////////////////////////////
+    {portal:prev_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{segment_3}/november{/portal:prev_uri}
+    {portal:next_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/{next_year}/january{/portal:next_uri}
+*/
+{exp:channel:entries
+            channel="timeline_post"
+            disable="categories|pagination|category_fields"
+            start_on="{segment_3}-12-01 00:01"
+            stop_before="{segment_3}-12-30 23:59"
+            limit="250"
+            }
+        {if:elseif segment_3 == "last-week"}
+/*
+    {portal:current_message}Currently viewing the last week.{/portal:current_message}
+    {portal:current_message_hover}Currently viewing the last week.{/portal:current_message_hover}
+    {portal:menu_button}Explore{/portal:menu_button}
+    {portal:menu_button_hover}Open Menu{/portal:next_button_hover}
+    {portal:prev_button}View the previous month{/portal:prev_button}
+    {portal:prev_button_hover}View the previous month{/portal:prev_button_hover}
+    {portal:next_button}Explore{/portal:next_button}
+    {portal:next_button_hover}Open Menu{/portal:next_button_hover}
+////Links//////////////////////////////////////////////////////////////////////////////////////////////
+    {portal:prev_uri}#menu{/portal:prev_uri}
+    {portal:next_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/last-month{/portal:next_uri}
+*/
+{exp:channel:entries
+            channel="timeline_post"
+            disable="categories|pagination|category_fields"
+            start_on="-8 days"
+            limit="250"
+            }
+        {if:elseif segment_3 == "last-month"}
+/*
+    {portal:current_message}Currently viewing the last 30 days.{/portal:current_message}
+    {portal:current_message_hover}Currently viewing the last 30 days.{/portal:current_message_hover}
+    {portal:menu_button}Explore{/portal:menu_button}
+    {portal:menu_button_hover}Open Menu{/portal:next_button_hover}
+    {portal:prev_button}View the previous three months{/portal:prev_button}
+    {portal:prev_button_hover}View the previous three months{/portal:prev_button_hover}
+    {portal:next_button}Explore{/portal:next_button}
+    {portal:next_button_hover}Open Menu{/portal:next_button_hover}
+////Links//////////////////////////////////////////////////////////////////////////////////////////////
+    {portal:prev_uri}#menu{/portal:prev_uri}
+    {portal:next_uri}{site_url}/app/{if segment_2}{segment_2}{/if}{/portal:next_uri}
+*/
+{exp:channel:entries
+            channel="timeline_post"
+            disable="categories|pagination|category_fields"
+            start_on="-1 months"
+            limit="250"
+            }
+         {if:elseif segment_3 == "last-90"}
+/*
+    {portal:current_message}Currently displaying last 90 days.{/portal:current_message}
+    {portal:current_message_hover}Currently displaying last 90 days.{/portal:current_message_hover}
+    {portal:menu_button}Explore{/portal:menu_button}
+    {portal:menu_button_hover}Open Menu{/portal:next_button_hover}
+    {portal:prev_button}Load a specific season{/portal:prev_button}
+    {portal:prev_button_hover}Load by Season{/portal:prev_button_hover}
+    {portal:next_button}Load a specific month{/portal:next_button}
+    {portal:next_button_hover}Load by Month{/portal:next_button_hover}
+////Links//////////////////////////////////////////////////////////////////////////////////////////////
+    {portal:prev_uri}#menu{/portal:prev_uri}
+    {portal:next_uri}#menu{/portal:next_uri}
+*/
+{exp:channel:entries
+            channel="timeline_post"
+            disable="categories|pagination|category_fields"
+            start_on="-3 months"
+            limit="250"
+            }
+         {if:elseif segment_3 == "last-180"}
+/*
+    {portal:current_message}Currently displaying last 180 days.{/portal:current_message}
+    {portal:current_message_hover}Currently displaying last 180 days.{/portal:current_message_hover}
+    {portal:menu_button}Explore{/portal:menu_button}
+    {portal:menu_button_hover}Open Menu{/portal:next_button_hover}
+    {portal:prev_button}Load a specific season{/portal:prev_button}
+    {portal:prev_button_hover}Load by Season{/portal:prev_button_hover}
+    {portal:next_button}Load a specific month{/portal:next_button}
+    {portal:next_button_hover}Load by Month{/portal:next_button_hover}
+////Links//////////////////////////////////////////////////////////////////////////////////////////////
+    {portal:prev_uri}#menu{/portal:prev_uri}
+    {portal:next_uri}#menu{/portal:next_uri}
+*/
+{exp:channel:entries
+            channel="timeline_post"
+            disable="categories|pagination|category_fields"
+            start_on="-6 months"
+            limit="500"
+            }
+         {if:elseif segment_3 == "last-year"}
+/*
+    {portal:current_message}Currently displaying last 360 days.{/portal:current_message}
+    {portal:current_message_hover}Currently displaying last 360 days.{/portal:current_message_hover}
+    {portal:menu_button}Explore{/portal:menu_button}
+    {portal:menu_button_hover}Open Menu{/portal:next_button_hover}
+    {portal:prev_button}Load a specific season{/portal:prev_button}
+    {portal:prev_button_hover}Load by Season{/portal:prev_button_hover}
+    {portal:next_button}Load a specific month{/portal:next_button}
+    {portal:next_button_hover}Load by Month{/portal:next_button_hover}
+////Links//////////////////////////////////////////////////////////////////////////////////////////////
+    {portal:prev_uri}#menu{/portal:prev_uri}
+    {portal:next_uri}#menu{/portal:next_uri}
+*/
+{exp:channel:entries
+            channel="timeline_post"
+            disable="categories|pagination|category_fields"
+            start_on="-12 months"
+            limit="500"
+            }
+       {if:elseif segment_3 == "all"}
+/*
+    {portal:current_message}Currently viewing all timeline entries.{/portal:current_message}
+    {portal:current_message_hover}Currently viewing all timeline entries.{/portal:current_message_hover}
+    {portal:menu_button}Explore{/portal:menu_button}
+    {portal:menu_button_hover}Open Menu{/portal:next_button_hover}
+    {portal:prev_button}Select a timeline range{/portal:prev_button}
+    {portal:prev_button_hover}Select a timeline range{/portal:prev_button_hover}
+    {portal:next_button}Select a timeline range{/portal:next_button}
+    {portal:next_button_hover}Select a timeline range{/portal:next_button_hover}
+////Links//////////////////////////////////////////////////////////////////////////////////////////////
+    {portal:prev_uri}#menu{/portal:prev_uri}
+    {portal:next_uri}#menu{/portal:next_uri}
+*/
+{exp:channel:entries
+            channel="timeline_post"
+            disable="categories|pagination|category_fields"
+            limit="5000"
+            }
+        {if:else}
+/*
+    {portal:current_message}Currently displaying last 90 days.{/portal:current_message}
+    {portal:current_message_hover}Currently displaying last 90 days.{/portal:current_message_hover}
+    {portal:menu_button}Explore{/portal:menu_button}
+    {portal:menu_button_hover}Open Menu{/portal:next_button_hover}
+    {portal:prev_button}Load a specific season{/portal:prev_button}
+    {portal:prev_button_hover}Load by Season{/portal:prev_button_hover}
+    {portal:next_button}Back three months{/portal:next_button}
+    {portal:next_button_hover}Load by Month{/portal:next_button_hover}
+////Links//////////////////////////////////////////////////////////////////////////////////////////////
+    {portal:prev_uri}#menu{/portal:prev_uri}
+    {portal:next_uri}{site_url}/app/{if segment_2}{segment_2}{/if}/last-90{/portal:next_uri}
+*/
+{exp:channel:entries
+            channel="timeline_post"
+            disable="categories|pagination|category_fields"
+            start_on="-3 months"
+            limit="500"
+            }
+
+        {/if}
+    {/exp:ifelse}
+
+{
+	{portal:ci-gallery-string}{timeline_image_channel}"{image:filename}",{/timeline_image_channel}{/portal:ci-gallery-string}
+	entryid: '{entry_id}',
+  base_url:  '{site_url}',
+  {if timeline_entry_type =="message"}type:      'blog_post',{/if}
+	{if timeline_entry_type =="blog_post"}type:      'blog_post',{/if}
+	{if timeline_entry_type =="photo"}type:      'photo',{/if}
+	{if timeline_entry_type =="gallery" }
+		{if timeline_image_sources !="Use Image Channel"}type:       'gallery',{/if}
+		{if timeline_image_sources =="Use Image Channel"}type:      'ci_gallery',{/if}
+	{/if}
+	{if timeline_entry_type =="slider"}type:      'slider',{/if}
+	{if timeline_entry_type =="video"}type:      'video',{/if}
+	{if timeline_entry_type =="audio"}type:      'audio',{/if}
+  {if timeline_entry_type =="vimeo"}type:      'iframe',{/if}
+  {if timeline_entry_type =="youtube"}type:      'iframe',{/if}
+  {if timeline_entry_type =="website"}type:      'iframe',{/if}
+  {if timeline_entry_type =="iframe"}type:      'iframe',{/if}
+  milestone: '{timeline_milestone}',
+	anchorhref:'{url_title}',
+  date:      "{timeline_entry_date format='%Y-%m-%d'}",
+	comment_count:  '{timeline_comments:total_rows search:image="not IS_EMPTY"}',
+  {if timeline_entry_type !="slider"}
+  title:     "<span style='font-size:{timeline_entry_title_font_size}px;color:#{timeline_entry_title_color};'>{timeline_entry_title}<\/span><br><span class='subtitle' style='font-size:{timeline_entry_subtitle_fontsize}px;color:#{timeline_entry_subtitle_color};'>{timeline_entry_subtitle}<\/span>",{/if}
+
+  {if timeline_entry_copy !=""}content:  "{timeline_entry_copy}",{/if}
+  {if timeline_entry_height !=""}height:   {timeline_entry_height},{/if}
+  {if timeline_entry_type =="blog_post"}images: ['{timeline_image_01}{file_name}{/timeline_image_01}'],{/if}
+	{if timeline_entry_type =="photo"}images: [ {timeline_image_channel}'{image:filename}'{/timeline_image_channel} ],{/if}
+	{if timeline_entry_type =="gallery" }
+	{if timeline_image_sources !="Use Image Channel"}images: [ "{timeline_image_01}{file_name}{/timeline_image_01}"{if timeline_image_02 !=""}, "{timeline_image_02}{file_name}{/timeline_image_02}"{/if}{if timeline_image_03 !=""}, "{timeline_image_03}{file_name}{/timeline_image_03}"{/if}{if timeline_image_04 !=""}, "{timeline_image_04}{file_name}{/timeline_image_04}"{/if}{if timeline_image_05 !=""}, "{timeline_image_05}{file_name}{/timeline_image_05}"{/if}{if timeline_image_06 !=""}, "{timeline_image_06}{file_name}{/timeline_image_06}"{/if}{if timeline_image_07 !=""}, "{timeline_image_07}{file_name}{/timeline_image_07}"{/if}{if timeline_image_08 !=""}, "{timeline_image_08}{file_name}{/timeline_image_08}"{/if}{if timeline_image_09 !=""}, "{timeline_image_09}{file_name}{/timeline_image_09}"{/if}{if timeline_image_10 !=""}, "{timeline_image_10}{file_name}{/timeline_image_10}"{/if}{if timeline_entry_type =="gallery"}]{/if}{/if}
+  {if timeline_entry_type =="slider"}images: [ "{timeline_image_01}{file_name}{/timeline_image_01}"{if timeline_image_02 !=""}, "{timeline_image_02}{file_name}{/timeline_image_02}"{/if}{if timeline_image_03 !=""}, "{timeline_image_03}{file_name}{/timeline_image_03}"{/if}{if timeline_image_04 !=""}, "{timeline_image_04}{file_name}{/timeline_image_04}"{/if}{if timeline_image_05 !=""}, "{timeline_image_05}{file_name}{/timeline_image_05}"{/if}{if timeline_image_06 !=""}, "{timeline_image_06}{file_name}{/timeline_image_06}"{/if}{if timeline_image_07 !=""}, "{timeline_image_07}{file_name}{/timeline_image_07}"{/if}{if timeline_image_08 !=""}, "{timeline_image_08}{file_name}{/timeline_image_08}"{/if}{if timeline_image_09 !=""}, "{timeline_image_09}{file_name}{/timeline_image_09}"{/if}{if timeline_image_10 !=""}, "{timeline_image_10}{file_name}{/timeline_image_10}"{/if}{if timeline_entry_type =="slider"}],{/if}{/if}
+	{if timeline_image_sources =="Use Image Channel"}images: [ {timeline_image_channel}"{image:filename}",{/timeline_image_channel} ]{/if}
+    {/if}
+    {if timeline_entry_type =="slider"}speed:{timeline_slider_speed}{/if}
+    /*{if timeline_entry_type =="blog_post" }readmore: "{timeline_read_more_link}"{/if}*/
+	{if timeline_entry_type =="iframe" }url: "{timeline_iframe_url}"{/if}
+  {if timeline_entry_type =="website" }url: "{timeline_website_url}"{/if}
+	{if timeline_entry_type =="vimeo" }url: "https://player.vimeo.com/video/{timeline_vimeo_video}?title=0&byline=0&portrait=0"{/if}
+	{if timeline_entry_type =="youtube" }url: "http://www.youtube.com/embed/{timeline_youtube_video}?wmode=opaque"{/if}
+  {if timeline_entry_type =="video" }url: '<video controls  poster="{timeline_video_jpg}" style="width:100%"><source src="{timeline_video_mp4}" /><source src="{timeline_video_webm}" /><source src="{timeline_video_ogg}" type="video/ogg" /></video>'{/if}
+	{if timeline_entry_type =="audio" }url: '<audio controls   style="width:100%"><source src="{timeline_audio_mp3}" type="audio/mpeg"><source src="{timeline_audio_ogg}" type="audio/ogg">Your browser does not support the audio element.</audio>'{/if}
+    /*{if timeline_entry_type =="video" }mp4v: "{timeline_video_mp4}"{/if}
+    {if timeline_entry_type =="video" }webm: "{timeline_video_webm}"{/if}
+    {if timeline_entry_type =="video" }oggv: "{timeline_video_ogg}"{/if}
+    {if timeline_entry_type =="video" }jpeg: "{timeline_video_jpg}"{/if}
+	*/
+    },
+    {/if}
+
+    {/exp:channel:entries}
+
+                ];
+
+
+    {if segment_1 =="entry"}
+
+                var timeline = new Timeline($("#timeline"), timeline_data);
+                timeline.setOptions({
+                    animation:        true,
+                    lightbox:         true,
+                    separator:        "month",
+                    columnMode:       "single",
+                    //max:             20,
+                    //loadmore:        20,
+
+                    order:          "desc",
+                    /*order:    "{last_segment}",*/
+                    responsive_width: 4000
+                });
+                timeline.display();
+            });
+    {/if}
+
+    {if segment_1 =="app"}
+
+                var timeline = new Timeline($('#timeline'), timeline_data);
+                timeline.setOptions({
+                    animation:        true,
+                    lightbox:         true,
+                    separator:        "month",
+                    columnMode:       "dual",
+                    //max:             20,
+                    //loadmore:        20,
+
+                    {exp:ifelse parse="inward"}
+                        {if last_segment == 'desc'}
+                            order:          "desc",
+                        {if:elseif last_segment == 'asc'}
+                            order:                 "asc",
+                        {if:else}
+                            order:          "desc",
+                        {/if}
+                    {/exp:ifelse}
+                    /*order:    "{last_segment}",*/
+                    responsive_width: 700
+                });
+                timeline.display();
+            });
+    {/if}
+
+
+    </script>
+
+    <!--Include jQuery.mmenu .css files-->
+    <link href="{site_url}/timeline/mMenu/css/jquery.mmenu.all.css" rel="stylesheet" type="text/css">
+    <link href="{site_url}/timeline/mMenu/css/app-menu.css" rel="stylesheet" type="text/css">
+    <link href="{site_url}/timeline/mMenu/css/app-menu-custom.css" rel="stylesheet" type="text/css">
+
+    <!--jQuery.mmenu .js files-->
+    <script src="{site_url}/timeline/mMenu/js/jquery.mmenu.all.js" type="text/javascript"></script>
+    <script src="{site_url}/timeline/mMenu/js/addons/jquery.mmenu.toggles.js" type="text/javascript"></script>
+
+    <!--Fire the jQuery scripts onWindowLoad-->
+    <script>
+		$(window).load(function() {
+		  // CSS set to display none below in style tag
+		  $("div.timeline_status_bar").delay( 2000).fadeIn(500);
+		  $("div.footer_status_bar").delay( 2000).fadeIn(500);
+		});
+		</script>
+
+    <!--Fire the jQuery mMenu plugin onDocumentReady-->
+    <script>
+    $(document).ready(function() {
+            $("#menu").mmenu({
+               "classes": "mm-white",
+               "counters": false,
+               "footer": {
+                  "add": true,
+                  "title": "{site_name}"
+               },
+               "searchfield": true
+            });
+            $("#toggle_milestones").click(function(){
+                $(this).toggleFunctionTwo();
+                /*alert('toggle_asc-desc clicked!');*/
+            });
+            $("#toggle_asc-desc").click(function(){
+                $(this).toggleFunctionOne();
+                /*alert('toggle_asc-desc clicked!');*/
+            });
+            /*$("#mm-17").click(function(){
+                alert('function toggleTags(); needs localStorage[KEY]');
+            });*/
+
+
+            /*check the state of toggles, if none assign defaults*/
+            jQuery(function(){
+            if (localStorage.getItem("a-dToggler") == "desc") {
+                {exp:ifelse parse="inward"}
+                      {if segment_2 =='desc'}
+                          $("#toggle_asc-desc").prop('checked', false);/*Sort Descending*/
+                      {if:elseif segment_2 =='asc'}
+                          $("#toggle_asc-desc").prop('checked', false),/*Sort Descending*/
+                          window.location.href = "{site_url}/{segment_1}/desc/";
+                      {if:else}
+                          $("#toggle_asc-desc").prop('checked', false),/*Sort Descending*/
+                          window.location.href = "{site_url}/{segment_1}/desc/";
+                      {/if}
+                {/exp:ifelse}
+            } else if (localStorage.getItem("a-dToggler") == "asc") {
+                {exp:ifelse parse="inward"}
+                      {if segment_2 =='asc'}
+                          $("#toggle_asc-desc").prop('checked', true);/*Sort Ascending*/
+                      {if:elseif segment_2 =='desc'}
+                          $("#toggle_asc-desc").prop('checked', true),/*Sort Ascending*/
+                          window.location.href = "{site_url}/{segment_1}/asc/";
+                      {if:else}
+                          $("#toggle_asc-desc").prop('checked', true),/*Sort Ascending*/
+                          window.location.href = "{site_url}/{segment_1}/asc/";
+                      {/if}
+                {/exp:ifelse}
+            } else {localStorage.setItem("a-dToggler", "desc");/*Sort Descending Default*/
+                          {if segment_2 !='desc' || no_results}
+                              window.location.href = "{site_url}/{segment_1}/desc/";
+                          {/if}
+            }
+
+
+
+            if (localStorage.getItem("m-aToggler") == "all") {
+                    $("#toggle_milestones").prop('checked', false),/*Show All*/
+                    $(".milestone_toggle-").css( "display", "block" );
+                    /*$('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', '{site_url}/timeline/css/reload_milestones_only.css') );*/
+            } else if (localStorage.getItem("m-aToggler") == "milestones") {
+                    $("#toggle_milestones").prop('checked', true),/*Show Milestones Only*/
+                    $(".milestone_toggle-").css( "display", "none" );
+                    /*$('head').append( $('<link rel="stylesheet" type="text/css" />').attr('href', '{site_url}/timeline/css/reload_alltimeline_post.css') );*/
+            } else {localStorage.setItem("m-aToggler", "all");/*Show All Default*/
+                }
+            });
+
+            /*toggle toggle_asc-desc function*/
+            $.fn.toggleFunctionOne = function() {
+            if (localStorage.getItem("a-dToggler") == "asc") {
+                    $("#toggle_asc-desc").prop('checked', false),
+                          {if segment_2 !='desc'}
+                              window.location.href = "{site_url}/{segment_1}/desc/",
+                          {/if}
+                    localStorage.setItem("a-dToggler", "desc");/*Sort Descending*/
+            } else if (localStorage.getItem("a-dToggler") == "desc") {
+                    $("#toggle_asc-desc").prop('checked', true),
+                          {if segment_2 !='asc'}
+                              window.location.href = "{site_url}/{segment_1}/asc/",
+                          {/if}
+                    localStorage.setItem("a-dToggler", "asc");/*Sort Ascending*/
+            } else {localStorage.setItem("a-dToggler", "desc"),/*Sort Descending Default*/
+                          {if segment_2 !='desc'}
+                              window.location.href = "{site_url}/{segment_1}/desc/",
+                          {/if}
+                    $("#toggle_asc-desc").prop('checked', false);
+                }
+            }
+
+            /*toggle toggle_milestones function*/
+            $.fn.toggleFunctionTwo = function() {
+            if (localStorage.getItem("m-aToggler") == "milestones") {
+                    $("#toggle_milestones").prop('checked', false),
+                    $(".milestone_toggle-").css( "display", "block" ),
+                    localStorage.setItem("m-aToggler", "all");/*Show All*/
+            } else if (localStorage.getItem("m-aToggler") == "all") {
+                    $("#toggle_milestones").prop('checked', true),
+                    $(".milestone_toggle-").css( "display", "none" ),
+                    localStorage.setItem("m-aToggler", "milestones");/*Show Milestones Only*/
+            } else {localStorage.setItem("m-aToggler", "all"),
+                    $(".milestone_toggle-").css( "display", "block" ),
+                    $("#toggle_milestones").prop('checked', false); /*Show All*/
+
+                }
+            }
+
+      /*toggle mm-17 function*/
+      /*$.fn.toggleFunctionThree = function() {
+      if (localStorage.getItem("m-aToggler") == "milestones") {
+              $("#mm-17").prop('checked', false),
+              $(".milestone_toggle-").css( "display", "block" ),
+              localStorage.setItem("m-aToggler", "all");
+      } else if (localStorage.getItem("m-aToggler") == "all") {
+              $("#mm-17").prop('checked', true),
+              $(".milestone_toggle-").css( "display", "none" ),
+              localStorage.setItem("m-aToggler", "milestones");
+      } else {localStorage.setItem("m-aToggler", "all"),
+              $(".milestone_toggle-").css( "display", "block" ),
+              $("#mm-17").prop('checked', false);
+
+          }
+      }	*/
+
+	  /*TEST BUTTON FUNCTION CALL*/
+     /*$.fn.triggerTestFunction = function() {
+        alert('triggered');
+     }*/
+    });
+    </script>
+
+    <!--appMode-->
+    <link href="{site_url}/timeline/css/appMode.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="{site_url}/timeline/libs/appMode.js"></script>
+
+    <style>
+    video.lazy-hidden {
+    opacity:1;
+    }
+    </style>
+
+<!--CUSTOM STYLES from EE2 Timeline CSS Channel Fields  -->
+    {exp:channel:entries channel="timeline_styles" disable="categories|pagination" limit="1"}
+    <style type="text/css">
+
+    body {
+    {if css_window_color !="FFFFFF"}background-color: #{css_window_color};{/if}
+    /*CSS Background Image*/
+    {if css_background_image !=""}background-image: url('{css_background_image}');{/if}
+    /*CSS Background Tile Settings*/
+    {if css_background_tile_settings =="Tile X, Tile Y"}background-repeat: repeat;{/if}
+    {if css_background_tile_settings =="Tile X"}background-repeat: repeat-x;{/if}
+    {if css_background_tile_settings =="Tile Y"}background-repeat: repeat-y;{/if}
+    }
+
+    /*jQuery will fade these elements in onWindowLoad *now inline style*/
+    div.timeline_status_bar, div.footer_status_bar {
+		  display: none;
+		}
+
+
+    /* CSS Window Color Related */
+    {if css_window_color !="FFFFFF"}
+    /* Spine */
+    div.timeline div.spine {
+    background-color: #{css_window_color};
+    }
+    /* Entry Windows */
+    div.timeline_element_box {
+    background-color: #{css_window_color};
+    }
+    div.timeline_left div.timeline_element:before {
+    border-left: 10px solid #{css_window_color};
+    }
+    div.timeline_dual div.timeline_element_left:before {
+    border-left: 10px solid #{css_window_color};
+    }
+    div.timeline_right div.timeline_element:before {
+    border-right: 10px solid #{css_window_color};
+    }
+    div.timeline_dual div.timeline_element_right:before {
+    border-right: 10px solid #{css_window_color};
+    }
+    div.timeline_left div.timeline_element:after,
+    div.timeline_right div.timeline_element:after,
+    div.timeline_dual div.timeline_element_left:after,
+    div.timeline_dual div.timeline_element_right:after {
+    border: 6px solid #{css_window_color};
+    }
+    {/if}
+
+    /*CSS Custom Box Radius*/
+    {if css_custom_box_radius !=""}
+    div.timeline_element_box {
+    -webkit-border-radius: {css_custom_box_radius}px;
+    -moz-border-radius: {css_custom_box_radius}px;
+    border-radius: {css_custom_box_radius}px;
+    }
+    {/if}
+
+    /*CSS Custom Box Shadow*/
+    {if css_box_shadow_color !="FFFFFF"}
+    div.timeline_element_box {
+    box-shadow: 1px 2px 4px #{css_box_shadow_color};
+
+    }
+    {/if}
+
+    /*CSS Date Display Color*/
+    {if css_date_display_color !="FFFFFF"}
+    div.timeline_title span.timeline_title_date {
+    color: #{css_date_display_color};
+    }
+    {/if}
+
+    /*CSS Default Title Color*/
+    {if css_default_title_color !="FFFFFF"}
+    div.timeline_title span.timeline_title_label {
+    color: #{css_default_title_color};
+    }
+    {/if}
+
+    /*CSS Default Sub-Title Color*/
+    {if css_default_sub_title_color !="FFFFFF"}
+    span.subtitle {
+    color: #{css_default_sub_title_color};
+    }
+    {/if}
+
+
+    /*CSS Month Delimiter Color (Inner)*/
+    {if css_month_delimiter_color_inner !="FFFFFF"}
+    div.timeline_left div.timeline_element:after,
+    div.timeline_right div.timeline_element:after,
+    div.timeline_dual div.timeline_element_left:hover:after,
+    div.timeline_dual div.timeline_element_right:hover:after {
+    background-color: #{css_month_delimiter_color_inner};
+    }
+
+    div.timeline div.date_separator span {
+    background-color: #{css_month_delimiter_color_inner};
+    }
+    {/if}
+
+    /*CSS Month Delimiter Color (Outer)*/
+    {if css_month_delimiter_color_outer !="FFFFFF"}
+    div.timeline_left div.timeline_element:after,
+    div.timeline_right div.timeline_element:after,
+    div.timeline_dual div.timeline_element_left:hover:after,
+    div.timeline_dual div.timeline_element_right:hover:after {
+    border: 4px solid #{css_month_delimiter_color_outer};
+    }
+
+    div.timeline div.date_separator span {
+    border: 14px solid #{css_month_delimiter_color_outer};
+    }
+    {/if}
+
+    /*  CSS Month Delimiter Color (Text)*/
+    {if css_month_delimiter_color_text !="FFFFFF"}
+    div.timeline div.date_separator span {
+    color: #{css_month_delimiter_color_text};
+    }
+    {/if}
+
+    /*CSS Text Copy Color*/
+    {if css_text_copy_color !="FFFFFF"}
+    div.timeline_element.blog_post div.content {
+    color:#{css_text_copy_color};
+    }
+    {/if}
+
+    /*CSS Text Copy Link Idle Color*/
+    {if css_text_copy_link_idle_color !="FFFFFF"}
+    div.timeline_element.blog_post div.content a{
+    color:#{css_text_copy_link_idle_color};
+    }
+    {/if}
+
+    /*CSS Text Copy Link Hover Color*/
+    {if css_text_copy_link_hover_color !="FFFFFF"}
+    div.timeline_element.blog_post div.content a:hover{
+    color:#{css_text_copy_link_hover_color};
+    }
+    {/if}
+
+
+    /* Scroll Bar Background*/
+    {if css_scrollbar_background_color !="FFFFFF"}
+    div.timeline_element ::-webkit-scrollbar {  /* Webkit only */
+    background-color: #{css_scrollbar_background_color};
+    }
+    {/if}
+
+    /* Scroll Bar Handle*/
+    {if css_scrollbar_handle_color !="FFFFFF"}
+    div.timeline_element ::-webkit-scrollbar-thumb {
+    background-color: #{css_scrollbar_handle_color};
+    }
+    {/if}
+
+    /* Scroll Bar Hover or Active*/
+    {if css_scrollbar_active_color !="FFFFFF"}
+    div.timeline_element ::-webkit-scrollbar-thumb:hover {
+    background-color: #{css_scrollbar_active_color};
+    }
+    {/if}
+
+    /*CSS Text Copy Font*/
+    {if css_text_copy_font !=""}
+    div.timeline_element.blog_post div.content {
+    font-family: {css_text_copy_font};
+    }
+    {/if}
+
+    /*CSS Month Delimiter Font*/
+    {if css_month_delimiter_font !=""}
+    div.timeline div.date_separator span {
+    font-family: {css_month_delimiter_font};
+    }
+    {/if}
+
+
+    /*Milestone CSS Changes*/
+    {if css_milestone_background !="FFFFFF"}
+    div.timeline_element_box.milestone_toggle-milestone{
+    background-color: #{css_milestone_background};
+    }
+
+    div.timeline_element_box.milestone_toggle-milestone{
+    background-color: #{css_milestone_background};
+    border: 3px solid #{css_milestone_background};
+    }
+
+    div.timeline_element.milestone_toggle-milestone.blog_post span.milestone_flag,
+    div.timeline_element.milestone_toggle-milestone.slider span.milestone_flag,
+    div.timeline_element.milestone_toggle-milestone.gallery span.milestone_flag,
+    div.timeline_element.milestone_toggle-milestone.video span.milestone_flag,
+    div.timeline_element.milestone_toggle-milestone.iframe span.milestone_flag{
+    color: #{css_window_color};
+    }
+
+    div.timeline_element.milestone_toggle-milestone.blog_post span.milestone_title,
+    div.timeline_element.milestone_toggle-milestone.slider span.milestone_title,
+    div.timeline_element.milestone_toggle-milestone.gallery span.milestone_title,
+    div.timeline_element.milestone_toggle-milestone.video span.milestone_title,
+    div.timeline_element.milestone_toggle-milestone.iframe span.milestone_title{
+    color: #{css_window_color};
+    }
+
+    div.timeline_dual div.timeline_element_right.milestone_toggle-milestone:before {
+    border-right: 10px solid #{css_milestone_background};
+    }
+
+    div.timeline_dual div.timeline_element_left.milestone_toggle-milestone:before {
+    border-left: 10px solid #{css_milestone_background};
+    }
+
+    div.timeline_dual div.timeline_element_left.milestone_toggle-milestone:hover:after, div.timeline_dual div.timeline_element_right.milestone_toggle-milestone:hover:after {
+    z-index: 100;
+    background-color: #{css_window_color};
+    border: 6px solid #{css_milestone_background};
+    }
+
+    div.timeline_dual div.timeline_element_left.milestone_toggle-milestone:after{
+    background-color: #fff;
+    border: 8px solid #{css_milestone_background};
+    }
+
+    div.timeline_dual div.timeline_element_right.milestone_toggle-milestone:after {
+    background-color: #fff;
+    border: 8px solid #{css_milestone_background};
+    }
+
+	div.timeline_loadmore {
+	  font-size: 12px;
+	  font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+	  font-family: "proxima-nova",sans-serif;
+	  cursor: pointer;
+	  margin: 10px auto;
+	  width: 100%;
+	  background: #{css_milestone_background};
+	  text-align: center;
+	  padding: 10px 0px;
+	  border-radius: 4px;
+	  text-decoration: none;
+	  color: #FFFFFF;
+	  /*fade*/
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+/* ...and now for the proper property */
+    transition:.2s;
+
+   }
+	div.timeline_loadmore:hover {
+	background: #8c62e6;
+	  /*fade*/
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+/* ...and now for the proper property */
+    transition:.2s;
+   }
+
+    {/if}
+
+    {if css_milestone_content_copy !="FFFFFF"}
+    /*Milestone CSS Changes*/
+
+    div.timeline_element_box.milestone_toggle-milestone{
+    color: #{css_milestone_content_copy};
+    }
+
+
+    /*style milestone flag copy if flagged*/
+    div.timeline_element.milestone_toggle-milestone.blog_post div.content,
+    div.timeline_element.milestone_toggle-milestone.slider div.content,
+    div.timeline_element.milestone_toggle-milestone.gallery div.content,
+    div.timeline_element.milestone_toggle-milestone.video div.content,
+    div.timeline_element.milestone_toggle-milestone.iframe div.content{
+
+    color: #{css_milestone_content_copy};
+    }
+    {/if}
+
+    /*Custom Images*/
+    {if custom_images_enable =="Enable"}
+    @media (min-width: 835px) {
+    .header_container_desktop{
+    display:none;
+    }
+    .header_container_mobile{
+    display:none;
+    }
+    }
+    @media (max-width: 834px) {
+    .header_container_desktop{
+    display:none;
+    }
+    .header_container_mobile{
+    display:none;
+    }
+    }
+
+
+    @media (min-width: 835px) {
+    .footer_container_desktop{
+    display:none;
+    }
+    .footer_container_mobile{
+    display:none;
+    }
+    }
+    @media (max-width: 834px) {
+    .footer_container_desktop{
+    display:none;
+    }
+    .footer_container_mobile{
+    display:none;
+    }
+    }
+    {/if}
+
+    {/exp:channel:entries}
+
+    </style>
+
+</head>
+<body>
+
+    <div class="app-header">
+        <a href="#menu" id="hamburger"><span></a>
+        <!--<span class="header-delimiter"></span><span class="header-pagetitle"></a></span>-->
+    </div>
+
+    <!--Header Render-->
+    {embed="embeds/include_header"}
+
+    <!--Timeline Status Bar-->
+    <div class="timeline_status_bar" style="display: none;"><!--jQuery will fade these elements in onWindowLoad-->
+        <a href="#menu" title="See More" style="text-decoration:none"><div class="timeline_loadmore">{menu_button}</div></a>
+        <div class="timeline_current_display">{current_message}</div>
+
+
+
+
+        <div class="footer_current_display"><!--IMAGE LIST{exp:channel:entries channel="timeline_post" disable="categories|pagination|category_fields" }{timeline_image_channel}"{image:filename}",{/timeline_image_channel}{exp:channel_images:images entry_id="{entry_id}" orderby="image:id" sort="asc"}"{image:filename}",{/exp:channel_images:images}{/exp:channel:entries}--></div>
+
+    </div>
+
+    <!--Timeline Render-->
+    <div id="timeline" style="max-width:800px;margin:auto;">
+
+    </div>
+
+    <!--Footer Render-->
+    <div id="footer">
+        {exp:channel:entries channel="timeline_styles" disable="categories|pagination" limit="1"}
+
+        <div class="footer_container_desktop_custom"><img data-src="{custom_footer_desktop}" width="100%"></div>
+        <div class="footer_container_mobile_custom"><img data-src="{custom_footer_mobile}" width="100%"></div>
+        {/exp:channel:entries}
+
+    <!--Footer Status Bar-->
+           <div class="footer_status_bar" style="display: none;"><!--jQuery will fade these elements in onWindowLoad-->
+                <a href="{next_uri}" title="Load Next" style="text-decoration:none"><div class="footer_loadnext">{next_button}</div></a>
+                <a href="{prev_uri}" title="Load Previous" style="text-decoration:none"><div class="footer_loadprev">{prev_button}</div></a>
+                <div class="footer_current_display">{current_message}</div>
+
+           </div>
+        <div class="footer_container_desktop"><img data-src="{site_url}/timeline/images/standard/footer.png" width="100%"></div>
+        <div class="footer_container_mobile"><img data-src="{site_url}/timeline/images/standard/footer700W.png" width="100%"></div>
+
+    </div>
+
+    <!--Download App Video-->
+    <!--<div id="download">
+        <div class="download_container_desktop"><a href="{site_url}/video/index.html" rel="shadowbox:;height=720;width=1280"><img src="{site_url}/timeline/images/standard/download.png" width="100%" alt=""></a></div>
+        <div class="download_container_mobile"><a href="{site_url}/video/index.html" rel="shadowbox:;height=720;width=1280"><img src="{site_url}/timeline/images/standard/download700W.png" width="100%" alt=""></a></div>
+        </div>-->
+
+    <!--Download App Instructions Fixed Size-->
+    <!--<div id="download">
+        <div class="download_container_desktop"><a href="{site_url}/timeline/images/addToHomeScreen.jpg" rel="shadowbox:;width=1866;height=3300"><img src="{site_url}/timeline/images/standard/download.png" width="100%" alt=""></a></div>
+        <div class="download_container_mobile"><a href="{site_url}/timeline/images/addToHomeScreen.jpg" rel="shadowbox:;width=1866;height=3300"><img src="{site_url}/timeline/images/standard/download700W.png" width="100%" alt=""></a></div>
+        </div>-->
+
+
+    <!--Download App Instructions-->
+    <!--<div id="download">
+        <div class="download_container_desktop">
+            <a href="{site_url}/annika-app"><img alt="" data-src="{site_url}/timeline/images/standard/download.png" width="100%"></a>
+        </div>
+
+        <div class="download_container_mobile">
+            <a href="{site_url}/annika-app"><img alt="" data-src="{site_url}/timeline/images/standard/download700W.png" width="100%"></a>
+        </div>
+    </div>-->
+
+    <!--Rollover Audio-->
+    <!--<audio id="sound-ro">
+    <source src="{site_url}/audio/SquirlRollOver.mp3">
+    <source src="{site_url}/audio/SquirlRollOver.ogg">Your browser isn't invited for super fun audio time.</audio>
+
+    <audio id="sound-cl">
+    <source src="{site_url}/audio/SquirlClick.mp3">
+    <source src="{site_url}/audio/SquirlClick.ogg">Your browser isn't invited for super fun audio time.</audio>
+
+
+	<script>
+    $("#footer").mouseenter(function () {
+    $('#sound-ro').get(0).play();
+    });
+    $("#footer").click(function () {
+    $('#sound-cl').get(0).play();
+    })
+    </script>-->
+    <!-- END CONTENT -->
+
+    <script src="{site_url}/timeline/timeline_videos/html5ext.js" type="text/javascript"></script>
+
+    <!-- Include Footer-->
+
+    <!-- App Mode Home Screen Prompt-->
+    <!--<div id="appModeNote">
+        <div id="appModeIcon">
+            <a href="{site_url}/docs"><img alt="" height="72" data-src="{site_url}/timeline/images/standard/familyapp-icon.png" width="118"></a>
+        </div>
+
+        <div id="appModeCopy">
+            <b>Save this Web Application</b> <span class="appModeMessage">Click the family app icon at the<br>
+            bottom of this page for instructions.</span>
+        </div>
+    </div>-->
+
+
+    <!-- load jQuery mMenu =====================================================================================================-->
+    <nav id="menu">
+         <ul>
+            <!-- Application Home ==============================================================================================-->
+            <li><a href="{site_url}/app/desc/" title="Application Home"><i class="fa fa-sitemap fa-menu-conform"></i>&nbsp;&nbsp;&nbsp;Application Home</a></li>
+			<!-- Post an Entry ==============================================================================================-->
+            <li><a href="{site_url}/submit/" title="Load Last Week"><i class="fa fa-upload fa-menu-conform"></i>&nbsp;&nbsp;&nbsp;Post an Entry</a></li>
+            <!-- Load Last Week ==============================================================================================-->
+            <li><a href="{site_url}/app/{if segment_2}{segment_2}{/if}/last-week" title="Load Last Week"><i class="fa fa-table fa-menu-conform"></i>&nbsp;&nbsp;&nbsp;What happened last week?</a></li>
+            <!-- Load Last Week ==============================================================================================-->
+            <li><a href="{site_url}/app/{if segment_2}{segment_2}{/if}/last-month" title="Load Last 30 Days"><i class="fa fa-calendar-o fa-menu-conform"></i>&nbsp;&nbsp;&nbsp;Load the Last 30 Days</a></li>
+            <!-- Height and Weight Charts ==============================================================================================-->
+            <li><a href="{site_url}/app/{if segment_2}{segment_2}{/if}/last-90" title="Load Last 90 Days"><i class="fa fa-calendar-o fa-menu-conform"></i>&nbsp;&nbsp;&nbsp;Load the Last 90 Days</a></li>
+            <!-- Height and Weight Charts ==============================================================================================-->
+            <li><a href="{site_url}/app/{if segment_2}{segment_2}{/if}/last-180" title="Load Last 180 Days"><i class="fa fa-calendar-o fa-menu-conform"></i>&nbsp;&nbsp;&nbsp;Load the Last 180 Days</a></li>
+            <!-- Height and Weight Charts ==============================================================================================-->
+            {exp:channel:entries  channel="our_child" disable="categories|pagination|category_fields" limit="1"}
+            <li><a href="{site_url}/charts/" title="Height & Weight Charts"><i class="fa fa-area-chart fa-menu-conform"></i>&nbsp;&nbsp;&nbsp;{child_first_name}'s Growth</a></li>
+            {/exp:channel:entries}
+            <!-- Load by Month =================================================================================================-->
+            <li><span title="Filter"><i class="fa fa-calendar fa-menu-conform"></i>&nbsp;&nbsp;&nbsp;Load by Month</span>
+                  <ul>
+                      <li class="nocounter"><span class="menu-subopening-span"><i class="fa fa-calendar fa-menu-conform"></i>&nbsp;&nbsp;&nbsp;2017</span>
+                            <ul>
+                                <li><a href="{site_url}/app/{segment_2}/2017/january" title="January"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;January</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2017/february" title="February"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;February</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2017/march" title="March"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;March</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2017/april" title="April"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;April</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2017/may" title="May"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;May</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2017/june" title="June"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;June</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2017/july" title="July"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;July</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2017/august" title="August"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;August</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2017/september" title="September"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;September</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2017/october" title="October"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;October</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2017/november" title="November"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;November</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2017/december" title="December"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;December</a></li>
+                            </ul>
+                      </li>
+                      <li class="nocounter"><span class="menu-subopening-span"><i class="fa fa-calendar fa-menu-conform"></i>&nbsp;&nbsp;&nbsp;2016</span>
+                            <ul>
+                                <li><a href="{site_url}/app/{segment_2}/2016/january" title="January"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;January</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2016/february" title="February"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;February</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2016/march" title="March"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;March</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2016/april" title="April"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;April</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2016/may" title="May"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;May</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2016/june" title="June"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;June</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2016/july" title="July"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;July</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2016/august" title="August"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;August</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2016/september" title="September"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;September</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2016/october" title="October"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;October</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2016/november" title="November"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;November</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2016/december" title="December"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;December</a></li>
+                            </ul>
+                      </li>
+                      <li class="nocounter"><span class="menu-subopening-span"><i class="fa fa-calendar fa-menu-conform"></i>&nbsp;&nbsp;&nbsp;2015</span>
+                            <ul>
+                                <li><a href="{site_url}/app/{segment_2}/2015/january" title="January"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;January</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2015/february" title="February"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;February</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2015/march" title="March"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;March</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2015/april" title="April"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;April</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2015/may" title="May"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;May</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2015/june" title="June"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;June</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2015/july" title="July"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;July</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2015/august" title="August"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;August</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2015/september" title="September"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;September</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2015/october" title="October"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;October</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2015/november" title="November"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;November</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2015/december" title="December"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;December</a></li>
+                            </ul>
+                      </li>
+                      <li class="nocounter"><span class="menu-subopening-span"><i class="fa fa-calendar fa-menu-conform"></i>&nbsp;&nbsp;&nbsp;2014</span>
+                            <ul>
+                                <!--<li><a href="{site_url}/app/{segment_2}/2014/january" title="January"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;January</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2014/february" title="February"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;February</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2014/march" title="March"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;March</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2014/april" title="April"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;April</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2014/may" title="May"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;May</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2014/june" title="June"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;June</a></li>-->
+                                <li><a href="{site_url}/app/{segment_2}/2014/july" title="July"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;July</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2014/august" title="August"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;August</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2014/september" title="September"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;September</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2014/october" title="October"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;October</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2014/november" title="November"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;November</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2014/december" title="December"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;December</a></li>
+                            </ul>
+                      </li>
+                 </ul>
+            </li>
+            <!-- Load by Season ================================================================================================-->
+            <li><span  href="#" title="Filter"><i class="fa fa-leaf fa-menu-conform"></i>&nbsp;&nbsp;&nbsp;Load by Season</span>
+                  <ul>
+                      <li class="nocounter"><span class="menu-subopening-span"><i class="fa fa-calendar fa-menu-conform"></i>&nbsp;&nbsp;&nbsp;2017</span>
+                            <ul>
+                                <li><a href="{site_url}/app/{segment_2}/2017/spring" title="Spring">&nbsp;<i class="fa fa-tint" style="width:16px"></i>&nbsp;&nbsp;&nbsp;Spring</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2017/summer" title="Summer"><i class="fa fa-sun-o" style="width:20px"></i>&nbsp;&nbsp;&nbsp;Summer</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2017/autumn" title="Autumn"><i class="fa fa-leaf" style="width:20px"></i>&nbsp;&nbsp;&nbsp;Autumn</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2017/winter" title="Winter"><i class="fa fa-asterisk" style="width:21px"></i>&nbsp;&nbsp;&nbsp;Winter</a></li>
+                            </ul>
+                      </li>
+                      <li class="nocounter"><span class="menu-subopening-span"><i class="fa fa-calendar fa-menu-conform"></i>&nbsp;&nbsp;&nbsp;2016</span>
+                            <ul>
+                                <li><a href="{site_url}/app/{segment_2}/2016/spring" title="Spring">&nbsp;<i class="fa fa-tint" style="width:16px"></i>&nbsp;&nbsp;&nbsp;Spring</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2016/summer" title="Summer"><i class="fa fa-sun-o" style="width:20px"></i>&nbsp;&nbsp;&nbsp;Summer</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2016/autumn" title="Autumn"><i class="fa fa-leaf" style="width:20px"></i>&nbsp;&nbsp;&nbsp;Autumn</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2016/winter" title="Winter"><i class="fa fa-asterisk" style="width:21px"></i>&nbsp;&nbsp;&nbsp;Winter</a></li>
+                            </ul>
+                      </li>
+                      <li class="nocounter"><span class="menu-subopening-span"><i class="fa fa-calendar fa-menu-conform"></i>&nbsp;&nbsp;&nbsp;2015</span>
+                            <ul>
+                                <li><a href="{site_url}/app/{segment_2}/2015/spring" title="Spring">&nbsp;<i class="fa fa-tint" style="width:16px"></i>&nbsp;&nbsp;&nbsp;Spring</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2015/summer" title="Summer"><i class="fa fa-sun-o" style="width:20px"></i>&nbsp;&nbsp;&nbsp;Summer</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2015/autumn" title="Autumn"><i class="fa fa-leaf" style="width:20px"></i>&nbsp;&nbsp;&nbsp;Autumn</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2015/winter" title="Winter"><i class="fa fa-asterisk" style="width:21px"></i>&nbsp;&nbsp;&nbsp;Winter</a></li>
+                            </ul>
+                      </li>
+                      <li class="nocounter"><span class="menu-subopening-span"><i class="fa fa-calendar fa-menu-conform"></i>&nbsp;&nbsp;&nbsp;2014</span>
+                            <ul>
+                                <!-- <li><a href="{site_url}/app/{segment_2}/2014/spring" title="Spring">&nbsp;<i class="fa fa-tint" style="width:16px"></i>&nbsp;&nbsp;&nbsp;Spring</a></li> -->
+                                <li><a href="{site_url}/app/{segment_2}/2014/summer" title="Summer"><i class="fa fa-sun-o" style="width:20px"></i>&nbsp;&nbsp;&nbsp;Summer</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2014/autumn" title="Autumn"><i class="fa fa-leaf" style="width:20px"></i>&nbsp;&nbsp;&nbsp;Autumn</a></li>
+                                <li><a href="{site_url}/app/{segment_2}/2014/winter" title="Winter"><i class="fa fa-asterisk" style="width:21px"></i>&nbsp;&nbsp;&nbsp;Winter</a></li>
+                            </ul>
+                      </li>
+                 </ul>
+            </li>
+
+            <!-- Find by Tags ================================================================================================-->
+            <li><span  href="#" title="Filter"><i class="fa fa-tags fa-menu-conform"></i>&nbsp;&nbsp;&nbsp;Load by Tags</span>
+                  <ul>
+                    <li class="nocounter"><span class="menu-subopening-span"><i class="fa fa-tags"></i>&nbsp;&nbsp;&nbsp;No tagged entries exist.</strong>. </a></li>
+                    <li><span class="app-menu-header-icon"><i class="fa fa-tags"></i></span><span class="app-menu-header">Tags!</span><span class="app-menu-message"><span class="menu_information_block">Find groups of entries by the descriptive tags above. Contact the site administrator to request tagging permissions.</span></span></li>
+                  </ul>
+
+            </li>
+            <!-- TOGGLE Ascending/Descending =============================================================================================-->
+            <li><a href="{site_url}/{segment_1}/asc/{if segment_3}{segment_3}{/if}/{if segment_4}{segment_4}{/if}/{if segment_5}{segment_5}{/if}"><i class="fa fa-sort-amount-asc fa-menu-conform"></i>&nbsp;&nbsp;&nbsp;Display Oldest Entries First</a>
+               <input type="checkbox" class="mm-toggle" name="menutoggle1" checked="checked" id="toggle_asc-desc"/></li>
+               <label for="menutoggle1"></label>
+            <!-- TOGGLE Milestones Only ==================================================================================================-->
+            <li><a href="#" id="milestones-toggle"><i class="fa fa-bookmark fa-menu-conform"></i>&nbsp;&nbsp;&nbsp;Display Only Milestones</a>
+               <input type="checkbox" class="mm-toggle" name="menutoggle2" checked="checked"  id="toggle_milestones"/></li>
+               <label for="menutoggle2"></label>
+            <!-- Search by Tags ==========================================================================================================-->
+            <!--<li><a href="{site_url}/{segment_1}/asc/"><i class="fa fa-tags"></i>&nbsp;&nbsp;&nbsp;Search by Tags</a>
+               <input type="checkbox" class="mm-toggle" name="menutoggle3" checked="checked"/></li>
+               <label for="menutoggle3"></label>-->
+            <!-- Load Complete Timeline ==========================================================================================================-->
+            <li><span  href="#mm8" title="Show All"><i class="fa fa-cloud-download fa-menu-conform"></i>&nbsp;&nbsp;&nbsp;Load All Timeline Posts</span>
+                  <ul>
+                    <li><a href="{site_url}/app/{if segment_2 =='asc'}{segment_2}{/if}{if segment_2 =='desc'}{segment_2}{/if}/all/" title="Load All"><i class="fa fa-cloud-download"></i>&nbsp;&nbsp;&nbsp;I can wait. <strong>Load it all</strong>. </a></li>
+                    {exp:stats channel="timeline_post" disable="categories|pagination|category_fields" status="open" limit="10000"}
+                    <!-- Include Bandwith Speed Test-->
+                    <li><span class="app-menu-header-icon"><i class="fa fa-spinner"></i></span><span class="app-menu-header">Heads Up!</span><span class="app-menu-message" id="include_estimated-load-all"></span></li>
+                    <!--<div id="output0800"></div>-->
+                    <!--<div id="output1200"></div> -->
+                    {embed="embeds/include_estimated-load-all" total_open_entries="{total_entries}"}
+                    {/exp:stats}
+                  </ul>
+            </li>
+<!--<li><a href="{site_url}/timeline/timeline_images/_printstore/" title="Print"><i class="fa fa-print"></i>&nbsp;&nbsp;&nbsp;Print High Resolution</a></li>-->
+            <li><a href=" {path='logout'}" title="Print"><i class="fa fa-sign-out fa-menu-conform"></i>&nbsp;&nbsp;&nbsp;Logout</a></li>
+            <!-- Load Complete Timeline ==========================================================================================================-->
+            <li><span href="#" title="Show All"><i class="fa fa-code-fork fa-menu-conform"></i>&nbsp;&nbsp;&nbsp;About</span>
+              <ul>
+                 <li>
+                   <!-- Build -->
+                   <span class="app-menu-header-icon"><i class="fa fa-code-fork" style="position:relative;top:12px;;color:#e98d73;"></i></span><span class="app-menu-header">Version 0.81.4</span><span class="app-menu-message" style="height:auto;">Build date April 30, 2017 via Git at 6:22pm CDT</span></li>
+                   <!-- CMS -->
+                   <li style="position:relative;top:-80px;">
+                   <span class="app-menu-header-icon"><i class="fa fa-database" style="position:relative;top:15px;font-size:28px;color:#e98d73;"></i></span><span class="app-menu-header">EEv2.11.9</span><span class="app-menu-message" style="height:auto;">CMS build date April 13, 2017 EllisLab, Inc.</span></li>
+                   <!-- Browser -->
+                   <li style="position:relative;top:-90px;">
+                   <span class="app-menu-header-icon" style="position:relative;top:16px;;color:#e98d73;"><i class="fa fa-tablet"></i></span><span class="app-menu-header">Browser</span><span class="app-menu-message" style="height:auto;white-space:normal;">{exp:browser_sniff}{browser_sniff_browser} {browser_sniff_version} for {browser_sniff_platform_shortname}</span>
+                   <span class="app-menu-message" style="height:auto;white-space:normal;opacity:0.7">User Agent: {browser_sniff_agent_string} on {browser_sniff_platform} platform.{/exp:browser_sniff}</span>
+                   <!-- Copyright -->
+                   <span class="app-menu-message" style="height:auto;white-space:normal;color:#e98d73;text-align:center;top:40px;">Milestones App <b>©</b> Copyright 2015 - 2017 Root Level Development&#8480;</span>
+                  </li>
+              </ul>
+            </li>
+        </ul>
+    </nav>
+
+
+    {/exp:portal}
+    </body>
+</html>

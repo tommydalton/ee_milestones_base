@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>Annika App</title>
+        
+        <!--Global Viewport and Meta Included-->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="mobile-web-app-capable" content="yes"/>
+	    <meta name="apple-mobile-web-app-status-bar-style"content="black"/>
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>-->
+        <meta name="viewport" content="width=device-width, user-scalable=1"/>
+        
+        <!--include_globaltags FAV ICON-->
+        <link rel="shortcut icon" href="{site_url}/favicon.ico" />
+        <!--include_globaltags APPLE TOUCH ICONS-->    
+        <link href="{site_url}/apple-touch-icon.png" rel="apple-touch-icon" />
+        <link href="{site_url}/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
+        <link href="{site_url}/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
+        <link href="{site_url}/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
+
+
+    
+        
+        <!--Stylesheets-->
+        <!--<link rel="stylesheet" type="text/css" href="{site_url}/timeline/css/basic_styles.css" />-->
+        <link rel="stylesheet" type="text/css" href="{site_url}/timeline/css/custom_styles.css" />
+        
+        <!--begin APP Mode Related Styles and Scripts-->
+		<style type="text/css">
+			body {
+				background-color: #E9EAED;
+				background-image: url('{site_url}/timeline/images/blocks_bg.png');
+				/*background-repeat: repeat-y;*/
+				background-repeat: repeat;
+				padding: 24px;
+			}
+			.responsive-container{
+				width: 100% ;
+				max-width: 1866px;
+				background-color: #111;
+				-webkit-border-radius: 0px;
+				-moz-border-radius: 0px;
+				border-radius: 0px;
+				
+				-webkit-box-shadow: 10px 10px 58px -4px rgba(0,0,0,0.75);
+				-moz-box-shadow: 10px 10px 58px -4px rgba(0,0,0,0.75);
+				box-shadow: 10px 10px 58px -4px rgba(0,0,0,0.75);				
+			}
+			#app-header, .slice, #dl-chrome-gps, #dl-chrome-win{
+				width: 100% ;
+
+				display:block;
+   				/**display:inline;zoom:1;*/
+   				margin:0px;outline:none;
+   				vertical-align: top;
+				padding:0px;
+				/*position: relative;
+ 				top:-10px;
+ 				left:0px;*/
+			}
+        </style> 
+        
+        <!--TypeKit-->
+        <script type="text/javascript" src="//use.typekit.net/nlg7djn.js"></script>
+		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <!--Timeline Scripts-->
+        <script type="text/javascript" src="{site_url}/timeline/javascript/jquery.js"></script>
+        <script type="text/javascript" src="{site_url}/timeline/javascript/timeline.min.js"></script>
+        <!--Shadowbox-->
+        <link rel="stylesheet" type="text/css" href="{site_url}/shadowbox/shadowbox.css">
+        <script type="text/javascript" src="{site_url}/shadowbox/shadowbox.js"></script>
+        
+        <script type="text/javascript">
+Shadowbox.init();
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+        </script>
+        
+        
+       
+  
+
+    </head>
+    <body onLoad="MM_preloadImages('{site_url}/timeline/images/chromeDownloadButtonGPSover.jpg','{site_url}/timeline/images/chromeDownloadButtonWINover.jpg','{site_url}/timeline/images/addToHomeScreen_01_header_over.jpg')">
+    
+        <!--Responsive Container-->
+        <div class="responsive-container">
+            <div id="app-header">
+            <a href="http://www.annikadalton.com/welcome" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('app save','','{site_url}/timeline/images/addToHomeScreen_01_header_over.jpg',1)" target="_blank"><img src="{site_url}/timeline/images/addToHomeScreen_01_header.jpg" alt="Page to Save App Link" width="100%" id="app save"></a>
+            </div>
+            
+            <div class="slice">
+            <img src="{site_url}/timeline/images/addToHomeScreen_02_iOSheader.jpg" width="100%" alt=""/>
+            </div>
+            
+            <div class="slice">
+            <img src="{site_url}/timeline/images/addToHomeScreen_03_iOSinfo.jpg" width="100%" alt=""/>
+            </div>            
+            
+            <div class="slice">
+            <img src="{site_url}/timeline/images/addToHomeScreen_04_androidHeader.jpg" width="100%" alt=""/>
+            </div>
+            
+            <div class="slice">
+            <img src="{site_url}/timeline/images/addToHomeScreen_05_androidInfo.jpg" width="100%" alt=""/>
+            </div>  
+            
+            <div class="slice">
+            <img src="{site_url}/timeline/images/addToHomeScreen_06_questions.jpg" width="100%" alt=""/>
+            </div>  
+            
+<!--            <div class="slice">
+            <img src="{site_url}/timeline/images/addToHomeScreen_08_downloadChromeGPS.jpg" width="100%" alt=""/>
+            </div>
+            
+            <div class="slice">
+            <img src="{site_url}/timeline/images/addToHomeScreen_09_downloadChromeWINjpg" width="100%" alt=""/>
+            </div>  -->
+                      
+            <div id="dl-chrome-gps">
+            <a href="https://play.google.com/store/apps/details?id=com.android.chrome" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('download chrome gps','','{site_url}/timeline/images/chromeDownloadButtonGPSover.jpg',1)" target="_blank"><img src="{site_url}/timeline/images/chromeDownloadButtonGPSidle.jpg" alt="Download Chrome" width="100%" id="download chrome gps"></a>
+            </div>
+            <div id="dl-chrome-win">
+            <a href="http://www.windowsphone.com/en-us/store/app/google-chrome/d3723e41-5674-4989-9d1a-ae61526546b1" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('download chrome win','','{site_url}/timeline/images/chromeDownloadButtonWINover.jpg',1)" target="_blank"><img src="{site_url}/timeline/images/chromeDownloadButtonWINidle.jpg" alt="download chrome" width="100%" id="download chrome win"></a>
+            </div>
+            <div class="slice">
+            <img src="{site_url}/timeline/images/appBottomHR.jpg" width="100%" alt=""/>
+            </div>
+        </div>
+<!-- END CONTENT --> 
+
+	<!-- Include Footer-->
+	{embed="embeds/include_footer"}
+    
+	<!-- Include Google Analytics-->
+	{embed="embeds/include_analytics"} 
+    
+
+    </body>
+</html>

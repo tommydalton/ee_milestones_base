@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>Annika Kathleen Dalton | Sign In</title>
+        
+        <!--Global Viewport and Meta Included-->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!--include_globaltags FAV ICON-->
+        <link rel="shortcut icon" href="{site_url}/favicon.ico" />
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="mobile-web-app-capable" content="yes"/>
+	    <meta name="apple-mobile-web-app-status-bar-style"content="black"/>
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>-->
+        <meta name="viewport" content="width=device-width, user-scalable=0"/>
+        <meta name="robots" content="noindex">
+        <!--include_globaltags APPLE TOUCH ICONS-->    
+        <link href="{site_url}/apple-touch-icon.png" rel="apple-touch-icon" />
+        <link href="{site_url}/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
+        <link href="{site_url}/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
+        <link href="{site_url}/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
+
+
+    
+        <!--<link rel="stylesheet" type="text/css" href="{site_url}/timeline/css/basic_styles.css" />-->
+        <!--Stylesheets-->
+        <!--<link rel="stylesheet" type="text/css" href="{site_url}/timeline/css/custom_styles.css" />-->
+        
+        <!--Login Stylesheets-->
+        <link rel="stylesheet" type="text/css" href="{site_url}/timeline/css/login_styles.css"/>
+        <link rel="stylesheet" type="text/css" href="{site_url}/timeline/css/footer_styles.css"/>
+        <link rel="stylesheet" type="text/css" href="{site_url}/timeline/css/status_styles.css"/>
+        
+        <!--TypeKit-->
+        <script type="text/javascript" src="//use.typekit.net/nlg7djn.js"></script>
+		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        
+        <!--Timeline Scripts-->
+        <script type="text/javascript" src="{site_url}/timeline/javascript/jquery.js"></script>
+        <script type="text/javascript" src="{site_url}/timeline/javascript/timeline.min.js"></script>
+        
+        <!--Shadowbox-->
+        <link rel="stylesheet" type="text/css" href="{site_url}/shadowbox/shadowbox.css">
+        <script type="text/javascript" src="{site_url}/shadowbox/shadowbox.js"></script>
+        
+        <script type="text/javascript">
+        Shadowbox.init();
+        </script>
+        
+        <!-- CSS by Agent Adjust -->
+        <!--<script src="http://www.troscandesign.com/index.phpcss/css_browser_selector.js"></script>-->
+
+
+
+
+        <!-- Main Style Sheet Overrides By Browser -->
+		<!--<script language="JavaScript">
+        document.write('<link rel="stylesheet" href="http://www.troscandesign.com/index.phpcss/');
+        var agt=navigator.userAgent.toLowerCase();
+        if (agt.indexOf('opera') != -1) document.write('override_ie.css');
+		else if (agt.indexOf('firefox') != -1) document.write('override_ff.css');
+        else if (agt.indexOf('msie') != -1) document.write('override_ie.css');
+		else if (agt.indexOf('safari') != -1) document.write('override_sf.css');
+		else if (agt.indexOf('chrome') != -1) document.write('override_ch.css');
+        else document.write('style.css');
+        document.write('" type="text/css">');
+        </script>-->
+
+        <!-- Added for Scroll Pane -->
+        <link rel="stylesheet" type="text/css" href="http://www.troscandesign.com/index.phpcss/jquery.jscrollpane.css">
+        <script type="text/javascript" src="http://www.troscandesign.com/index.phpjs/transition.js"></script>
+        
+        <!-- FA -->
+		<!--<link rel="stylesheet" href="http://www.rootleveldevelopment.com/chicago/css/bootstrap.css">-->
+		<link rel="stylesheet" href="{site_url}/timeline/fa/css/font-awesome.css">
+
+        <!-- jQuaery Scroll Bar -->
+		        <!-- FA -->
+		<!--<link rel="stylesheet" href="http://www.rootleveldevelopment.com/chicago/css/bootstrap.css">-->
+		<link rel="stylesheet" href="{site_url}/timeline/css/footer/jquery.jscrollbar.1.0.css">
+
+</head>
+
+<body>
+
+<!-- Status and Testing -->
+<!--{if group_title != "Guests"}
+<div class="status"> Browser: {exp:browser_sniff}{browser_sniff_browser}&nbsp;{browser_sniff_version}{/exp:browser_sniff} | Logged in as <span style="color:#000;font-size:9px">{username}</span>, a member of group: <span style="color:#000;font-size:9px">{member_group}</span>, Group Title: <span style="color:#000;font-size:9px">{group_title}</span>, Group ID: <span style="color:#000;font-size:9px">{group_id}</span><span style="float:right;padding-right:20px"><a href="{path='logout'}">Log Out</a></span></div> 
+{/if}         
+{if group_title == "Guests"}
+<div class="status"> Browser: {exp:browser_sniff}{browser_sniff_browser}&nbsp;{browser_sniff_version}{/exp:browser_sniff} | Not logged in. Currently assigned as member of group: <span style="color:#000;font-size:9px">{member_group}</span>, Group Title: <span style="color:#000;font-size:9px">{group_title}</span>, Group ID: <span style="color:#000;font-size:9px">{group_id}</span></div> 
+{/if} -->
+
+<!--</header>-->
+
+    
+        <div class="middlebox" style="padding-top:0px;">
+            <h1>LOGIN</h1>
+            <!--<div class="loginerror"></div>-->
+            
+            <form method="post" action="home" id="loginForm">
+            <div class='hiddenFields'>
+            <input type="hidden" name="XID" value="{XID_HASH}" />
+            <input type="hidden" name="ACT" value="18" />
+            <input type="hidden" name="RET" value="/app/desc/" />
+            <input type="hidden" name="site_id" value="2" />
+            </div>       
+                
+                
+                            USERNAME<br/>
+                            <input type="text" name="username" value="" onfocus="if(this.value == 'Username*') { this.value = ''; }" class="inputclassbig">
+
+                            <!--<a class="pull-right" href="http://www.rootleveldevelopment.com/chicago/member_forms/forgot_password">(Lost Password?)</a>-->
+                            PASSWORD<br/>
+                            <input type="password" name="password" value="" onfocus="if(this.value == 'Username*') { this.value = ''; }" class="inputclassbig">
+						{if auto_login}
+                        <span class="remember-box checkbox">
+                            <label for="rememberme">
+                                <input type="checkbox" name="auto_login" id="rememberme">Remember Me
+                            </label>
+                         {/if}
+                        <br/>
+                        <input type="submit" name="submit" value="Login" class="whitebutton inputclassbig" data-loading-text="Loading...">
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+
+
+<!-- END CONTENT --> 
+
+
+    
+
+	
+
+
+</div>    
+</body>
+</html>

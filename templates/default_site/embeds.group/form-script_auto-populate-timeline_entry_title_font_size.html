@@ -1,0 +1,36 @@
+	<script>                            
+        document.getElementById('title').onchange = function () {
+			var titleStringEntered = document.getElementById('title').value = event.target.value
+			var titleStringClength = titleStringEntered.length;
+			//alert('The title is ' +titleStringClength+ ' characters long')
+            document.getElementById('timeline_entry_title').value = event.target.value
+			if (titleStringClength <= 10) {
+				document.getElementById('timeline_entry_title_font_size').value = 40
+			} else if (titleStringClength > 10 && titleStringClength <= 20) {
+				document.getElementById('timeline_entry_title_font_size').value = 32
+			} else if (titleStringClength > 20 && titleStringClength <= 30) {
+				document.getElementById('timeline_entry_title_font_size').value = 22
+			} else if (titleStringClength > 30 && titleStringClength <= 40) {
+				document.getElementById('timeline_entry_title_font_size').value = 13
+			} else {
+				document.getElementById('timeline_entry_title_font_size').value = 10
+			}
+        }   
+        document.getElementById('timeline_entry_subtitle').onchange = function () {
+			var subtitleStringEntered = document.getElementById('timeline_entry_subtitle').value = event.target.value
+			var subtitleStringClength = subtitleStringEntered.length;
+			//alert('The subtitle is ' +subtitleStringClength+ ' characters long')
+            document.getElementById('timeline_entry_subtitle').value = event.target.value
+			if (subtitleStringClength <= 10) {
+				document.getElementById('timeline_entry_subtitle_fontsize').value = 36
+			} else if (subtitleStringClength > 10 && subtitleStringClength <= 20) {
+				document.getElementById('timeline_entry_subtitle_fontsize').value = 26
+			} else if (subtitleStringClength > 20 && subtitleStringClength <= 30) {
+				document.getElementById('timeline_entry_subtitle_fontsize').value = 19
+			} else if (subtitleStringClength > 30 && subtitleStringClength <= 40) {
+				document.getElementById('timeline_entry_subtitle_fontsize').value = 13
+			} else {
+				document.getElementById('timeline_entry_subtitle_fontsize').value = 10
+			}
+        }   
+    </script>  
